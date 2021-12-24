@@ -22,8 +22,8 @@
             const text_antonietta = document.getElementById('text-antonietta');
 
             let check = setInterval(() => {
-                const distance= location_vito.getAttribute('distanceMsg');
-                text_vito.setAttribute('value', distance);
+                const distance= location_temenide.getAttribute('distanceMsg');
+                text_temenide.setAttribute("value", distance);
             }, 100);
 
         });
@@ -43,6 +43,13 @@
                     gps-entity-place="latitude: 40.463106030252234; longitude: -342.7490057609976;"
                     id="temenide"
                 ></a-image>
+                <a-text
+                    value="Via temenide"
+                    look-at="[gps-camera]"
+                    scale="10 10 10"
+                    gps-entity-place="latitude: 40.463106030252234; longitude: -342.7490057609976;"
+                    id="text-temenide"
+                ></a-text>
                 <!-- gat -->
                 <a-image
                     src="assets/asset.png"
