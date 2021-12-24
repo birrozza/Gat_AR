@@ -12,7 +12,20 @@
     </head>
     <script>
         windows.addEventListener('load', () => {
-            alert('ciao');
+            const location_temenide = document.getElementById('temenide');
+            const location_gat = document.getElementById('gat');
+            const location_vito = document.getElementById('vito');
+            const location_antonietta = document.getElementById('antonietta');
+            const text_temenide = document.getElementById('text-temenide');
+            const text_gat = document.getElementById('text-gat');
+            const text_vito = document.getElementById('text-vito');
+            const text_antonietta = document.getElementById('text-antonietta');
+
+            let check = setInterval(() => {
+                const distance= location_vito.getAttribute('distanceMsg');
+                text_vito.setAttribute('value', distance);
+            });
+
         });
     </script>   
     <body style="margin: 0; overflow: hidden;">
@@ -28,6 +41,7 @@
                     look-at="[gps-camera]"
                     scale="1 1 1"
                     gps-entity-place="latitude: 40.463106030252234; longitude: -342.7490057609976;"
+                    id="temenide";
                 ></a-image>
                 <!-- gat -->
                 <a-image
@@ -35,30 +49,35 @@
                     look-at="[gps-camera]"
                     scale="100 100 100"
                     gps-entity-place="latitude: 40.42401661771716; longitude: -342.7144074440003;"
+                    id ="gat";
                 ></a-image>
                 <a-image
                     src="assets/location.png"
                     look-at="[gps-camera]"
                     scale="10 10 10"
                     gps-entity-place="latitude: 40.466300525367025; longitude: -342.75283377617603;"
+                    id="vito"
                 ></a-image>
                 <a-text
                     value="Casa nonno Vito"
                     look-at="[gps-camera]"
                     scale="10 10 10"
                     gps-entity-place="latitude: 40.466300525367025; longitude: -342.75283377617603;"
+                    id="text-vito"
                 ></a-text>
                 <a-image
                     src="assets/location.png"
                     look-at="[gps-camera]"
                     scale="10 10 10"
                     gps-entity-place="latitude: 40.46705732564022; longitude: -342.7454694360495;"
+                    id="antonietta"
                 ></a-image>
                 <a-text
                     value="Casa nonna Antonietta"
                     look-at="[gps-camera]"
                     scale="10 10 10"
                     gps-entity-place="latitude: 40.46705732564022; longitude: -342.7454694360495;"
+                    id="text-antonietta"
                 ></a-text>
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>
