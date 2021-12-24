@@ -14,7 +14,7 @@
         function returnDistance(location, text){// funzione             
             let distance = location.getAttribute('distanceMsg');
             if (!distance) distance = "---"; // se ancora non l'ha calcolata
-            return text + location.getAttribute('distanceMsg');
+            return text + distance;
         }
         window.addEventListener('load', () => {
             const location_temenide = document.getElementById('temenide');
