@@ -11,7 +11,7 @@
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     </head>
     <script>
-        function returnDistance(location, text){
+        function returnDistance(location, text){// funzione 
             return text + location.getAttribute('distanceMsg');
         }
         window.addEventListener('load', () => {
@@ -23,12 +23,13 @@
             const text_gat = document.getElementById('text-gat');
             const text_vito = document.getElementById('text-vito');
             const text_antonietta = document.getElementById('text-antonietta');
-
+            
             let check = setInterval(() => {
-                //const distance= location_temenide.getAttribute('distanceMsg');
                 text_temenide.setAttribute("value", returnDistance(location_temenide, "Via Temenide "));
+                text_gat.setAttribute("value", returnDistance(location_gat, "GAT "));
+                text_vito.setAttribute("value", returnDistance(location_vito, "Casa nonno Vito "));
+                text_antonietta.setAttribute("value", returnDistance(location_antonietta, "Casa nonna Antonietta "));
             }, 100);
-
         });
     </script>   
     <body style="margin: 0; overflow: hidden;">
@@ -61,6 +62,13 @@
                     gps-entity-place="latitude: 40.42401661771716; longitude: -342.7144074440003;"
                     id ="gat"
                 ></a-image>
+                <a-text
+                    value="GAT"
+                    look-at="[gps-camera]"
+                    scale="10 10 10"
+                    gps-entity-place="latitude: 40.42401661771716; longitude: -342.7144074440003;"
+                    id="text-gat"
+                ></a-text>
                 <a-image
                     src="assets/location.png"
                     look-at="[gps-camera]"
