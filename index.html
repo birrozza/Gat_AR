@@ -34,12 +34,15 @@
                 text_gat.setAttribute("value", returnDistance(location_gat, "GAT "));
                 text_vito.setAttribute("value", returnDistance(location_vito, "Casa nonno Vito "));
                 text_antonietta.setAttribute("value", returnDistance(location_antonietta, "Casa nonna Antonietta "));
+                let rotation="0 0 "+frame;
+                head_savio.setAttribute('rotation', rotation);
+                /*
                 if(frame % 10 == 0) {
                     x++;
                     let rotation="0 0 "+x;
                     head_savio.setAttribute('rotation', rotation);
                 }
-
+                */
             }, 100);
         });
     </script>   
