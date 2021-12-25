@@ -1,1 +1,115 @@
-{"asset":{"generator":"3D Builder","version":"2.0"},"scene":0,"scenes":[{"nodes":[0]}],"nodes":[{"mesh":0,"matrix":[0.99999994039535522,0,0,0,0,0.99256259202957153,-0.12173110246658325,0,0,0.12173154950141907,0.99256253242492676,0,-0.040725588798522949,0.010004579089581966,-0.11523226648569107,1]}],"meshes":[{"primitives":[{"attributes":{"POSITION":0},"mode":4,"indices":1,"material":0}]}],"materials":[{"name":"Metallic","pbrMetallicRoughness":{"baseColorFactor":[0.45078584551811218,0.11953843384981155,0.056128494441509247,1],"metallicFactor":0,"roughnessFactor":0.58000004291534424},"alphaMode":"OPAQUE"}],"accessors":[{"bufferView":0,"byteOffset":0,"count":19999,"componentType":5126,"type":"VEC3","min":[-0.010342143476009369,-0.016369178891181946,0],"max":[0.010342143476009369,0.016369178891181946,0.022782528772950172]},{"bufferView":1,"byteOffset":0,"count":119982,"componentType":5125,"type":"SCALAR"}],"bufferViews":[{"buffer":0,"byteOffset":0,"byteLength":239988,"byteStride":12,"target":34962},{"buffer":0,"byteOffset":239988,"byteLength":479928,"target":34963}],"buffers":[{"byteLength":719916,"uri":"savio.bin"}]}
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.7.33",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Mesh_0",
+            "rotation" : [
+                -0.06097918003797531,
+                0,
+                0,
+                0.9981390237808228
+            ],
+            "translation" : [
+                0.00046247203135862947,
+                0.01659318245947361,
+                -0.008456632494926453
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "name" : "Metallic",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.4507858455181122,
+                    0.11953843384981155,
+                    0.05612849444150925,
+                    1
+                ],
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5800000429153442
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Mesh_0",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "indices" : 2,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 119982,
+            "max" : [
+                0.010342143476009369,
+                0.016369178891181946,
+                0.022782528772950172
+            ],
+            "min" : [
+                -0.010342143476009369,
+                -0.016369178891181946,
+                0
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 119982,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5125,
+            "count" : 119982,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 1439784,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1439784,
+            "byteOffset" : 1439784
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 479928,
+            "byteOffset" : 2879568
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 3359496,
+            "uri" : "untitled.bin"
+        }
+    ]
+}
