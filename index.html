@@ -34,7 +34,7 @@
                 text_gat.setAttribute("value", returnDistance(location_gat, "GAT "));
                 text_vito.setAttribute("value", returnDistance(location_vito, "Casa nonno Vito "));
                 text_antonietta.setAttribute("value", returnDistance(location_antonietta, "Casa nonna Antonietta "));
-                let rotation=frame+" 0 0";
+                let rotation="0 "+frame+" 0";
                 head_savio.setAttribute('rotation', rotation);
                 
             }, 100);
@@ -79,7 +79,7 @@
                     id="text-gat"
                 ></a-text>
                 <a-entity gltf-model="assets/savio/savio.gltf" 
-                    position="0 0 0";
+                    position="0 10 0";
                     rotation="0 0 0"; 
                     scale="1000 1000 1000" 
                     gps-entity-place="latitude: 40.462859; longitude: 17.2499605;" 
