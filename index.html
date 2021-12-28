@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>GAT A.R.</title>
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <!--<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script> per animazione-->
+        src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script> 
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     </head>
@@ -83,9 +83,10 @@
                 <a-entity gltf-model="assets/savio/untitled.gltf" 
                     position="0 0 0";
                     rotation="0 0 0"; 
-                    scale="1000 1000 1000" 
+                    scale="100 100 100" 
                     gps-entity-place="latitude: 40.462426; longitude: 17.250839;"
-                    id="head-savio">
+                    id="head-savio"
+                    animation-mixer>
                 </a-entity>
                 <a-image
                     src="assets/location.png"
