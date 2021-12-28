@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>GAT A.R.</title>
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script> 
+        <!--<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>  per animazione-->
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     </head>
@@ -29,16 +29,10 @@
             let frame = 0;
             let x = 0;
             let check = setInterval(() => {
-                frame++;
                 text_temenide.setAttribute("value", returnDistance(location_temenide, "Via Temenide "));
                 text_gat.setAttribute("value", returnDistance(location_gat, "GAT "));
                 text_vito.setAttribute("value", returnDistance(location_vito, "Casa nonno Vito "));
                 text_antonietta.setAttribute("value", returnDistance(location_antonietta, "Casa nonna Antonietta "));
-                let rotation="0 "+frame+" 0";
-                //head_savio.setAttribute('rotation', rotation);
-                // da testare
-                //head_savio.object3D.rotation.y = THREE.Math.degToRad(frame);
-                //head_savio.object3D.rotation.divideScalar(2);
             }, 100);
         });
     </script>   
@@ -86,7 +80,7 @@
                     scale="10 10 10" 
                     gps-entity-place="latitude: 40.462426; longitude: 17.250839;"
                     id="head-savio"
-                    animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear;"
+                    animation="property: rotation; to: 0 360 0; loop: true; dur: 15000; easing: linear;"
                 ></a-entity>
                 <a-image
                     src="assets/location.png"
