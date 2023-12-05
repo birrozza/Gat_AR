@@ -28,6 +28,7 @@
             const text_vito = document.getElementById('text-vito');
             const text_antonietta = document.getElementById('text-antonietta');
             const magnemite = document.getElementById('magnemite');
+            const head_savio = document.getElementById('head-savio');
             let frame = 0;
             let x = 0;
             let check = setInterval(() => {
@@ -77,7 +78,15 @@
                     gps-entity-place="latitude: 40.4233336; longitude: 17.2858356;"
                     id="text-gat"
                 ></a-text>
-                <!--<a-entity gltf-model="assets/savio/test_2.gltf" -->
+                <a-entity gltf-model="assets/savio/test_2.gltf"                     
+                    position="0 0 0"
+                    rotation="0 0 0" 
+                    scale=".2 .20 .20" 
+                    gps-entity-place="latitude: 40.462426; longitude: 17.25083;"
+                    id="head-savio"
+                    color="red"
+                    animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear;"
+                ></a-entity>
                 <a-entity gltf-model="assets/magnemite/scene.gltf" 
                     position="0 0 0"
                     rotation="0 0 0" 
