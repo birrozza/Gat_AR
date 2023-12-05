@@ -2,4 +2,4 @@
 
 Test di realtà aumentata per il campo volo del Gruppo Aeromodellistico Tarantino
 
-www.gat-taranto.it
+www.tarantogat.it
