@@ -27,7 +27,7 @@
             const text_gat = document.getElementById('text-gat');
             const text_vito = document.getElementById('text-vito');
             const text_antonietta = document.getElementById('text-antonietta');
-            const head_savio = document.getElementById('head-savio');
+            const magnemite = document.getElementById('magnemite');
             let frame = 0;
             let x = 0;
             let check = setInterval(() => {
@@ -35,7 +35,7 @@
                 text_gat.setAttribute("value", returnDistance(location_gat, "GAT "));
                 text_vito.setAttribute("value", returnDistance(location_vito, "Casa nonno Vito "));
                 text_antonietta.setAttribute("value", returnDistance(location_antonietta, "Casa nonna Antonietta "));
-                text_officina.setAttribute("value", returnDistance(head_savio, "Officina "));
+                text_officina.setAttribute("value", returnDistance(magnemite, "Officina "));
             }, 100);
         });
     </script>   
@@ -83,7 +83,7 @@
                     rotation="0 0 0" 
                     scale=".2 .20 .20" 
                     gps-entity-place="latitude: 40.462426; longitude: 17.250839;"
-                    id="head-savio"
+                    id="magnemite"
                     color="red"
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear;"
                 ></a-entity>
