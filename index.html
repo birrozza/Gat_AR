@@ -44,12 +44,13 @@
             }, 100);
             let blinking=setInterval(()=>{
                 if(blink) {
-                    off_line.setAttribute("color", "red");
-                    
+                    off_line.setAttribute("color", "red"); 
+                    blink=false;      
                 } else {
                     off_line.setAttribute("color", "yellow");
+                    blink=true;
                 }
-                blink=!blink;
+               
             },1000);
         //});
     </script>   
