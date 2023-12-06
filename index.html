@@ -44,10 +44,10 @@
             }, 100);
             let blinking=setInterval(()=>{
                 if(blink) {
-                    text_officina.setAttribute("color", "red");
+                    off_line.setAttribute("color", "red");
                     blink=false;
                 } else {
-                    text_officina.setAttribute("color", "yellow");
+                    off_line.setAttribute("color", "yellow");
                 }
                 blink=!blink;
             },1000);
