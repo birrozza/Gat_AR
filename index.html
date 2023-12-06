@@ -41,8 +41,15 @@
                 text_vito.setAttribute("value", returnDistance(location_vito, "Casa nonno Vito "));
                 text_antonietta.setAttribute("value", returnDistance(location_antonietta, "Casa nonna Antonietta "));
                 text_officina.setAttribute("value", returnDistance(magnemite, "Officina "));
-            }, 100);
-            let blinking=setInterval(()=>{
+                if(blink) {
+                    off_line.setAttribute("color", "red"); 
+                    blink=false;      
+                } else {
+                    off_line.setAttribute("color", "#ECECEC");
+                    blink=true;
+                }
+            }, 1000);
+            /*let blinking=setInterval(()=>{
                 if(blink) {
                     off_line.setAttribute("color", "red"); 
                     blink=false;      
@@ -51,7 +58,7 @@
                     blink=true;
                 }
                
-            },1000);
+            },1000);*/
         //});
     </script>   
     <body style="margin: 0; overflow: hidden;">
