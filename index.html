@@ -17,8 +17,6 @@
             if (!distance) distance = "---"; // se ancora non l'ha calcolata
             return text + distance;
         }
-        
-        
 
             const location_temenide = document.getElementById('temenide');
             const location_gat = document.getElementById('gat');
@@ -48,18 +46,8 @@
                     off_line.setAttribute("color", "#ECECEC");
                     blink=true;
                 }
-            }, 1000);
-            /*let blinking=setInterval(()=>{
-                if(blink) {
-                    off_line.setAttribute("color", "red"); 
-                    blink=false;      
-                } else {
-                    off_line.setAttribute("color", "#ECECEC");
-                    blink=true;
-                }
-               
-            },1000);*/
-        //});
+            }, 100);
+            
     </script>   
     <body style="margin: 0; overflow: hidden;">
         <!-- con vr-mode-ui="enabled: false" abilita la funzione VR sul display -->
@@ -152,11 +140,9 @@
                     scale="10 10 10"
                     gps-entity-place="latitude: 40.46705732564022; longitude: 17.2545455;"
                     id="text-antonietta"
-                ></a-text>
+                ></a-text>              
                 
-                
-            <a-camera gps-camera="alert: true;" rotation-reader >
-                
+            <a-camera gps-camera="alert: true;" rotation-reader >                
                 <a-text
                     position="-0.2 -0.3 -1"
                     value="off-line"
