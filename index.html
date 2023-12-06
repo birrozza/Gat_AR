@@ -17,7 +17,18 @@
             if (!distance) distance = "---"; // se ancora non l'ha calcolata
             return text + distance;
         }
+        
         window.addEventListener('load', () => {
+
+            AFRAME.registerComponent('log', {
+                schema: {type: 'string'},
+
+                init: function () {
+                    var stringToLog = this.data;
+                    console.log(stringToLog);
+                }
+        });
+
             const location_temenide = document.getElementById('temenide');
             const location_gat = document.getElementById('gat');
             const location_vito = document.getElementById('vito');
@@ -42,7 +53,7 @@
     </script>   
     <body style="margin: 0; overflow: hidden;">
         <!-- con vr-mode-ui="enabled: false" abilita la funzione VR sul display -->
-        <a-scene
+        <a-scene log="Hello, scene"
             vr-mode-ui="enabled: false" 
             embedded
             loading-screen="enabled: false;"
@@ -131,7 +142,7 @@
                     gps-entity-place="latitude: 40.46705732564022; longitude: 17.2545455;"
                     id="text-antonietta"
                 ></a-text>
-                <a-text value="Test" scale="10 10 10" id="test"></a-text>
+                <a-box log="Hello, Box!"></a-box>
             <a-camera gps-camera="alert: true;" rotation-reader></a-camera>
         </a-scene>
         
