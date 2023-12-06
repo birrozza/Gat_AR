@@ -18,16 +18,7 @@
             return text + distance;
         }
         
-        window.addEventListener('load', () => {
-
-            AFRAME.registerComponent('log', {
-                schema: {type: 'string'},
-
-                init: function () {
-                    var stringToLog = this.data;
-                    console.log(stringToLog);
-                }
-        });
+        
 
             const location_temenide = document.getElementById('temenide');
             const location_gat = document.getElementById('gat');
@@ -53,7 +44,8 @@
     </script>   
     <body style="margin: 0; overflow: hidden;">
         <!-- con vr-mode-ui="enabled: false" abilita la funzione VR sul display -->
-        <a-scene log="Hello, scene"
+        <a-scene 
+            text="baseline: top; shader: msdf; anchor: left; font: https://cdn.aframe.io/examples/ui/Viga-Regular.json; color: white; value: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             vr-mode-ui="enabled: false" 
             embedded
             loading-screen="enabled: false;"
@@ -142,8 +134,8 @@
                     gps-entity-place="latitude: 40.46705732564022; longitude: 17.2545455;"
                     id="text-antonietta"
                 ></a-text>
-                <a-box log="Hello, Box!"></a-box>
-                <h2>Prova di </h2>
+                
+                
             <a-camera gps-camera="alert: true;" rotation-reader></a-camera>
         </a-scene>
         
