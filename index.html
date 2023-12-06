@@ -31,8 +31,10 @@
             const text_antonietta = document.getElementById('text-antonietta');
             const magnemite = document.getElementById('magnemite');
             const head_savio = document.getElementById('head-savio');
+            const off_line = document.getElementById('text-camera');
             let frame = 0;
             let x = 0;
+            let blink = false;
             let check = setInterval(() => {
                 text_temenide.setAttribute("value", returnDistance(location_temenide, "Via Temenide "));
                 text_gat.setAttribute("value", returnDistance(location_gat, "GAT "));
@@ -40,7 +42,16 @@
                 text_antonietta.setAttribute("value", returnDistance(location_antonietta, "Casa nonna Antonietta "));
                 text_officina.setAttribute("value", returnDistance(magnemite, "Officina "));
             }, 100);
-        });
+            let blinking=setInterval(()=>{
+                if(blink) {
+                    text_officina.setAttribute("color", "red");
+                    blink=false;
+                } else {
+                    text_officina.setAttribute("color", "yellow");
+                }
+                blink=!blink;
+            },1000);
+        //});
     </script>   
     <body style="margin: 0; overflow: hidden;">
         <!-- con vr-mode-ui="enabled: false" abilita la funzione VR sul display -->
