@@ -17,37 +17,34 @@
                 if (!distance) distance = "---"; // se ancora non l'ha calcolata
                 return text + distance;
             }
+	    window.addEventListener('load', () => {
+            	const location_temenide = document.getElementById('temenide');
+            	const location_gat = document.getElementById('gat');
+            	const location_vito = document.getElementById('vito');
+            	const location_antonietta = document.getElementById('antonietta');
+           	    const text_temenide = document.getElementById('text-temenide');
+            	const text_officina = document.getElementById('text-officina');
+            	const text_gat = document.getElementById('text-gat');
+            	const text_vito = document.getElementById('text-vito');
+            	const text_antonietta = document.getElementById('text-antonietta');
+            	const magnemite = document.getElementById('magnemite');
+            	const head_savio = document.getElementById('head-savio');
+            	const off_line = document.getElementById('text-camera');
+            	
+            	let blink = true;
+		        let blinkig = setInterval(() => {
+                    blink ? off_line.setAttribute("opacity", 0): off_line.setAttribute("opacity", 1);
+                    blink=!blink;                        
+                }, 1000);
 
-            const location_temenide = document.getElementById('temenide');
-            const location_gat = document.getElementById('gat');
-            const location_vito = document.getElementById('vito');
-            const location_antonietta = document.getElementById('antonietta');
-            const text_temenide = document.getElementById('text-temenide');
-            const text_officina = document.getElementById('text-officina');
-            const text_gat = document.getElementById('text-gat');
-            const text_vito = document.getElementById('text-vito');
-            const text_antonietta = document.getElementById('text-antonietta');
-            const magnemite = document.getElementById('magnemite');
-            const head_savio = document.getElementById('head-savio');
-            const off_line = document.getElementById('text-camera');
-            let frame = 0;
-            let x = 0;
-            let blink = true;
-            let check = setInterval(() => {
-                //text_temenide.setAttribute("value", returnDistance(location_temenide, "Via Temenide "));
-                text_gat.setAttribute("value", returnDistance(location_gat, "GAT "));
-                text_vito.setAttribute("value", returnDistance(location_vito, "Casa nonno Vito "));
-                text_antonietta.setAttribute("value", returnDistance(location_antonietta, "Casa nonna Antonietta "));
-                text_officina.setAttribute("value", returnDistance(magnemite, "Officina "));
-                /*if(blink) {
-                    off_line.setAttribute("color", "red"); 
-                    blink=false;      
-                } else {
-                    off_line.setAttribute("color", "#ECECEC");
-                    blink=true;
-                }*/
-            }, 100);
-            
+            	let check = setInterval(() => {
+                	text_temenide.setAttribute("value", returnDistance(location_temenide, "Via Temenide "));
+                	text_gat.setAttribute("value", returnDistance(location_gat, "GAT "));
+                	text_vito.setAttribute("value", returnDistance(location_vito, "Casa nonno Vito "));
+                	text_antonietta.setAttribute("value", returnDistance(location_antonietta, "Casa nonna Antonietta "));
+                	text_officina.setAttribute("value", returnDistance(magnemite, "Officina "));                
+            	}, 100);
+            });
     </script>   
     <body style="margin: 0; overflow: hidden;">
         <!-- con vr-mode-ui="enabled: false" abilita la funzione VR sul display -->
@@ -142,15 +139,14 @@
                 ></a-text>              
                 
             <a-camera gps-camera="alert: true;" rotation-reader >   
-                <!--             
                 <a-text
                     position="-0.2 -0.3 -1"
-                    value="off-line"
-                    background="rgb( 0, 150, 0, .5)"
+                    value="off-line!"
+                    opacity=1
                     width="1"
                     color="red"
                     id="text-camera"
-                ></a-text>-->
+                ></a-text>
             </a-camera>
         </a-scene>
         
