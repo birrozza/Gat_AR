@@ -41,7 +41,7 @@
                 let downloaded = false;
 
                 const el = document.querySelector("[gps-new-camera]");
-
+console.log("1");
                 el.addEventListener("gps-camera-update-position", async(e) => {
                     if(!downloaded) {
                         const west = e.detail.position.longitude - 0.05,
