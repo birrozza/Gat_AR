@@ -150,6 +150,7 @@
                                 document.querySelector("a-scene").appendChild(compoundEntity);
                                 /*const distanza = item.text + compoundEntity['gps-new-entity-place'].distance;
                                 text.setAttribute("value", distanza);*/
+                                console.log(text.getAttribute('distanceMsg'))
                             }
                         });
                         if(!intervallo) {const x = setInterval(()=> console.log(document.querySelector('a-scene').querySelectorAll('a-entity')),1000); intervallo = false}
