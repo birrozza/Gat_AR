@@ -1,0 +1,175 @@
+<!doctype html>
+<!--  https://www.maps.ie/coordinates.html -->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>GAT A.R.</title>
+        <!--<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>-->
+        <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+        <!--<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>  per animazione-->
+        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <style>
+            .arjs-loader {
+              height: 100%;
+              width: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 9999;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .arjs-loader div {
+              text-align: center;
+              font-size: 1.25em;
+              color: black;
+            }
+        </style>
+    </head>
+    <script>
+            const data = [{
+                id: 0,
+                type: "location",
+                text: "Via temenide",
+                imgURL: "assets/uscita-emergenza.jpg",
+                lat: 40.462654,
+                lon: 17.250845,
+            },{
+                id: 1,
+                type: "location",
+                text: "GAT",
+                imgURL: "assets/location.png",
+                lat: 40.4233336,
+                lon: 17.2858356,
+            },{
+                id: 2,
+                type: "location",
+                text: "Officina",
+                imgURL: "assets/location.png",
+                lat: 40.4233336,
+                lon: 17.2858356,
+            },{
+                id: 3,
+                type: "location",
+                text: "Casa Nonno Vito",
+                imgURL: "assets/location.png",
+                lat: 40.4663771,
+                lon: 17.2471326,
+            },{
+                id: 4,
+                type: "location",
+                text: "Casa Nonna Antonietta",
+                imgURL: "assets/location.png",
+                lat: 40.46705732564022,
+                lon: 17.2545455,
+            },{
+                id: 5,
+                type: "gltf-model",
+                animation: {property: "rotation", 
+                            to: "0 360 0", 
+                            loop: true,
+                            dur: 20000, 
+                            easing: "linear"},
+                text: "gltf-model_1",
+                imgURL: "assets/savio/test_2.gltf",
+                lat: 40.46705732564022,
+                lon: 17.2545455,
+            },{
+                id: 6,
+                type: "gltf-model",
+                animation: {property: "rotation", 
+                            to: "0 360 0", 
+                            loop: true,
+                            dur: 20000, 
+                            easing: "linear"},
+                text: "gltf-model_2",
+                imgURL: "assets/magnemite/scene.gltf",
+                lat: 40.46705732564022,
+                lon: 17.2545455,            
+            }];
+            
+            function returnDistance(location, text){// funzione             
+                let distance = location.getAttribute('distanceMsg');
+                if (!distance) distance = "---"; // se ancora non l'ha calcolata
+                return text + distance;
+            }
+            window.onload = () => {
+                const off_line = document.getElementById('text-camera');
+            	const loader = document.getElementById('loader');
+
+            	let blink = true;
+		        let blinkig = setInterval(() => {
+                    blink ? off_line.setAttribute("opacity", 0): off_line.setAttribute("opacity", 1);
+                    blink=!blink;                        
+                }, 1000);
+
+                let downloaded = false;
+
+                const el = document.querySelector("[gps-camera]");
+                el.addEventListener("gps-camera-update-position", async(e) => {
+                    if(!downloaded) {
+                        const west = e.detail.position.longitude - 0.05,
+                            east = e.detail.position.longitude + 0.05,
+                            south = e.detail.position.latitude - 0.05,
+                            north = e.detail.position.latitude + 0.05;
+                        console.log(`${west} ${south} ${east} ${north}`);
+                        data.map(item =>{
+                            const compoundEntity = document.createElement("a-entity");
+                            compoundEntity.setAttribute('gps-new-entity-place', {
+                                latitude: item.lat,
+                                longitude: item.lon
+                            });
+                            const img = document.createElement("a-image");
+                            img.setAttribute("src", item.imgURL);
+                            img.setAttribute("position", {
+                                x : 0,
+                                y : 20,
+                                z: 0
+                            } );
+                            const text = document.createElement("a-text");
+                            text.setAttribute("look-at", "[gps-new-camera]");
+                            text.setAttribute("align", "center");
+                            text.setAttribute("value", item.text);
+                            text.setAttribute("scale", {
+                                x: 10,
+                                y: 10,
+                                z: 10
+                            });
+                            compoundEntity.appendChild(box);
+                            compoundEntity.appendChild(text);
+                            document.querySelector("a-scene").appendChild(compoundEntity);
+                        });
+                    }
+                    downloaded=true;
+                });
+            };
+
+	        
+    </script>   
+    <body style="margin: 0px; overflow: hidden;">
+        <div class="arjs-loader id="loader">
+            <div>Loading, please wait...</div>
+        </div>
+        <!-- con vr-mode-ui="enabled: false" abilita la funzione VR sul display -->
+        <a-scene 
+            vr-mode-ui="enabled: false" 
+            embedded
+            loading-screen="enabled: false;"
+            arjs="sourceType: webcam; debugUIEnabled: false;">
+            <a-camera gps-camera="alert: true;" rotation-reader >   
+                <a-text
+                    position="-0.2 -0.3 -1"
+                    value="Evolution!"
+                    opacity=1
+                    width="1"
+                    color="red"
+                    id="text-camera"
+                ></a-text>
+            </a-camera>
+        </a-scene>
+        
+    </body>
+</html>
