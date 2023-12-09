@@ -109,7 +109,7 @@
 
                 let downloaded = false;
 
-                const el = document.querySelector("[gps-new-camera]");
+                const el = document.getElementById('camera');
                 el.addEventListener("gps-camera-update-position", async(e) => {
                     if(!downloaded) {
                         const west = e.detail.position.longitude - 0.05,
@@ -163,7 +163,7 @@
             
             loading-screen="enabled: false;"
             arjs="sourceType: webcam; debugUIEnabled: false;">
-            <a-camera gps-new-camera='gpsMinDistance: 5' rotation-reader >   
+            <a-camera gps-new-camera='gpsMinDistance: 5' rotation-reader id="camera">   
                 <a-text
                     position="-0.2 -0.3 -1"
                     value="Evolution!"
