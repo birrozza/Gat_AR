@@ -154,7 +154,6 @@
                 });
                 loader.setAttribute("style", "display: none;");
             };
-
 	        
     </script>   
     <body style="margin: 0px; overflow: hidden;">
@@ -166,7 +165,8 @@
             vr-mode-ui="enabled: false" 
             
             loading-screen="enabled: false;"
-            arjs="sourceType: webcam; debugUIEnabled: false;">
+            arjs="sourceType: webcam; debugUIEnabled: false; videoTexture: true;"
+            renderer='antialias: true; alpha: true'>
             <a-camera gps-new-camera='gpsMinDistance: 5' rotation-reader id="camera">   
                 <a-text
                     position="-0.2 -0.3 -1"
