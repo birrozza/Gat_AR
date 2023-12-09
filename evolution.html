@@ -145,11 +145,7 @@
                                     latitude: item.lat,
                                     longitude: item.lon
                                 });
-                                text.setAttribute("scale", {
-                                    x: 10,
-                                    y: 10,
-                                    z: 10
-                                });
+                                text.setAttribute("scale", "10 10 10");
                                 compoundEntity.appendChild(img);
                                 compoundEntity.appendChild(text);
                                 document.querySelector("a-scene").appendChild(compoundEntity);
