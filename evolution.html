@@ -127,7 +127,7 @@
                                     latitude: item.lat,
                                     longitude: item.lon
                                 });
-                                const distanza = item.text + compoundEntity['gps-new-entity-place'].distance;
+                                
                                 const img = document.createElement("a-image");
                                 img.setAttribute("src", item.imgURL);
                                 img.setAttribute("scale", "3 3 3");
@@ -139,7 +139,7 @@
                                 const text = document.createElement("a-text");
                                 text.setAttribute("look-at", "[gps-new-camera]");
                                 text.setAttribute("align", "center");
-                                text.setAttribute("value", distanza);
+                                //text.setAttribute("value", item.text);
                                 text.setAttribute("scale", {
                                     x: 10,
                                     y: 10,
@@ -148,6 +148,8 @@
                                 compoundEntity.appendChild(img);
                                 compoundEntity.appendChild(text);
                                 document.querySelector("a-scene").appendChild(compoundEntity);
+                                const distanza = item.text + compoundEntity['gps-new-entity-place'].distance;
+                                text.setAttribute("value", distanza);
                             }
                         });
                         if(!intervallo) {const x = setInterval(()=> console.log(document.querySelector('a-scene').querySelectorAll('a-entity')),1000); intervallo = false}
