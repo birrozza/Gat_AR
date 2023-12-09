@@ -141,6 +141,10 @@
                                 text.setAttribute("look-at", "[gps-new-camera]");
                                 text.setAttribute("align", "center");
                                 text.setAttribute("value", item.text);
+                                text.setAttribute('gps-new-entity-place', {
+                                    latitude: item.lat,
+                                    longitude: item.lon
+                                });
                                 text.setAttribute("scale", {
                                     x: 10,
                                     y: 10,
