@@ -110,9 +110,8 @@
                 }, 1000);
 
                 let downloaded = false;
-
+                let intervallo = false;
                 const el = document.getElementById('camera');
-                const x = setInterval(()=> console.log(document.querySelector('a-scene').querySelectorAll('a-entity')),1000)
                 el.addEventListener("gps-camera-update-position", async(e) => {
                     if(!downloaded) {
                         const west = e.detail.position.longitude - 0.05,
@@ -150,6 +149,8 @@
                                 document.querySelector("a-scene").appendChild(compoundEntity);
                             }
                         });
+                        if(!intervallo) {const x = setInterval(()=> console.log(document.querySelector('a-scene').querySelectorAll('a-entity')),1000); intervallo = false}
+                
                     }
                     downloaded=true; 
                     loader.setAttribute("style", "display: none;");                  
