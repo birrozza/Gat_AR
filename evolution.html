@@ -141,10 +141,10 @@
                                 text.setAttribute("look-at", "[gps-new-camera]");
                                 text.setAttribute("align", "center");
                                 text.setAttribute("value", item.text);
-                                /*text.setAttribute('gps-new-entity-place', {
+                                text.setAttribute('gps-entity-place', {
                                     latitude: item.lat,
                                     longitude: item.lon
-                                });*/
+                                });
                                 text.setAttribute("scale", "10 10 10");
                                 compoundEntity.appendChild(img);
                                 compoundEntity.appendChild(text);
@@ -154,7 +154,7 @@
                                 
                             }
                         });
-                        //if(!intervallo) {const x = setInterval(()=> document.getElementById('text-camera').setAttribute('value',(document.getElementById('1').getAttribute('distanceMsg'))),1000); intervallo = false}
+                        if(!intervallo) {const x = setInterval(()=> document.getElementById('text-camera').setAttribute('value',(document.getElementById('1').getAttribute('distanceMsg'))),1000); intervallo = false}
                 
                     }
                     downloaded=true; 
