@@ -150,14 +150,14 @@
                             }
                         });
                     }
-                    downloaded=true;                   
+                    downloaded=true; 
+                    loader.setAttribute("style", "display: none;");                  
                 });
-                loader.setAttribute("style", "display: none;");
             };
 	        
     </script>   
     <body style="margin: 0px; overflow: hidden;">
-        <div class="arjs-loader id="loader">
+        <div class="arjs-loader" id="loader">
             <div>Loading, please wait...</div>
         </div>
         <!-- con vr-mode-ui="enabled: false" abilita la funzione VR sul display -->
