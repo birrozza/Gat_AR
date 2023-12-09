@@ -132,13 +132,13 @@
                                 img.setAttribute("scale", "3 3 3");
                                 img.setAttribute("position", {
                                     x : 0,
-                                    y : 1,
+                                    y : 2,
                                     z : 0
                                 } );
                                 const text = document.createElement("a-text");
                                 text.setAttribute("look-at", "[gps-new-camera]");
                                 text.setAttribute("align", "center");
-                                text.setAttribute("value", item.text);
+                                text.setAttribute("value", returnDistance(text, item.text));
                                 text.setAttribute("scale", {
                                     x: 10,
                                     y: 10,
