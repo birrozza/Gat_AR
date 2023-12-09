@@ -127,6 +127,7 @@
                                     latitude: item.lat,
                                     longitude: item.lon
                                 });
+                                const distanza = item.text + compoundEntity['gps-new-entity-place'].distance;
                                 const img = document.createElement("a-image");
                                 img.setAttribute("src", item.imgURL);
                                 img.setAttribute("scale", "3 3 3");
@@ -138,7 +139,7 @@
                                 const text = document.createElement("a-text");
                                 text.setAttribute("look-at", "[gps-new-camera]");
                                 text.setAttribute("align", "center");
-                                text.setAttribute("value", returnDistance(text, item.text));
+                                text.setAttribute("value", distanza);
                                 text.setAttribute("scale", {
                                     x: 10,
                                     y: 10,
