@@ -112,7 +112,7 @@
                 let downloaded = false;
 
                 const el = document.getElementById('camera');
-                const x = setInterval(()=> console.log(el.querySelectorAll('e-entity')),1000)
+                const x = setInterval(()=> console.log(document.querySelector('a-scene').querySelectorAll('e-entity')),1000)
                 el.addEventListener("gps-camera-update-position", async(e) => {
                     if(!downloaded) {
                         const west = e.detail.position.longitude - 0.05,
