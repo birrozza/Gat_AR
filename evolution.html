@@ -5,15 +5,16 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>GAT A.R.</title>
-        <!--
+        
         <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
         <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
         <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-        -->
+        <!--
         <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        -->
         <style>
             .arjs-loader {
               height: 100%;
@@ -35,14 +36,14 @@
         </style>
     </head>
     <script>
-            const data = [{/*
+            const data = [{
                 id: 0,
                 type: "location",
                 text: "Via temenide",
                 imgURL: "assets/location.png",
                 lat: 40.462654,
                 lon: 17.250845,
-            },{*/
+            },{
                 id: 1,
                 type: "location",
                 text: "GAT",
@@ -139,7 +140,7 @@
                                 });*/
                                 
                                 const img = document.createElement("a-image");
-                                img.setAttribute('gps-entity-place', {
+                                img.setAttribute('gps-new-entity-place', {
                                     latitude: item.lat,
                                     longitude: item.lon
                                 });
@@ -151,12 +152,12 @@
                                     z : 0
                                 } );
                                 const text = document.createElement("a-text");
-                                text.setAttribute('gps-entity-place', {
+                                text.setAttribute('gps-new-entity-place', {
                                     latitude: item.lat,
                                     longitude: item.lon
                                 });                                
                                 text.setAttribute("id", item.id);
-                                text.setAttribute("look-at", "[gps-camera]");
+                                text.setAttribute("look-at", "[gps-new-camera]");
                                 text.setAttribute("align", "center");
                                 text.setAttribute("value", item.text);
                                 /*text.setAttribute('gps-entity-place', {
@@ -195,7 +196,7 @@
             loading-screen="enabled: false;"
             arjs="sourceType: webcam; debugUIEnabled: false; ">
                 
-            <a-camera gps-camera='gpsMinDistance: 5' rotation-reader id="camera">                
+            <a-camera gps-new-camera='gpsMinDistance: 5' rotation-reader id="camera">                
                 <a-text
                     position="-0.2 -0.3 -1"
                     value="Evolution!"
@@ -207,7 +208,7 @@
                 <a-text id="lon-text" value="lon: ---" width="1" color="green" position="-0.2 -0.2 -1"></a-text>
                 <a-text id="lat-text" value="lat: ---" width="1" color="green" position="-0.2 -0.1 -1"></a-text>
             </a-camera>
-            
+            <!--
             <a-text
                 value="Via temenide"                    
                 scale="5 5 5"
@@ -224,6 +225,7 @@
                 position="0 0 0.5"
                 id="temenide"
             ></a-image>
+            -->
             <!-- aggiunta -->          
         </a-scene>
     </body>
