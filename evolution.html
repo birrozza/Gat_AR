@@ -121,6 +121,7 @@
                 el.addEventListener("gps-camera-update-position", async(e) =>{
                     lon_text.setAttribute("value", e.detail.position.longitude);
                     lat_text.setAttribute("value", e.detail.position.latitude);
+                    console.log(e);
                 });
 
                 /*el.addEventListener("gps-camera-update-position", async(e) => */{
