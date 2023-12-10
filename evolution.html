@@ -102,6 +102,8 @@
             window.onload = () => {
                 const off_line = document.getElementById('text-camera');
             	const loader = document.getElementById('loader');
+                const lon_text = document.getElementById('lon-text');
+                const lat_text = document.getElementById('lat-text');
 
             	let blink = true;
 		        let blinkig = setInterval(() => {
@@ -112,6 +114,12 @@
                 let downloaded = false;
                 let intervallo = false;
                 const el = document.getElementById('camera');
+
+                el.addEventListener("gps-camera-update-position", async(e) =>{
+                    lon_text.setAttribute("value", e.detail.position.longitude);
+                    lat_text.setAttribute("value", e.detail.position.latitude);
+                });
+
                 /*el.addEventListener("gps-camera-update-position", async(e) => */{
                     if(!downloaded) {
                         /*const west = e.detail.position.longitude - 0.05,
@@ -182,6 +190,8 @@
                     color="red"
                     id="text-camera"
                 ></a-text>
+                <a-text id="lon-text" value="lon: ---" color="green"></a-text>
+                <a-text id="lat-text" value="lat: ---" color="green"></a-text>
             </a-camera>
         </a-scene>
         
