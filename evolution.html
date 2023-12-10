@@ -147,11 +147,13 @@
                                 });
                                 img.setAttribute("src", item.imgURL);
                                 img.setAttribute("scale", "3 3 3");
-                                img.setAttribute("position", {
+                                img.object3D.position.set(0, 2, 0);
+                                
+                                /*img.setAttribute("position", {
                                     x : 0,
                                     y : 2,
                                     z : 0
-                                } );
+                                } );*/
                                 const text = document.createElement("a-text");
                                 text.setAttribute('gps-new-entity-place', {
                                     latitude: item.lat,
