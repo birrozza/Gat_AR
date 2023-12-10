@@ -181,7 +181,12 @@
                                 
                             }
                         });
-                        if(!intervallo) {const x = setInterval(()=> document.getElementById('text-camera').setAttribute('value',returnDistance( document.getElementById('0'),"prova")),100); intervallo = true}
+                        if(!intervallo) {
+                            let a =document.querySelector('a-scene').getChildren()
+                            let b = a.filter(item => item.nodeName = "A-TEXT")
+                            const x = setInterval(()=> document.getElementById('text-camera').setAttribute('value',returnDistance( document.getElementById('0'),"prova")),100); 
+                            intervallo = true
+                        }
                 
                     }
                     downloaded=true; 
