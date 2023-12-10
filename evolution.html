@@ -149,18 +149,17 @@
                                     z : 0
                                 } );
                                 const text = document.createElement("a-text");
-                                /*text.setAttribute('gps-new-entity-place', {
+                                text.setAttribute('gps-new-entity-place', {
                                     latitude: item.lat,
                                     longitude: item.lon
-                                });*/
-                                text.setAttribute("id", item.id);
+                                });                                text.setAttribute("id", item.id);
                                 text.setAttribute("look-at", "[gps-new-camera]");
                                 text.setAttribute("align", "center");
                                 text.setAttribute("value", item.text);
-                                text.setAttribute('gps-entity-place', {
+                                /*text.setAttribute('gps-entity-place', {
                                     latitude: item.lat,
                                     longitude: item.lon
-                                });
+                                });*/
                                 text.setAttribute("scale", "10 10 10");
                                 //compoundEntity.appendChild(img);
                                 //compoundEntity.appendChild(text);
