@@ -34,13 +34,13 @@
     </head>
     <script>
             const data = [{
-                id: 0,
+                /*id: 0,
                 type: "location",
                 text: "Via temenide",
                 imgURL: "assets/location.png",
                 lat: 40.462654,
                 lon: 17.250845,
-            },{
+            },{*/
                 id: 1,
                 type: "location",
                 text: "GAT",
@@ -162,7 +162,7 @@
                                 
                             }
                         });
-                        if(!intervallo) {const x = setInterval(()=> document.getElementById('text-camera').setAttribute('value',returnDistance( document.getElementById('1'),"prova")),1000); intervallo = true}
+                        if(!intervallo) {const x = setInterval(()=> document.getElementById('text-camera').setAttribute('value',returnDistance( document.getElementById('text-temenide'),"prova")),1000); intervallo = true}
                 
                     }
                     downloaded=true; 
@@ -181,7 +181,24 @@
             
             loading-screen="enabled: false;"
             arjs="sourceType: webcam; debugUIEnabled: false; ">
-            <a-camera gps-new-camera='gpsMinDistance: 5' rotation-reader id="camera">   
+            <a-camera gps-new-camera='gpsMinDistance: 5' rotation-reader id="camera">
+                <a-text
+                    value="Via temenide"                    
+                    scale="5 5 5"
+                    gps-entity-place="latitude: 40.462654; longitude: 17.250845;"
+                    look-at="[gps-camera]"
+                    position="0 0 0"
+                    id="text-temenide"
+                >
+                    <a-image
+                        src="assets/uscita-emergenza.jpg"
+                        gps-entity-place="latitude: 40.462654; longitude: 17.250845;"
+                        look-at="[gps-camera]"
+                        scale="03 03 03"                        
+                        position="0 0 0.5"
+                        id="temenide"
+                    ></a-image>            
+                </a-text>   
                 <a-text
                     position="-0.2 -0.3 -1"
                     value="Evolution!"
