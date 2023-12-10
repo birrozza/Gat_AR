@@ -76,7 +76,14 @@
             embedded
             loading-screen="enabled: false;"
             arjs="sourceType: webcam; debugUIEnabled: false;">
-                
+                <a-image
+                    src="assets/uscita-emergenza.jpg"
+                    gps-entity-place="latitude: 40.462654; longitude: 17.250845;"
+                    look-at="[gps-camera]"
+                    scale="03 03 03"                        
+                    position="0 0 0.5"
+                    id="temenide"
+                ></a-image>        
                 <a-text
                     value="Via temenide"                    
                     scale="5 5 5"
@@ -84,16 +91,7 @@
                     look-at="[gps-camera]"
                     position="0 0 0"
                     id="text-temenide"
-                >
-                    <a-image
-                        src="assets/uscita-emergenza.jpg"
-                        gps-entity-place="latitude: 40.462654; longitude: 17.250845;"
-                        look-at="[gps-camera]"
-                        scale="03 03 03"                        
-                        position="0 0 0.5"
-                        id="temenide"
-                    ></a-image>            
-                </a-text>
+                ></a-text>
                 <!-- gat -->
                 <a-image
                     src="assets/location.png"
