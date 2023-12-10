@@ -38,6 +38,8 @@
     <script>
             const data = [{
                 id: 0,
+                id_text: "text-temenide",
+                id_img: "temenide",
                 type: "location",
                 text: "Via temenide",
                 imgURL: "assets/location.png",
@@ -45,6 +47,8 @@
                 lon: 17.250845,
             },{
                 id: 1,
+                id_text: "text-gat",
+                id_img: "gat",
                 type: "location",
                 text: "GAT",
                 imgURL: "assets/location.png",
@@ -52,6 +56,8 @@
                 lon: 17.2858356,
             },{
                 id: 2,
+                id_text: "text-officina",
+                id_img: "Officina",
                 type: "location",
                 text: "Officina",
                 imgURL: "assets/location.png",
@@ -59,6 +65,8 @@
                 lon: 17.2858356,
             },{
                 id: 3,
+                id_text: "text-vito",
+                id_img: "vito",
                 type: "location",
                 text: "Casa Nonno Vito",
                 imgURL: "assets/location.png",
@@ -66,6 +74,8 @@
                 lon: 17.2471326,
             },{
                 id: 4,
+                id_text: "text-antonietta",
+                id_img: "antonietta",
                 type: "location",
                 text: "Casa Nonna Antonietta",
                 imgURL: "assets/location.png",
@@ -146,6 +156,7 @@
                                     longitude: item.lon
                                 });
                                 img.setAttribute("src", item.imgURL);
+                                img.setAttribute("id", item.id_img);
                                 /*img.setAttribute("scale", "3 3 3");*/
                                 img.object3D.scale.set(3, 3, 3);
                                 img.object3D.position.set(0, 2, 0);
@@ -159,8 +170,8 @@
                                 text.setAttribute('gps-new-entity-place', {
                                     latitude: item.lat,
                                     longitude: item.lon
-                                });                                
-                                img.setAttribute("id", item.id);
+                                });
+                                text.setAttribute("id", item.id_img);
                                 text.setAttribute("look-at", "[gps-new-camera]");
                                 text.setAttribute("align", "center");
                                 text.setAttribute("value", item.text);
@@ -184,7 +195,7 @@
                         if(!intervallo) {
                             let a =document.querySelector('a-scene').getChildren()
                             let b = a.filter(item => item.nodeName = "A-TEXT")
-                            const x = setInterval(()=> document.getElementById('text-camera').setAttribute('value',returnDistance( document.getElementById('0'),"prova")),100); 
+                            const x = setInterval(()=> document.getElementById('text-camera').setAttribute('value',returnDistance( document.getElementById('text-temenide'),"prova")),100); 
                             intervallo = true
                         }
                 
