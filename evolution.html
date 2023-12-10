@@ -130,13 +130,17 @@
                         data.map(item =>{
                             if(item.type == "location"){
                                 console.log('item :', item.id)
-                                const compoundEntity = document.createElement("a-entity");
+                                /*const compoundEntity = document.createElement("a-entity");
                                 compoundEntity.setAttribute('gps-new-entity-place', {
                                     latitude: item.lat,
                                     longitude: item.lon
-                                });
+                                });*/
                                 
                                 const img = document.createElement("a-image");
+                                img.setAttribute('gps-new-entity-place', {
+                                    latitude: item.lat,
+                                    longitude: item.lon
+                                });
                                 img.setAttribute("src", item.imgURL);
                                 img.setAttribute("scale", "3 3 3");
                                 img.setAttribute("position", {
@@ -145,6 +149,10 @@
                                     z : 0
                                 } );
                                 const text = document.createElement("a-text");
+                                text.setAttribute('gps-new-entity-place', {
+                                    latitude: item.lat,
+                                    longitude: item.lon
+                                });
                                 text.setAttribute("id", item.id);
                                 text.setAttribute("look-at", "[gps-new-camera]");
                                 text.setAttribute("align", "center");
@@ -156,13 +164,16 @@
                                 text.setAttribute("scale", "10 10 10");
                                 compoundEntity.appendChild(img);
                                 compoundEntity.appendChild(text);
-                                document.querySelector("a-scene").appendChild(compoundEntity);
+                                //document.querySelector("a-scene").appendChild(compoundEntity);
+                                document.querySelector("a-scene").appendChild(img);
+                                document.querySelector("a-scene").appendChild(text);
+
                                 /*const distanza = item.text + compoundEntity['gps-new-entity-place'].distance;
                                 text.setAttribute("value", distanza);*/
                                 
                             }
                         });
-                        if(!intervallo) {const x = setInterval(()=> document.getElementById('text-camera').setAttribute('value',returnDistance( document.getElementById('text-temenide'),"prova")),1000); intervallo = true}
+                        if(!intervallo) {const x = setInterval(()=> document.getElementById('text-camera').setAttribute('value',returnDistance( document.getElementById('1'),"prova")),1000); intervallo = true}
                 
                     }
                     downloaded=true; 
@@ -194,6 +205,7 @@
                 <a-text id="lon-text" value="lon: ---" width="1" color="green" position="-0.2 -0.2 -1"></a-text>
                 <a-text id="lat-text" value="lat: ---" width="1" color="green" position="-0.2 -0.1 -1"></a-text>
             </a-camera>
+            <!--
             <a-text
                 value="Via temenide"                    
                 scale="5 5 5"
@@ -209,7 +221,7 @@
                 scale="03 03 03"                        
                 position="0 0 0.5"
                 id="temenide"
-            ></a-image>
+            ></a-image>-->
             <!-- aggiunta -->          
         </a-scene>
     </body>
