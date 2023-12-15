@@ -127,7 +127,8 @@
             }];     
 
             function returnDistance(location, text){// funzione 
-                let distance = location.getAttribute('distanceMsg');
+                //let distance = location.getAttribute('distanceMsg');
+                let distance = location.components['gps-new-entity-place'].distance;
                 if (!distance) distance = "---"; // se ancora non l'ha calcolata
                 return text + distance;
             }
