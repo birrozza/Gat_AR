@@ -224,13 +224,14 @@
                             }
                         });
                         if(!intervallo) {
-                            let a =document.querySelector('a-scene').getChildren()
-                            let b = a.filter(item => item.nodeName == "A-TEXT")
+                            const x = setInterval(() => {
+                                let a =document.querySelector('a-scene').getChildren()
+                                let b = a.filter(item => item.nodeName == "A-TEXT")
                                     .map(i => {
-                                        //let location = document.getElementById(i.id);
-                                        const x = setInterval(()=> i.setAttribute('value',returnDistance( i, i.text)),500); 
+                                         i.setAttribute('value',returnDistance( i, i.text)); 
                                     }
                                 );
+                            }, 500);                            
                             intervallo = true
                         }
                 
