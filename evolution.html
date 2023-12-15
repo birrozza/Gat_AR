@@ -225,9 +225,12 @@
                         });
                         if(!intervallo) {
                             let a =document.querySelector('a-scene').getChildren()
-                            let b = a.filter(item => item.nodeName == "A-TEXT").map(i => {
-                            const x = setInterval(()=> document.getElementById('text-temenide').setAttribute('value',returnDistance( i, i.text)),500); 
-                            });
+                            let b = a.filter(item => item.nodeName == "A-TEXT")
+                                    .map(i => {
+                                        let locatio = document.getElementById(i.id);
+                                        const x = setInterval(()=> location.setAttribute('value',returnDistance( location, location.text)),500); 
+                                    }
+                                );
                             intervallo = true
                         }
                 
