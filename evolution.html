@@ -141,7 +141,7 @@
                 //let distance = location.getAttribute('distanceMsg');
                 let distance = location.components['gps-new-entity-place'].distance;
                 if (!distance) distance = "---"; // se ancora non l'ha calcolata
-                return text + distance;
+                return text + Math.round(distance);
             }
             window.onload = () => {
                 const off_line = document.getElementById('text-camera');
@@ -226,7 +226,7 @@
                         if(!intervallo) {
                             let a =document.querySelector('a-scene').getChildren()
                             let b = a.filter(item => item.nodeName = "A-TEXT")
-                            const x = setInterval(()=> document.getElementById('text-temenide').setAttribute('value',returnDistance( document.getElementById('temenide'),"Via Temenide")),100); 
+                            const x = setInterval(()=> document.getElementById('text-temenide').setAttribute('value',returnDistance( document.getElementById('temenide'),"Via Temenide ")),100); 
                             intervallo = true
                         }
                 
