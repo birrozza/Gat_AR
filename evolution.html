@@ -227,7 +227,7 @@
                             let a =document.querySelector('a-scene').getChildren()
                             let b = a.filter(item => item.nodeName == "A-TEXT")
                                     .map(i => {
-                                        let locatio = document.getElementById(i.id);
+                                        let location = document.getElementById(i.id);
                                         const x = setInterval(()=> location.setAttribute('value',returnDistance( location, location.text)),500); 
                                     }
                                 );
