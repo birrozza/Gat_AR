@@ -142,7 +142,7 @@
                 let text = location.getAttribute('name') + " ";
                 let distance = location.components['gps-new-entity-place'].distance;
                 //if (!distance) {distance = "---";} // se ancora non l'ha calcolata
-                distance = !distance ? Math.round(distance) + " meters" : " --- ";
+                distance = distance ? Math.round(distance) + " meters" : " --- ";
                 return text + distance;
             }
             window.onload = () => {
