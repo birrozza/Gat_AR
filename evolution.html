@@ -248,12 +248,16 @@
         </div>
         <!-- con vr-mode-ui="enabled: false" abilita la funzione VR sul display -->
         <a-scene 
-            vr-mode-ui="enabled: false" 
+            vr-mode-ui = "enabled: false" 
             
-            loading-screen="enabled: false;"
+            loading-screen = "enabled: false;"
             arjs="sourceType: webcam; debugUIEnabled: false; ">
                 
-            <a-camera gps-new-camera='gpsMinDistance: 3' rotation-reader id="camera">                
+            <a-camera id = "camera" 
+                gps-new-camera = 'gpsMinDistance: 3'
+                look-controls-enabled = 'false'
+                arjs-look-controls = 'smoothingFactor: 0.1' 
+                rotation-reader>                
                 <a-text
                     position="-0.2 -0.3 -1"
                     value="Evolution!"
