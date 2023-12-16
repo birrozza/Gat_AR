@@ -141,8 +141,9 @@
                 //let distance = location.getAttribute('distanceMsg');
                 let text = location.getAttribute('name') + " ";
                 let distance = location.components['gps-new-entity-place'].distance;
-                if (!distance) distance = "---"; // se ancora non l'ha calcolata
-                return text + Math.round(distance);
+                //if (!distance) {distance = "---";} // se ancora non l'ha calcolata
+                distance = !distance ? Math.round(distance) + " meters" : " --- ";
+                return text + distance;
             }
             window.onload = () => {
                 const off_line = document.getElementById('text-camera');
