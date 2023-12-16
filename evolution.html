@@ -167,7 +167,7 @@
                     console.log(e);
                 });
 
-                //el.addEventListener("gps-camera-update-position", async(e) => {
+                el.addEventListener("gps-camera-update-position", async(e) => {
                     if(!downloaded) {
                         /*const west = e.detail.position.longitude - 0.05,
                             east = e.detail.position.longitude + 0.05,
@@ -234,7 +234,7 @@
                     }
                     downloaded=true; 
                     loader.setAttribute("style", "display: none;");                  
-                //});
+                });
             };
 	        
     </script>   
