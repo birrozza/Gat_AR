@@ -164,16 +164,10 @@
                 el.addEventListener("gps-camera-update-position", async(e) =>{
                     lon_text.setAttribute("value", "lon: " + e.detail.position.longitude);
                     lat_text.setAttribute("value", "lat: " + e.detail.position.latitude);
-                    console.log(e);
                 });
 
                 el.addEventListener("gps-camera-update-position", async(e) => {
                     if(!downloaded) {
-                        /*const west = e.detail.position.longitude - 0.05,
-                            east = e.detail.position.longitude + 0.05,
-                            south = e.detail.position.latitude - 0.05,
-                            north = e.detail.position.latitude + 0.05;
-                        console.log(`${west} ${south} ${east} ${north}`);*/
                         data.map(item =>{
                             if(item.type == "location"){
                                 console.log('item :', item.id, item.text)
@@ -215,8 +209,7 @@
                                 document.querySelector("a-scene").appendChild(text);
 
                                 /*const distanza = item.text + compoundEntity['gps-new-entity-place'].distance;
-                                text.setAttribute("value", distanza);*/
-                                
+                                text.setAttribute("value", distanza);*/                                
                             }
                         });
                         if(!intervallo) {
@@ -245,10 +238,10 @@
             vr-mode-ui = "enabled: false" 
             
             loading-screen = "enabled: false;"
-            arjs="sourceType: webcam; debugUIEnabled: false; ">
+            arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false; ">
                 
             <a-camera id = "camera" 
-                gps-new-camera = 'gpsMinDistance: 3'
+                gps-new-camera = 'gpsMinDistance: 5'
                 rotation-reader>                
                 <a-text
                     position="-0.2 -0.3 -1"
