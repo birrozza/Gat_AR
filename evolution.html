@@ -225,10 +225,11 @@
                         });
                         if(!intervallo) {
                             const x = setInterval(() => {
-                                let a =document.querySelector('a-scene').getChildren()
+                                let a = document.querySelector('a-scene').getChildren()
                                 let b = a.filter(item => item.nodeName == "A-TEXT")
                                     .map(i => {
-                                         //i.setAttribute('value',returnDistance( i, i.text)); 
+                                          
+                                        i.setAttribute('value',returnDistance( i, 'prova')); 
                                     }
                                 );
                             }, 500);                            
