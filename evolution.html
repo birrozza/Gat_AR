@@ -190,9 +190,9 @@
                                 });
                                 img.setAttribute("src", item.imgURL);
                                 img.setAttribute("id", item.id_img);
-                                img.setAttribute("look-at", "[gps-new-camera]");
+                                img.setAttribute("look-at", "#camera");
                                 img.object3D.scale.set(3, 3, 3);
-                                img.object3D.position.set(0, 2, 0);
+                                img.object3D.position.set(0, 3, 0);
                                 
                                 const text = document.createElement("a-text");
                                 text.setAttribute('gps-new-entity-place', {
