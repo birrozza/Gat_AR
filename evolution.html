@@ -139,7 +139,7 @@
 
             function returnDistance(location){// funzione 
                 //let distance = location.getAttribute('distanceMsg');
-                let text = location.getAttribute('id');
+                let text = location.getAttribute('name') + " ";
                 let distance = location.components['gps-new-entity-place'].distance;
                 if (!distance) distance = "---"; // se ancora non l'ha calcolata
                 return text + Math.round(distance);
@@ -193,25 +193,19 @@
                                 img.object3D.scale.set(3, 3, 3);
                                 img.object3D.position.set(0, 2, 0);
                                 
-                                /*img.setAttribute("position", {
-                                    x : 0,
-                                    y : 2,
-                                    z : 0
-                                } );*/
                                 const text = document.createElement("a-text");
                                 text.setAttribute('gps-new-entity-place', {
                                     latitude: item.lat,
                                     longitude: item.lon
                                 });
+
                                 text.setAttribute("id", item.id_text);
                                 text.setAttribute("look-at", "[gps-new-camera]");
                                 text.setAttribute("align", "center");
                                 text.setAttribute("value", item.text);
-                                /*text.setAttribute('gps-entity-place', {
-                                    latitude: item.lat,
-                                    longitude: item.lon
-                                });*/
+                                text.setAttribute("name", item.text);
                                 text.object3D.scale.set(10, 10, 10);
+
                                 //text.setAttribute("scale", "10 10 10");
                                 //compoundEntity.appendChild(img);
                                 //compoundEntity.appendChild(text);
