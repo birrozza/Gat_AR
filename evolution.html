@@ -148,7 +148,7 @@
                 return text + distance;
             }
             window.onload = () => {
-                unicID = "ID-" + Date.now() + "-" + Math.random();
+                unicID = "ID-" + Date.now() + "-" + Math.round(Math.random() * 1000);
                 console.log('=>', unicID);
                 const off_line = document.getElementById('text-camera');
             	const loader = document.getElementById('loader');
