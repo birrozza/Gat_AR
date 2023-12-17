@@ -40,6 +40,7 @@
         </style>
     </head>
     <script>
+            let unicID;
             const data = [{
                 id: 0,
                 id_text: "text-temenide",
@@ -147,6 +148,8 @@
                 return text + distance;
             }
             window.onload = () => {
+                unicID = "ID-" + Date.now() + "-" + Math.random();
+                console.log('=>', unicID);
                 const off_line = document.getElementById('text-camera');
             	const loader = document.getElementById('loader');
                 const lon_text = document.getElementById('lon-text');
