@@ -1,0 +1,22 @@
+{
+  "name": "gat_ar",
+  "version": "1.0.0",
+  "description": "Test di realtà aumentata per il campo volo del Gruppo Aeromodellistico Tarantino",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/birrozza/Gat_AR"
+  },
+  "author": "MIRABELLI Angelo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

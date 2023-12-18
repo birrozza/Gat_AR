@@ -1,0 +1,291 @@
+<!doctype html>
+<!--  https://www.maps.ie/coordinates.html -->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>GAT A.R.</title>
+        <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+        <script src="https://github.com/supermedium/superframe/blob/master/components/look-at/dist/aframe-look-at-component.min.js"></script>
+        
+        <!-- Pure three.js code that the A-Frame components use for location-based AR -->
+        <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+
+        <!-- AR.js A-Frame components -->
+        <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+        <style>
+            .arjs-loader {
+              height: 100%;
+              width: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 9999;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .arjs-loader div {
+              text-align: center;
+              font-size: 1.25em;
+              color: black;
+              background-color: #999;
+            }
+        </style>
+    </head>
+    <script>
+        let unicID; /*
+        const data = [{
+            id: 0,
+            id_text: "text-temenide",
+            id_img: "temenide",
+            type: "location",
+            text: "Via temenide ",
+            imgURL: "./assets/uscita-emergenza.jpg",
+            lat: 40.462654,
+            lon: 17.250845,
+        },{
+            id: 1,
+            id_text: "text-gat",
+            id_img: "gat",
+            type: "location",
+            text: "GAT ",
+            imgURL: "assets/location.png",
+            lat: 40.4233336,
+            lon: 17.2858356,
+        },{
+            id: 2,
+            id_text: "text-officina",
+            id_img: "Officina",
+            type: "location",
+            text: "Officina ",
+            imgURL: "assets/location.png",
+            lat: 40.4233336,
+            lon: 17.2858356,
+        },{
+            id: 3,
+            id_text: "text-vito",
+            id_img: "vito",
+            type: "location",
+            text: "Casa Nonno Vito ",
+            imgURL: "assets/location.png",
+            lat: 40.4663771,
+            lon: 17.2471326,
+        },{
+            id: 4,
+            id_text: "text-antonietta",
+            id_img: "antonietta",
+            type: "location",
+            text: "Casa Nonna Antonietta ",
+            imgURL: "assets/location.png",
+            lat: 40.46705732564022,
+            lon: 17.2545455,
+        },{
+            id: 5,
+            type: "gltf-model",
+            animation: {property: "rotation", 
+                        to: "0 360 0", 
+                        loop: true,
+                        dur: 20000, 
+                        easing: "linear"},
+            text: "gltf-model_1 ",
+            imgURL: "assets/savio/test_2.gltf",
+            lat: 40.46705732564022,
+            lon: 17.2545455,
+        },{
+            id: 6,
+            type: "gltf-model",
+            animation: {property: "rotation", 
+                        to: "0 360 0", 
+                        loop: true,
+                        dur: 20000, 
+                        easing: "linear"},
+            text: "gltf-model_2 ",
+            imgURL: "assets/magnemite/scene.gltf",
+            lat: 40.46705732564022,
+            lon: 17.2545455,            
+        },{
+            id: 7,
+            id_text: "text-exit-cbf",
+            id_img: "uscita_emergenza_cbf",
+            type: "location",
+            text: "Uscita Emergenza CBF ",
+            imgURL: "assets/location.png",
+            lat: 40.57714999886029,
+            lon: 17.117072045803074, 
+        },{
+            id: 8,
+            id_text: "text-exit-off",
+            id_img: "uscita_emergenza_off",
+            type: "location",
+            text: "Uscita Emergenza Officina ",
+            imgURL: "assets/location.png",
+            lat: 40.57731705071694,
+            lon: 17.116886973381046,
+        },{
+            id: 9,
+            id_text: "alarm",
+            id_img: "alarm_img",
+            type: "location",
+            text: "ALARM!!! ",
+            imgURL: "assets/alert.png",
+            lat: 40.57567910962963,
+            lon: 17.11605548858643,        
+        }];     
+*/
+        function returnDistance(location){// funzione 
+            //let distance = location.getAttribute('distanceMsg');
+            let text = location.getAttribute('name') + " ";
+            let distance = location.components['gps-new-entity-place'].distance;
+            //if (!distance) {distance = "---";} // se ancora non l'ha calcolata
+            distance = distance ? Math.round(distance) + " meters" : " --- ";
+            return text + distance;
+        }
+        window.onload = () => {
+            unicID = "ID-" + Date.now() + "-" + Math.round(Math.random() * 1000);
+            console.log('=>', unicID);
+            document.getElementById('unicID-text').setAttribute('value', unicID);
+            const off_line = document.getElementById('text-camera');
+            const loader = document.getElementById('loader');
+            const lon_text = document.getElementById('lon-text');
+            const lat_text = document.getElementById('lat-text');
+            const uniqueURL = `/directory?id=${unicID}&b=val2`;
+
+            let blink = true;
+            let blinkig = setInterval(() => {
+                blink ? off_line.setAttribute("opacity", 0): off_line.setAttribute("opacity", 1);
+                blink=!blink;                        
+            }, 1000);
+
+            let downloaded = false;
+            let intervallo = false;
+            const el = document.getElementById('camera');
+
+            el.addEventListener("gps-camera-update-position", async(e) =>{
+                lon_text.setAttribute("value", "lon: " + e.detail.position.longitude);
+                lat_text.setAttribute("value", "lat: " + e.detail.position.latitude);
+            });
+
+            el.addEventListener("gps-camera-update-position", async(e) => {
+                if(!downloaded) {
+                    fetch(uniqueURL).then(response => {
+                        if(!response.ok){
+                            console.log("Error: promise reject");
+                            return Promise.reject(response);
+                        }
+                        return response.json();
+                    }).then(data => {                    
+                        data.map(item =>{
+                            if(item.type == "location"){
+                                console.log('item :', item.id, item.text)
+                                /*const compoundEntity = document.createElement("a-entity");
+                                compoundEntity.setAttribute('gps-new-entity-place', {
+                                    latitude: item.lat,
+                                    longitude: item.lon
+                                });*/
+                                
+                                const img = document.createElement("a-image");
+                                img.setAttribute('gps-new-entity-place', {
+                                    latitude: item.lat,
+                                    longitude: item.lon
+                                });
+                                img.setAttribute("src", item.imgURL);
+                                img.setAttribute("id", item.id_img);
+                                img.setAttribute("look-at", el);
+                                img.object3D.scale.set(3, 3, 3);
+                                img.object3D.position.set(0, 3, 0);
+                                
+                                const text = document.createElement("a-text");
+                                text.setAttribute('gps-new-entity-place', {
+                                    latitude: item.lat,
+                                    longitude: item.lon
+                                });
+
+                                text.setAttribute("id", item.id_text);
+                                text.setAttribute("look-at", "[gps-new-camera]");
+                                text.setAttribute("align", "center");
+                                text.setAttribute("value", item.text);
+                                text.setAttribute("name", item.text);
+                                text.object3D.scale.set(7, 7, 7);
+
+                                //text.setAttribute("scale", "10 10 10");
+                                //compoundEntity.appendChild(img);
+                                //compoundEntity.appendChild(text);
+                                //document.querySelector("a-scene").appendChild(compoundEntity);
+                                document.querySelector("a-scene").appendChild(img);
+                                document.querySelector("a-scene").appendChild(text);
+
+                                /*const distanza = item.text + compoundEntity['gps-new-entity-place'].distance;
+                                text.setAttribute("value", distanza);*/                                
+                            }
+                        }); // data.map
+                        if(!intervallo) {
+                            const x = setInterval(() => {
+                                let a = document.querySelector('a-scene').getChildren()
+                                let b = a.filter(item => item.nodeName == "A-TEXT")
+                                    .map(i => {                                          
+                                        i.setAttribute('value',returnDistance( i )); 
+                                    }
+                                );
+                            }, 500);                            
+                            intervallo = true
+                        }  // if(!intervallo)   
+                    }).catch(err => {
+                        console.log('Fetch problem: ' + err.message);
+                        off_line.setAttribute("value","Server error");
+                    }); // fetch               
+                } // if (!downloaded)
+                downloaded=true; 
+                loader.setAttribute("style", "display: none;");                  
+            }); // el.addEventListener("gps-camera-update-position",
+        }; // windows.load	        
+    </script>   
+    <body style="margin: 0px; overflow: hidden;">
+        <div class="arjs-loader" id="loader">
+            <div>Loading data, please wait...</div>
+        </div>
+        <!-- con vr-mode-ui="enabled: false" abilita la funzione VR sul display -->
+        <!-- videoTexure: true non abilita la cam -->
+        <a-scene 
+            vr-mode-ui = "enabled: false"            
+            loading-screen = "enabled: false;"
+            arjs="sourceType: webcam; debugUIEnabled: false; ">
+                
+            <a-camera id = "camera" 
+                gps-new-camera = 'gpsMinDistance: 5'
+                rotation-reader>                
+                <a-text
+                    font = "https://cdn.aframe.io/fonts/Exo2Bold.fnt"
+                    position="-0.2 -0.3 -1"
+                    value="Server!"
+                    opacity=1
+                    width="2"
+                    color="red"
+                    id="text-camera"
+                ></a-text>
+                <a-text id="lat-text" value="lat: ---" width="1" color="#00ff00" position="-0.45 -0.13 -1"></a-text>
+                <a-text id="lon-text" value="lon: ---" width="1" color="#00ff00" position="-0.45 -0.17 -1"></a-text> 
+                <a-text id="unicID-text" value="" width="1" color="magenta" position="-0.45 -0.21 -1"></a-text>               
+            </a-camera>
+            <!--
+            <a-text
+                value="Via temenide"                    
+                scale="5 5 5"
+                gps-new-entity-place="latitude: 40.462654; longitude: 17.250845;"
+                look-at="[gps-new-camera]"
+                position="0 0 0"
+                id="text-temenide"
+            ></a-text>
+            <a-image
+                src="assets/uscita-emergenza.jpg"
+                gps-new-entity-place="latitude: 40.462654; longitude: 17.250845;"
+                look-at="[gps-new-camera]"
+                scale="03 03 03"                        
+                position="0 2 0"
+                id="temenide"
+            ></a-image>
+            
+            <!-- aggiunta -->          
+        </a-scene>
+    </body>
+</html>
