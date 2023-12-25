@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>POI su OpenStreetMap</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <style>
+    /* Stile del contenitore della mappa */
+    #mappa {
+      height: 600px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h3>I miei punti di interesse</h3>
+  <!-- Il contenitore della mappa -->
+  <div id="mappa"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Il tuo array di oggetti
+    var punti = [];
+    let start= {lon: 17.250845, lat: 40.462654, };
+    const icona = L.icon({
+        iconUrl: '/assets/location.png',
+        iconSize: [38, 38], // dimensioni dell'icona
+        iconAnchor: [40, 10], // punto dell'icona che corrisponderà alla posizione del marker
+        popupAnchor: [-20, -10] // punto dal quale apparirà il popup
+    });
+    
+    fetch('/directory?id=mappa&b=---', {mode: 'cors', headers: { 'Content-Type': 'application/json',}})
+            .then(response => {
+                if(!response.ok){
+                    console.log("Error: promise reject");
+                    throw Error(response.statusText)
+                    //return Promise.reject(response);
+                }
+                return response.json();
+            }).then(data => {
+                data.map(item => {
+                    const a = {lon: item.lon, lat: item.lat, etichetta: item.text, type: item.type};
+                    //if(item.text == "Via temenide ") start = {lat: item.lat, lon: item.lon };
+                    punti.push(a)
+                })
+                console.log(punti)
+                var mappa = L.map('mappa').setView([start.lat, start.lon], 19);
+
+                // Aggiungi il layer OpenStreetMap alla mappa
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 20,
+                }).addTo(mappa);
+
+                // Aggiungi i marker alla mappa
+                punti.forEach((punto) => {
+                    console.log(punto.etichetta)
+                    if (punto.type == "exit") icona.options.iconUrl = '/assets/uscita-emergenza.jpg';
+                    else if (punto.type == "raccolta") icona.options.iconUrl = '/assets/raccolta.jpg';
+                    else if (punto.type == "alert") icona.options.iconUrl = '/assets/alert.png';
+                    else icona.options.iconUrl = '/assets/location.png';
+                    L.marker([punto.lat, punto.lon], {icon: icona}).addTo(mappa).bindPopup(punto.etichetta).openPopup();
+                });
+            }).catch(err => console.log(err))
+
+    // Crea la mappa
+    
+  </script>
+</body>
+</html>
