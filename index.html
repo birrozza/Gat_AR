@@ -53,14 +53,17 @@
             	const location_gat = document.getElementById('gat');
             	const location_vito = document.getElementById('vito');
             	const location_antonietta = document.getElementById('antonietta');
+                const location_test = document.getElementById('test-img');
            	    const text_temenide = document.getElementById('text-temenide');
             	const text_officina = document.getElementById('text-officina');
             	const text_gat = document.getElementById('text-gat');
             	const text_vito = document.getElementById('text-vito');
             	const text_antonietta = document.getElementById('text-antonietta');
+                const text_test = document.getElementById('text-test');
             	//const magnemite = document.getElementById('magnemite');
             	//const head_savio = document.getElementById('head-savio');
             	const off_line = document.getElementById('text-camera');
+                
             	
             	let blink = true;
 		        let blinkig = setInterval(() => {
@@ -73,7 +76,7 @@
                 	text_gat.setAttribute("value", returnDistance(location_gat, "GAT "));
                 	text_vito.setAttribute("value", returnDistance(location_vito, "Casa nonno Vito "));
                 	text_antonietta.setAttribute("value", returnDistance(location_antonietta, "Casa nonna Antonietta "));
-                	//text_officina.setAttribute("value", returnDistance(magnemite, "Officina "));                
+                	text_test.setAttribute("value", returnDistance(locatio_test, "Officina "));                
             	}, 100);
             });
     </script>   
@@ -271,14 +274,14 @@
                     look-at="[gps-camera]"
                     scale="3 3 3 "
                     gps-entity-place="latitude: 40.4626086; longitude: 17.250842;"
-                    id="alarm_img"
+                    id="test-img"
                 ></a-image>
                 <a-text
                     value="test"
                     look-at="[gps-camera]"
                     scale="10 10 10"
                     gps-entity-place="latitude: 40.4626086; longitude: 17.250842;"
-                    id="alarm"
+                    id="text-test"
                 ></a-text> 
                 
             <a-camera id="camera" gps-camera="alert: true;" rotation-reader >   
