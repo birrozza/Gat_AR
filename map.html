@@ -3,11 +3,13 @@
 <head>
   <title>POI su OpenStreetMap</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <style>
     /* Stile del contenitore della mappa */
     #mappa {
       height: 600px;
       width: 100%;
+      border: solid black 2px;
     }
   </style>
 </head>
@@ -15,19 +17,83 @@
   <h3>I miei punti di interesse</h3>
   <!-- Il contenitore della mappa -->
   <div id="mappa"></div>
-
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <div id="container">
+    <form>
+      <div style="margin: 10px">
+        <input id="input_lat" type="number" placeholder="Latitudine" required>
+        <input id="input_lon" type="number" placeholder="Longitudine" required>
+        <select id="input_type" placeholder="Tipologia" required>
+          <option value="Location">Location</option>
+          <option value="Alert">Alert</option>
+          <option value="Uscita Emergenza">Uscita Emergenza</option>
+          <option value="Punto Raccolta">Punto Raccolta</option>
+        </select>
+        <input id="input_text" placeholder="Testo etichetta" required >
+        <button >Delete</button>
+      </div>
+    </form>
+  </div>
   <script>
+    // eventi
+    function settaGliAttributi(dom, attributi){
+      dom.setAttribute("id", attributi.id)
+      dom.setAttribute("type", attributi.type)
+      dom.setAttribute("placeholder", attributi.placeholder)
+      dom.setAttribute("required", "");
+    }
+
+    function insertItemList(){
+      const contenitore = document.getElementById("container");
+      const input_lat = document.createElement('input');
+      settaGliAttributi(input_lat, {id: "yyy", type: "Number", placeholder: "latitudine"})
+      contenitore.appendChild(input_lat)
+    }
+    document.getElementById('input_text').addEventListener('input', e =>{
+      // modifica il testo del popup sul punto
+      currentPoint.bindPopup(e.target.value).openPopup()
+    });
+    document.getElementById('input_type').addEventListener('change', e =>{
+      // modifica l'icona secondo type
+      const a = e.target.value;
+      if (a == "Uscita Emergenza") icona.options.iconUrl = '/assets/uscita-emergenza.jpg';
+      else if (a == "Punto Raccolta") icona.options.iconUrl = '/assets/raccolta.jpg';
+      else if (a == "Alert") icona.options.iconUrl = '/assets/alert.png';
+      else icona.options.iconUrl = '/assets/location.png';
+      currentPoint.setIcon(icona)
+    });
+
+    function insertNewPoint(e) { // inserimento nuovo punto sulla mappa      
+      currentPoint = L.marker([e.latlng.lat, e.latlng.lng], {icon: icona, draggable: true, title: "tes"}).addTo(mappa);
+      document.getElementById('input_lat').value = e.latlng.lat;
+      document.getElementById('input_lon').value = e.latlng.lng;
+      insertItemList()
+      punti.push(currentPoint);
+      currentPoint.on('move', e => {
+        document.getElementById('input_lat').value = e.latlng.lat;
+        document.getElementById('input_lon').value = e.latlng.lng;
+      })
+      currentPoint.on('mouseover', e => {console.log(e)})
+      console.log(currentPoint)
+    }  
+
     // Il tuo array di oggetti
     var punti = [];
     let start= {lon: 17.250845, lat: 40.462654, };
+    let popup = L.popup();
+    let mappa;
+    let currentPoint;
+
     const icona = L.icon({
         iconUrl: '/assets/location.png',
         iconSize: [38, 38], // dimensioni dell'icona
-        iconAnchor: [40, 10], // punto dell'icona che corrisponderà alla posizione del marker
-        popupAnchor: [-20, -10] // punto dal quale apparirà il popup
+        iconAnchor: [20, 30], // punto dell'icona che corrisponderà alla posizione del marker
+        popupAnchor: [0, -25] // punto dal quale apparirà il popup
     });
-    
+
+    function inputTextChange(e){
+      console.log(e)
+    }      
+
     fetch('/directory?id=mappa&b=---', {mode: 'cors', headers: { 'Content-Type': 'application/json',}})
             .then(response => {
                 if(!response.ok){
@@ -43,12 +109,13 @@
                     punti.push(a)
                 })
                 console.log(punti)
-                var mappa = L.map('mappa').setView([start.lat, start.lon], 19);
+                mappa = L.map('mappa').setView([start.lat, start.lon], 19);
 
                 // Aggiungi il layer OpenStreetMap alla mappa
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 20,
-                }).addTo(mappa);
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                  maxZoom: 21,
+                  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(mappa  );
 
                 // Aggiungi i marker alla mappa
                 punti.forEach((punto) => {
@@ -59,6 +126,8 @@
                     else icona.options.iconUrl = '/assets/location.png';
                     L.marker([punto.lat, punto.lon], {icon: icona}).addTo(mappa).bindPopup(punto.etichetta).openPopup();
                 });
+                mappa.on('click', insertNewPoint);
+                punti = [];               
             }).catch(err => console.log(err))
 
     // Crea la mappa
@@ -66,3 +135,20 @@
   </script>
 </body>
 </html>
+
+<!--
+  var markers = [];
+map.eachLayer(function(layer) {
+  if (layer instanceof L.Marker) {
+    // Creare un oggetto JSON per ogni marker
+    var markerJson = {
+      lat: layer.getLatLng().lat,
+      lng: layer.getLatLng().lng,
+      iconUrl: layer.options.icon.options.iconUrl, // URL dell'icona
+      popupContent: layer.getPopup().getContent() // Contenuto del popup
+    };
+    // Aggiungi l'oggetto JSON all'array
+    markers.push(markerJson);
+  }
+});
+-->

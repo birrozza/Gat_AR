@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>GAT A.R.</title>
+        <title>Apogei Taranto</title>
         <!--<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>-->
         <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
         <!--<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>  per animazione-->
@@ -88,17 +88,17 @@
             loading-screen="dotsColor: red; backgroundColor: black" 
             arjs="sourceType: webcam; debugUIEnabled: false;">
                 <a-image
-                    src="assets/uscita-emergenza.jpg"
-                    gps-entity-place="latitude: 40.462654; longitude: 17.250845;"
+                    src="assets/location.png"
+                    gps-entity-place="latitude: 40.474332; longitude: 17.2343445;"
                     look-at="[gps-camera]"
                     scale="03 03 03"                        
                     position="-0.9 0 0"
                     id="temenide"
                 ></a-image>        
                 <a-text
-                    value="Via temenide"                    
+                    value="CASA NATIA SANT’EGIDIO"                    
                     scale="5 5 5"
-                    gps-entity-place="latitude: 40.462654; longitude: 17.250845;"
+                    gps-entity-place="latitude: 40.474332; longitude: 17.2343445;"
                     look-at="[gps-camera]"
                     position="1 0 0"
                     id="text-temenide"
@@ -108,16 +108,17 @@
                     src="assets/location.png"
                     look-at="[gps-camera]"
                     scale="1000 1000 1000"
-                    gps-entity-place="latitude: 40.4233336; longitude: 17.2858356;"
+                    gps-entity-place="latitude: 40.473931137786714; longitude: 17.233784821170858;"
                     id ="gat"
                 ></a-image>
                 <a-text
-                    value="GAT"
+                    value="SANT’AGOSTINO"
                     look-at="[gps-camera]"
                     scale="1000 1000 1000"
-                    gps-entity-place="latitude: 40.4233336; longitude: 17.2858356;"
+                    gps-entity-place="latitude: 40.473931137786714; longitude: 17.233784821170858;"
                     id="text-gat"
                 ></a-text>
+                <!--
                 <a-entity gltf-model="assets/savio/test_2.gltf"                     
                     position="0 0 0"
                     rotation="0 0 0" 
@@ -136,6 +137,7 @@
                     color="red"
                     animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear;"
                 ></a-entity>
+                
                 <a-text
                     value="Officina"
                     look-at="[gps-camera]"
@@ -143,105 +145,141 @@
                     gps-entity-place="latitude: 40.57748410215643; longitude: 17.116634845733646;"
                     id="text-officina"
                 ></a-text>
+                -->
+                <a-image
+                    src="assets/location.png"
+                    look-at="[gps-camera]"
+                    scale="10 10 10"
+                    gps-entity-place="latitude: 40.4745816; longitude: 17.2318503;"
+                    id="vito"
+                ></a-image>
+                <a-text
+                    value="PALAZZO GALEOTA"
+                    look-at="[gps-camera]"
+                    scale="10 10 10"
+                    gps-entity-place="latitude: 40.4745816; longitude: 17.2318503;"
+                    id="text-vito"
+                ></a-text>
 
                 <a-image
                     src="assets/location.png"
                     look-at="[gps-camera]"
                     scale="10 10 10"
-                    gps-entity-place="latitude: 40.57748410215643; longitude: 17.116634845733646;"
-                    id="vito"
-                ></a-image>
-                <a-text
-                    value="Casa nonno Vito"
-                    look-at="[gps-camera]"
-                    scale="10 10 10"
-                    gps-entity-place="latitude: 40.4663771; longitude: 17.2471326;"
-                    id="text-vito"
-                ></a-text>
-                <a-image
-                    src="assets/location.png"
-                    look-at="[gps-camera]"
-                    scale="10 10 10"
-                    gps-entity-place="latitude: 40.365043872119365; longitude: 17.331372499465946;"
+                    gps-entity-place="latitude: 40.4759083; longitude: 17.2290723;"
                     id="villa-vito"
                 ></a-image>
                 <a-text
-                    value="Villa nonno Vito"
+                    value="PIAZZA DUOMO"
                     look-at="[gps-camera]"
                     scale="10 10 10"
-                    gps-entity-place="latitude: 40.365043872119365; longitude: 17.331372499465946;"
+                    gps-entity-place="latitude: 40.4759083; longitude: 17.2290723;"
                     id="text-villa-vito"
                 ></a-text>
+
                 <a-image
                     src="assets/location.png"
                     look-at="[gps-camera]"
                     scale="10 10 10"
-                    gps-entity-place="latitude: 40.46705732564022; longitude: 17.2545455;"
+                    gps-entity-place="latitude: 40.4767877; longitude: 17.227282;"
                     id="antonietta"
                 ></a-image>
                 <a-text
-                    value="Casa nonna Antonietta"
+                    value="PALAZZO ULMO"
                     look-at="[gps-camera]"
                     scale="10 10 10"
-                    gps-entity-place="latitude: 40.46705732564022; longitude: 17.2545455;"
+                    gps-entity-place="latitude: 40.4767877; longitude: 17.227282;"
                     id="text-antonietta"
                 ></a-text>
+
                 <a-image
-                    src="assets/uscita-emergenza.jpg"
+                src="assets/location.png"
                     look-at="[gps-camera]"
                     scale="3 3 3 "
-                    gps-entity-place="latitude: 40.57731297628638; longitude: 17.11688429117203;"
+                    gps-entity-place="latitude: 40.4768893; longitude: 17.2259746;"
                     id="uscita_emergenza_cbf"
                 ></a-image>
                 <a-text
-                    value="Uscita Emergenza CBF "
+                    value="PALAZZO SPARTERA"
                     look-at="[gps-camera]"
                     scale="5 5 5"
-                    gps-entity-place="latitude: 40.57731297628638; longitude: 17.11688429117203;"
+                    gps-entity-place="latitude: 40.4768893; longitude: 17.2259746;"
                     id="text-exit-cbf"
                 ></a-text>
+
                 <a-image
-                    src="assets/uscita-emergenza.jpg"
+                    src="assets/location.png"
                     look-at="[gps-camera]"
                     scale="3 3 3 "
-                    gps-entity-place="latitude: 40.57731705071694; longitude: 17.116886973381046;"
+                    gps-entity-place="latitude:40.4750046; longitude: 17.2300906;"
                     id="uscita_emergenza_off"
                 ></a-image>
                 <a-text
-                    value="Uscita Emergenza Officina "
+                    value="HOTEL SAN ANDREA DEGLI ARMENI"
                     look-at="[gps-camera]"
                     scale="5 5 5"
-                    gps-entity-place="latitude: 40.57731705071694; longitude: 17.116886973381046;"
+                    gps-entity-place="latitude:40.4750046; longitude: 17.2300906;"
                     id="text-exit-off"
                 ></a-text>
+
                 <a-image
-                    src="assets/uscita-emergenza.jpg"
+                    src="assets/location.png"
                     look-at="[gps-camera]"
                     scale="3 3 3 "
-                    gps-entity-place="latitude: 40.57714694302976; longitude: 17.117081433534626;"
+                    gps-entity-place="latitude: 40.4741673; longitude: 17.2312148;"
                     id="uscita_emergenza_combi"
                 ></a-image>
                 <a-text
-                    value="Uscita Emergenza Combi "
+                    value="PALAZZO STOLA"
                     look-at="[gps-camera]"
                     scale="5 5 5"
-                    gps-entity-place="latitude: 40.57714694302976; longitude: 17.117081433534626;"
+                    gps-entity-place="latitude: 40.4741673; longitude: 17.2312148;"
                     id="text-exit-combi"
                 ></a-text>
+
                 <a-image
-                    src="assets/alert.png"
+                    src="assets/location.png"
                     look-at="[gps-camera]"
                     scale="3 3 3 "
-                    gps-entity-place="latitude: 40.57567910962963; longitude: 17.11605548858643;"
+                    gps-entity-place="latitude: 40.4736595; longitude: 17.2322077;"
                     id="alarm_img"
                 ></a-image>
                 <a-text
-                    value="ALARM!!!!"
+                    value="PALAZZO ANTONELLI"
                     look-at="[gps-camera]"
                     scale="10 10 10"
-                    gps-entity-place="latitude: 40.57567910962963; longitude: 17.11605548858643;"
+                    gps-entity-place="latitude: 40.4736595; longitude: 17.2322077;"
                     id="alarm"
-                ></a-text>                       
+                ></a-text>   
+                
+                <a-image
+                    src="assets/location.png"
+                    look-at="[gps-camera]"
+                    scale="3 3 3 "
+                    gps-entity-place="latitude: 40.4739412; longitude: 17.2315159;"
+                    id="alarm_img"
+                ></a-image>
+                <a-text
+                    value="PALAZZO BARION SANTAMATO"
+                    look-at="[gps-camera]"
+                    scale="10 10 10"
+                    gps-entity-place="latitude: 40.4739412; longitude: 17.2315159;"
+                    id="alarm"
+                ></a-text> 
+                
+                <a-image
+                    src="assets/location.png"
+                    look-at="[gps-camera]"
+                    scale="3 3 3 "
+                    gps-entity-place="latitude: 40.4626086; longitude: 17.250842;"
+                    id="alarm_img"
+                ></a-image>
+                <a-text
+                    value="test"
+                    look-at="[gps-camera]"
+                    scale="10 10 10"
+                    gps-entity-place="latitude: 40.4626086; longitude: 17.250842;"
+                    id="alarm"
+                ></a-text> 
                 
             <a-camera id="camera" gps-camera="alert: true;" rotation-reader >   
                 <a-text
