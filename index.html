@@ -45,8 +45,8 @@
                 document.getElementById('unicID-text').setAttribute('value', unicID);
                 
                 const el = document.getElementById('camera');
-                const lon_text = document.getElementById('lat-text');
-                const lat_text = document.getElementById('lon-text');
+                const lon_text = document.getElementById('lon-text');
+                const lat_text = document.getElementById('lat-text');
                 el.addEventListener("gps-camera-update-position", async(e) =>{
                     lon_text.setAttribute("value", "lon: " + e.detail.position.longitude);
                     lat_text.setAttribute("value", "lat: " + e.detail.position.latitude);
