@@ -44,7 +44,9 @@
                 "lon": 40.4626086,
                 "lat": 17.250842   
             }
-        ];   
+        ]; 
+        
+        
         
         window.onload = () => {
             console.log('-->', Poi)
@@ -56,6 +58,8 @@
 
             el.addEventListener("gps-camera-update-position", async(e) => {
                 if(!downloaded) {
+                     alert(`Got first GPS position: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`);
+            // Add a box to the north of the initial GPS position
                     lon_text.setAttribute("value", "lon: " + e.detail.position.longitude);
                     lat_text.setAttribute("value", "lat: " + e.detail.position.latitude);                    
                    
