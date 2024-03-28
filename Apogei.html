@@ -47,12 +47,14 @@
         ];   
         
         window.onload = () => {
+            console.log('-->', Poi)
             let downloaded = false; 
             const el = document.querySelector("[gps-new-camera]");
 
             el.addEventListener("gps-camera-update-position", async(e) => {
                 if(!downloaded) {
                     Poi.map(item => {
+                        console.log('item', item)
                         const compoundEntity = document.createElement("a-entity");
                         compoundEntity.setAttribute('gps-new-entity-place', {
                             latitude: item.lat,
