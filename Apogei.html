@@ -66,7 +66,7 @@
                        
                             console.log('item location:',  item.name )
                             const sfondo = document.createElement("a-plane");
-                            sfondo.setAttribute("id", 'sfondo'+item._id);
+                            //sfondo.setAttribute("id", 'sfondo'+item._id);
                             sfondo.setAttribute('color', "#FFF");
                             sfondo.object3D.scale.set(5, 1.5, 0);
                             sfondo.setAttribute('opacity', '0.5');
@@ -78,27 +78,27 @@
                             sfondo.object3D.position.set(0, 0, -10);                    
 
                             const img = document.createElement("a-image");
-                            img.setAttribute("id", 'img'+item._id);
+                            //img.setAttribute("id", 'img'+item._id);
                             img.setAttribute('gps-new-entity-place', {
                                 latitude: item.lat,
                                 longitude: item.lon
                             });
-                            img.setAttribute("src", item.imgURL);                    
+                            img.setAttribute("src", "assets/location.png");                    
                             img.setAttribute("look-at", "#camera");
                             img.object3D.scale.set(5, 3, 3);
                             img.object3D.position.set(0, 2.5, 0);
                             img.setAttribute('opacity','0.8')
 
                             const text = document.createElement("a-text");
-                            text.setAttribute("id", 'text'+item._id);
+                            //text.setAttribute("id", 'text'+item._id);
                             text.setAttribute('gps-new-entity-place', {
                                 latitude: item.lat,
                                 longitude: item.lon
                             });                    
                             text.setAttribute("look-at", "#camera");
                             text.setAttribute("align", "center");
-                            text.setAttribute("value", item.text);
-                            text.setAttribute("name", item.text);
+                            text.setAttribute("value", item.name);
+                            text.setAttribute("name", item.name);
                             text.object3D.scale.set(5, 5, 5);
                             text.setAttribute('color', '#fff')
                             text.setAttribute('opacity', '1')
