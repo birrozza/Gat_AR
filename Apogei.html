@@ -51,15 +51,14 @@
         window.onload = () => {
             console.log('-->', Poi)
             let downloaded = false; 
-            //const el = document.querySelector("[gps-new-camera]");
-            const el = document.getElementById('camera');
+            const el = document.querySelector("[gps-new-camera]");
+            //const el = document.getElementById('camera');
             const lon_text = document.getElementById('lon-text');
             const lat_text = document.getElementById('lat-text');
 
             el.addEventListener("gps-camera-update-position", async(e) => {
                 if(!downloaded) {
-                     alert(`Got first GPS position: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`);
-            // Add a box to the north of the initial GPS position
+                    
                     lon_text.setAttribute("value", "lon: " + e.detail.position.longitude);
                     lat_text.setAttribute("value", "lat: " + e.detail.position.latitude);                    
                    
