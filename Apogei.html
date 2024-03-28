@@ -51,8 +51,8 @@
         window.onload = () => {
             console.log('-->', Poi)
             let downloaded = false; 
-            const el = document.querySelector("[gps-new-camera]");
-            //const el = document.getElementById('camera');
+            //const el = document.querySelector("[gps-new-camera]");
+            const el = document.getElementById('camera');
             const lon_text = document.getElementById('lon-text');
             const lat_text = document.getElementById('lat-text');
 
@@ -72,10 +72,12 @@
                         
                         const img = document.createElement("a-image");
                         img.setAttribute("src", "assets/location.png"); 
+                        img.setAttribute("look-at", "#camera");
                         img.object3D.position.set(0, 2.5, 0);
                         const text = document.createElement("a-text");
-                        text.setAttribute("look-at", "[gps-new-camera]");
+                        text.setAttribute("look-at", "#camera");
                         text.setAttribute("value", item.name);
+                        text.setAttribute("name", item.name);
                         text.setAttribute("align", "center");
                         compoundEntity.appendChild(box);
                         compoundEntity.appendChild(text);
