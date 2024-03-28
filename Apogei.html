@@ -50,9 +50,14 @@
             console.log('-->', Poi)
             let downloaded = false; 
             const el = document.querySelector("[gps-new-camera]");
+            const lon_text = document.getElementById('lon-text');
+            const lat_text = document.getElementById('lat-text');
 
             el.addEventListener("gps-camera-update-position", async(e) => {
                 if(!downloaded) {
+                    lon_text.setAttribute("value", "lon: " + e.detail.position.longitude);
+                    lat_text.setAttribute("value", "lat: " + e.detail.position.latitude);                    
+                   
                     Poi.map(item => {
                         console.log('item', item)
                         const compoundEntity = document.createElement("a-entity");
