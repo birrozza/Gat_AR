@@ -33,8 +33,48 @@
         </style>
     </head>
     <script>
-
+        const Poi = [
+            {
+                "name": "CASA NATIA SANT’EGIDIO",
+                "lon": 40.474332,
+                "lat": 17.2343445
+            },
+            {
+                "name": "test",
+                "lon": 40.4626086,
+                "lat": 17.250842   
+            }
+        ];   
         
+        window.onload = () => {
+            let downloaded = false; 
+            const el = document.querySelector("[gps-new-camera]");
+
+            el.addEventListener("gps-camera-update-position", async(e) => {
+                if(!downloaded) {
+                    Poi.map(item => {
+                        const compoundEntity = document.createElement("a-entity");
+                        compoundEntity.setAttribute('gps-new-entity-place', {
+                            latitude: item.lat,
+                            longitude: item.lon
+                        });
+                        
+                        const img = document.createElement("a-image");
+                        img.setAttribute("src", "assets/location.png"); 
+
+                        const text = document.createElement("a-text");
+                        text.setAttribute("look-at", "[gps-new-camera]");
+                        text.setAttribute("value", item.name);
+                        text.setAttribute("align", "center");
+                        compoundEntity.appendChild(box);
+                        compoundEntity.appendChild(text);
+                        document.querySelector("a-scene").appendChild(compoundEntity);
+
+                    }); // ~ map
+                } // ~ if !downloaded
+                downloaded = true;       
+            } // ~addEventListener
+        } // ~ window.onload
 
     </script>
     <body style="margin: 0px; overflow: hidden;">
@@ -66,6 +106,7 @@
                 <a-text id="unicID-text" value="" width="1" color="magenta" position="-0.45 -0.21 -1" ></a-text>               
                 <!--<a-entity position="-0.20 -0.25 -1" testo-con-sfondo="valore: Ciao Mondo"></a-entity>-->
             </a-camera>
+            <!--
             <a-image
                 src="assets/location.png"
                 
@@ -80,7 +121,7 @@
                 gps-entity-place="latitude: 40.4626086; longitude: 17.250842;"
                 id="text-test"
             ></a-text> 
-            
+            -->
         </a-scene>
     </body>
 </html>    
