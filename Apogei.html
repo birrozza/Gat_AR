@@ -73,7 +73,7 @@
                         
                         const img = document.createElement("a-image");
                         img.setAttribute("src", "assets/location.png"); 
-
+                        img.object3D.position.set(0, 2.5, 0);
                         const text = document.createElement("a-text");
                         text.setAttribute("look-at", "[gps-new-camera]");
                         text.setAttribute("value", item.name);
