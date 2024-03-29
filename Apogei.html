@@ -49,7 +49,7 @@
         
         
         window.onload = () => {
-            window.onload = () => {
+           
             let downloaded = false;
 
             const el = document.querySelector("[gps-new-camera]");
@@ -66,8 +66,8 @@
                     pois.features.forEach ( feature => {
                         const compoundEntity = document.createElement("a-entity");
                         compoundEntity.setAttribute('gps-new-entity-place', {
-                            latitude: feature.geometry.coordinates[1],
-                            longitude: feature.geometry.coordinates[0]
+                            latitude: feature.lat,
+                            longitude: feature.lon
                         });
                         const box = document.createElement("a-box");
                         box.setAttribute("scale", {
@@ -89,7 +89,7 @@
                             y: textScale,
                             z: textScale
                         });
-                        text.setAttribute("value", feature.properties.name);
+                        text.setAttribute("value", feature.name);
                         text.setAttribute("align", "center");
                         compoundEntity.appendChild(box);
                         compoundEntity.appendChild(text);
