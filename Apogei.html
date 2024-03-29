@@ -64,6 +64,10 @@
                 }) // ~addEventListener       
                     data.map(item =>{
                             const compoundEntity = document.createElement("a-entity");
+                            compoundEntity.setAttribute('gps-new-entity-place', {
+                                latitude: item.lat,
+                                longitude: item.lon
+                            });
                             console.log('item location:',  item.name )
                             const sfondo = document.createElement("a-plane");
                             //sfondo.setAttribute("id", 'sfondo'+item._id);
@@ -71,18 +75,18 @@
                             sfondo.object3D.scale.set(5, 1.5, 0);
                             sfondo.setAttribute('opacity', '0.5');
                             sfondo.setAttribute("look-at", "#camera");
-                            sfondo.setAttribute('gps-new-entity-place', {
-                                latitude: item.lat,
-                                longitude: item.lon
-                            });
+                            //sfondo.setAttribute('gps-new-entity-place', {
+                            //    latitude: item.lat,
+                            //    longitude: item.lon
+                            //});
                             sfondo.object3D.position.set(0, 0, -10);                    
 
                             const img = document.createElement("a-image");
                             //img.setAttribute("id", 'img'+item._id);
-                            img.setAttribute('gps-new-entity-place', {
-                                latitude: item.lat,
-                                longitude: item.lon
-                            });
+                            //img.setAttribute('gps-new-entity-place', {
+                            //    latitude: item.lat,
+                            //    longitude: item.lon
+                            //});
                             img.setAttribute("src", "assets/location.png");                    
                             img.setAttribute("look-at", "[gps-new-camera]");
                             img.object3D.scale.set(5, 3, 3);
@@ -91,10 +95,10 @@
 
                             const text = document.createElement("a-text");
                             //text.setAttribute("id", 'text'+item._id);
-                            text.setAttribute('gps-new-entity-place', {
-                                latitude: item.lat,
-                                longitude: item.lon
-                            });                    
+                            //text.setAttribute('gps-new-entity-place', {
+                            //    latitude: item.lat,
+                            //    longitude: item.lon
+                            //});                    
                             text.setAttribute("look-at", "[gps-new-camera]");
                             text.setAttribute("align", "center");
                             text.setAttribute("value", item.name);
