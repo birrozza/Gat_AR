@@ -63,7 +63,7 @@
                     lat_text.setAttribute("value", "lat: " + e.detail.position.latitude);                    
                 }) // ~addEventListener       
                     data.map(item =>{
-                       
+                            const compoundEntity = document.createElement("a-entity");
                             console.log('item location:',  item.name )
                             const sfondo = document.createElement("a-plane");
                             //sfondo.setAttribute("id", 'sfondo'+item._id);
@@ -104,10 +104,15 @@
                             text.setAttribute('opacity', '1')
                             
                             sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.12)
-                                
-                            document.querySelector("a-scene").appendChild(img);                    
-                            document.querySelector("a-scene").appendChild(text);
-                            document.querySelector("a-scene").appendChild(sfondo);                                
+                            
+                            compoundEntity.appendChild(img);
+                            compoundEntity.appendChild(text);
+                            compoundEntity.appendChild(sfondo);
+                            document.querySelector("a-scene").appendChild(compoundEntity);
+
+                            //document.querySelector("a-scene").appendChild(img);                    
+                            //document.querySelector("a-scene").appendChild(text);
+                            //document.querySelector("a-scene").appendChild(sfondo);                                
                         
                     }); // data.map
                 //} // ~ if !downloaded
