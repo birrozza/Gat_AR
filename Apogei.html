@@ -86,7 +86,7 @@
                             img.setAttribute("src", "assets/location.png");                    
                             img.setAttribute("look-at", "[gps-new-camera]");
                             img.object3D.scale.set(5, 3, 3);
-                            img.object3D.position.set(0, 2.5, 0);
+                            //img.object3D.position.set(0, 2.5, 0);
                             img.setAttribute('opacity','0.8')
 
                             const text = document.createElement("a-text");
@@ -102,6 +102,11 @@
                             text.object3D.scale.set(5, 5, 5);
                             text.setAttribute('color', '#fff')
                             text.setAttribute('opacity', '1')
+                            text.setAttribute("position", {
+                                x : 0,
+                                y : 2.2,
+                                z: 0
+                            } );
                             
                             sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.12)
                             
