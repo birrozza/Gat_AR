@@ -79,7 +79,7 @@
                             //    latitude: item.lat,
                             //    longitude: item.lon
                             //});
-                            sfondo.object3D.position.set(0, 0, -10);                    
+                            //sfondo.object3D.position.set(0, 0, -10);                    
 
                             const img = document.createElement("a-image");
                             //img.setAttribute("id", 'img'+item._id);
@@ -106,11 +106,11 @@
                             text.object3D.scale.set(5, 5, 5);
                             text.setAttribute('color', '#fff')
                             text.setAttribute('opacity', '1')
-                            text.setAttribute("position", {
+                            /*text.setAttribute("position", {
                                 x : 0,
                                 y : 2.2,
                                 z: 0
-                            } );
+                            } );*/
                             
                             sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.12)
                             
