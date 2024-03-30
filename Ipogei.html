@@ -188,11 +188,6 @@
                     data.map(item =>{
                         if(item.type == "location"){
                             console.log('item :', item.id, item.text)
-                            /*const compoundEntity = document.createElement("a-entity");
-                            compoundEntity.setAttribute('gps-new-entity-place', {
-                                latitude: item.lat,
-                                longitude: item.lon
-                            });*/
                             
                             const img = document.createElement("a-image");
                             img.setAttribute('gps-new-entity-place', {
@@ -218,15 +213,8 @@
                             text.setAttribute("name", item.text);
                             text.object3D.scale.set(2, 2, 2);
 
-                            //text.setAttribute("scale", "10 10 10");
-                            //compoundEntity.appendChild(img);
-                            //compoundEntity.appendChild(text);
-                            //document.querySelector("a-scene").appendChild(compoundEntity);
                             document.querySelector("a-scene").appendChild(img);
-                            document.querySelector("a-scene").appendChild(text);
-
-                            /*const distanza = item.text + compoundEntity['gps-new-entity-place'].distance;
-                            text.setAttribute("value", distanza);*/                                
+                            document.querySelector("a-scene").appendChild(text);                        
                         }
                     });
                     if(!intervallo) {
@@ -269,6 +257,7 @@
                     color="red"
                     id="text-camera"
                 ></a-text>
+                <a-plane position="-0.21 -0.17 -1" opacity="0.5" width=".5" height=".14" color="#000"></a-plane>
                 <a-text id="lat-text" value="lat: ---" width="1" color="#00ff00" position="-0.45 -0.13 -1"></a-text>
                 <a-text id="lon-text" value="lon: ---" width="1" color="#00ff00" position="-0.45 -0.17 -1"></a-text> 
                 <a-text id="unicID-text" value="" width="0.5" color="magenta" position="-0.45 -0.21 -1"></a-text>               
