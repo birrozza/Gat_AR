@@ -65,7 +65,7 @@
             	const text_vito = document.getElementById('text-vito');
             	const text_antonietta = document.getElementById('text-antonietta');
                 const text_test = document.getElementById('text-test');
-                text_test.object3D.position.set(0, 0, 0);
+                //text_test.object3D.position.set(0, 0, 0);
             	
             	const off_line = document.getElementById('text-camera');
                 
@@ -82,7 +82,7 @@
                 	text_vito.setAttribute("value", returnDistance(location_vito, "Casa nonno Vito "));
                 	text_antonietta.setAttribute("value", returnDistance(location_antonietta, "Casa nonna Antonietta "));
                 	text_test.setAttribute("value", returnDistance(location_test, "Officina "));    
-                    //text_test.object3D.position.set(0, 2.5, 0);            
+                              
             	}, 100);
             });
     </script>   
@@ -290,11 +290,13 @@
                 ></a-text> 
                 
                 <a-image
+
                     src="assets/location.png"
                     look-at="[gps-camera]"
                     
                     gps-entity-place="latitude: 40.4626086; longitude: 17.250842;"
                     id="test-img"
+                    position="0 0 0"
                 ></a-image>
                 <a-text
                     value="test"
@@ -303,6 +305,7 @@
                     
                     gps-entity-place="latitude: 40.4626086; longitude: 17.250842;"
                     id="text-test"
+                    position="0 0 0"
                 ></a-text> 
                 
             
