@@ -153,7 +153,7 @@
         window.onload = () => {
             unicID = "ID-" + Date.now() + "-" + Math.round(Math.random() * 1000);
             console.log('=>', unicID);
-            document.getElementById('unicID-text').setAttribute('value', unicID);
+            document.getElementById('unicID-text').setAttribute('value', 'By Angelo Mirabelli');//unicID);
             const off_line = document.getElementById('text-camera');
             const loader = document.getElementById('loader');
             const lon_text = document.getElementById('lon-text');
@@ -262,7 +262,7 @@
                 ></a-text>
                 <a-text id="lat-text" value="lat: ---" width="1" color="#00ff00" position="-0.45 -0.13 -1"></a-text>
                 <a-text id="lon-text" value="lon: ---" width="1" color="#00ff00" position="-0.45 -0.17 -1"></a-text> 
-                <a-text id="unicID-text" value="" width="1" color="magenta" position="-0.45 -0.21 -1"></a-text>               
+                <a-text id="unicID-text" value=""  color="magenta" position="-0.45 -0.21 -1"></a-text>               
             </a-camera>
             <!--
             <a-text
