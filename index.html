@@ -49,6 +49,7 @@
                 const lon_text = document.getElementById('lon-text');
                 const lat_text = document.getElementById('lat-text');
                 el.addEventListener("gps-camera-update-position", async(e) =>{
+                    console.log(e)
                     lon_text.setAttribute("value", "lon: " + e.detail.position.longitude);
                     lat_text.setAttribute("value", "lat: " + e.detail.position.latitude);
                 });
@@ -64,8 +65,8 @@
             	const text_vito = document.getElementById('text-vito');
             	const text_antonietta = document.getElementById('text-antonietta');
                 const text_test = document.getElementById('text-test');
-            	//const magnemite = document.getElementById('magnemite');
-            	//const head_savio = document.getElementById('head-savio');
+                text_test.object3D.position.set(0, 2.5, 0);
+            	
             	const off_line = document.getElementById('text-camera');
                 
             	
@@ -296,7 +297,6 @@
                     id="test-img"
                 ></a-image>
                 <a-text
-                    position = "0 1 0"
                     value="test"
                     look-at="[gps-camera]"
                     scale = "2 2 2"
