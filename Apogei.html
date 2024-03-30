@@ -56,6 +56,8 @@
 
             el.addEventListener("gps-camera-update-position", async(e) => {
                 if(!downloaded) {
+                    alert(`Got first GPS position: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`);
+            // Add a box to the north of the initial GPS position
                     const west = e.detail.position.longitude - 0.05,
                         east = e.detail.position.longitude + 0.05,
                         south = e.detail.position.latitude - 0.05;
