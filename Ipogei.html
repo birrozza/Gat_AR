@@ -131,7 +131,7 @@
             imgURL: "assets/alert.png",
             lat: 40.4739412,
             lon: 17.2315159,        
-        },        {
+        },{
             id: 100,
             id_text: "text-temenide",
             id_img: "temenide",
@@ -140,6 +140,15 @@
             imgURL: "assets/uscita-emergenza.jpg",
             lat: 40.462654,
             lon: 17.250845,
+        },{
+            id: 1000,
+            id_text: "text-santantonio",
+            id_img: "santantoio",
+            type: "location",
+            text: "SANT'ANTONIO ",
+            imgURL: "assets/uscita-emergenza.jpg",
+            lat: 40.465524, 
+            lon: 17.245960
         }];     
 
         function returnDistance(location){// funzione 
@@ -193,7 +202,7 @@
                             img.setAttribute("src", "assets/location.png");
                             img.setAttribute("id", item.id_img);
                             img.setAttribute("look-at", el);
-                            img.object3D.scale.set(2, 2, 2);
+                            img.object3D.scale.set(2, 3, 2);
                             img.object3D.position.set(0, 1.5, 0);
                             
                             const text = document.createElement("a-text");
