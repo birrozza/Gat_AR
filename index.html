@@ -120,7 +120,6 @@
                 ></a-image>        
                 <a-text
                     value="CASA NATIA SANT’EGIDIO"                    
-                    
                     gps-entity-place="latitude: 40.474332; longitude: 17.2343445;"
                     look-at="[gps-camera]"
                     position="1 0 0"
@@ -288,26 +287,22 @@
                     gps-entity-place="latitude: 40.4739412; longitude: 17.2315159;"
                     id="alarm"
                 ></a-text> 
-                
-                <a-image
-
-                    src="assets/location.png"
-                    look-at="[gps-camera]"
-                    
-                    gps-entity-place="latitude: 40.4626086; longitude: 17.250842;"
-                    id="test-img"
-                    position="0 1 0"
-                ></a-image>
-                <a-text
-                    value="test"
-                    look-at="[gps-camera]"
-                    scale = "2 2 2"
-                    
-                    gps-entity-place="latitude: 40.4626086; longitude: 17.250842;"
-                    id="text-test"
-                    position="0 1 0"
-                ></a-text> 
-                
+                <a-entity gps-entity-place="latitude: 40.4626086; longitude: 17.250842;">
+                    <a-image
+                        src="assets/location.png"
+                        look-at="[gps-camera]"
+                        
+                        id="test-img"                        
+                    ></a-image>
+                    <a-text
+                        value="test"
+                        look-at="[gps-camera]"
+                        scale = "2 2 2"                    
+                        
+                        id="text-test"
+                        position="0 1 0"
+                    ></a-text> 
+                </a-entity>    
             
         </a-scene>
         
