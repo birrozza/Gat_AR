@@ -61,6 +61,7 @@
                     const response = await fetch(`https://hikar.org/webapp/map?bbox=${west},${south},${east},${north}&layers=poi&outProj=4326`);
                     const pois = await response.json();
                     pois.features.forEach ( feature => {
+                        alert('acquisito');
                         const compoundEntity = document.createElement("a-entity");
                         compoundEntity.setAttribute('gps-new-entity-place', {
                             latitude: feature.lat,
