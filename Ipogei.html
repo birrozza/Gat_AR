@@ -1,23 +1,27 @@
 <!doctype html>
 <!--  https://www.maps.ie/coordinates.html -->
+<!--<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>-->
+<!--<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>-->
+
+<!-- Questa estensione aggiunge il supporto per il tracciamento di caratteristiche naturali (NFT)
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+ -->
 <html>
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>GAT A.R.</title>
+        <title>Apogei Taranto</title>
         <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-        <!--<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>-->
-        <!--<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>-->
+
+        <!-- Questa è l'estensione principale di A-Frame per la realtà aumentata -->
+        <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
         
         <script src="https://github.com/supermedium/superframe/blob/master/components/look-at/dist/aframe-look-at-component.min.js"></script>
-        <!--
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-        -->
-        <!-- Pure three.js code that the A-Frame components use for location-based AR -->
+        
+        <!-- Pure three.js code that the A-Frame components use for GPS location-based AR -->
         <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
 
-        <!-- AR.js A-Frame components -->
-        <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+ 
         
         <style>
             .arjs-loader {
@@ -200,37 +204,45 @@
                         if(item.type == "location"){
                             console.log('item :', item.id, item.text)
 
-                            const sfondo = document.createElement("a-plane");
-                            sfondo.setAttribute("id", 'sfondo'+item._id);
-                            sfondo.setAttribute('color', "#FFF");
-                            sfondo.object3D.scale.set(5, 1.5, 0);
-                            sfondo.setAttribute('opacity', '0.5');
-                            sfondo.setAttribute("look-at", "[gps-new-camera]");
-                            sfondo.setAttribute('gps-new-entity-place', {
-                                latitude: item.lat,
-                                longitude: item.lon
-                            });
-                            sfondo.object3D.position.set(0, 0, -10);  
-                                                        
-                            const img = document.createElement("a-image");
-                            img.setAttribute('gps-new-entity-place', {
-                                latitude: item.lat,
-                                longitude: item.lon
-                            });
-                            img.setAttribute("src", "assets/location.png");
-                            img.setAttribute("id", item.id_img);
-                            img.setAttribute("look-at", "[gps-new-camera]");
-                            img.object3D.scale.set(3, 2, 2);
-                            img.object3D.position.set(0, 1.5, 0);
-                            
-                            const text = document.createElement("a-text");
-                            text.setAttribute('gps-new-entity-place', {
+                            const entitaContenitore =  document.createElement("a-entity");
+                            entitaContenitore.setAttribute("look-at", "[gps-new-camera]");
+                            entitaContenitore.setAttribute("id", 'entity-'+item.id);
+                            entitaContenitore.setAttribute('gps-new-entity-place', {
                                 latitude: item.lat,
                                 longitude: item.lon
                             });
 
-                            text.setAttribute("id", item.id_text);
-                            text.setAttribute("look-at", "[gps-new-camera]");
+                            const sfondo = document.createElement("a-plane");
+                            sfondo.setAttribute("id", 'sfondo-'+item.id);
+                            sfondo.setAttribute('color', "#FFF");
+                            sfondo.object3D.scale.set(5, 1.5, 0);
+                            sfondo.setAttribute('opacity', '0.5');
+                            //sfondo.setAttribute("look-at", "[gps-new-camera]");
+                            //sfondo.setAttribute('gps-new-entity-place', {
+                            //    latitude: item.lat,
+                            //    longitude: item.lon
+                            //});
+                            sfondo.object3D.position.set(0, 0, -10);  
+                                                        
+                            const img = document.createElement("a-image");
+                            //img.setAttribute('gps-new-entity-place', {
+                            //    latitude: item.lat,
+                            //    longitude: item.lon
+                            //});
+                            img.setAttribute("src", "assets/location.png");
+                            img.setAttribute("id", 'img-'+item.id);
+                            //img.setAttribute("look-at", "[gps-new-camera]");
+                            img.object3D.scale.set(3, 2, 2);
+                            img.object3D.position.set(0, 1.5, 0);
+                            
+                            const text = document.createElement("a-text");
+                            //text.setAttribute('gps-new-entity-place', {
+                            //    latitude: item.lat,
+                            //    longitude: item.lon
+                            //});
+
+                            text.setAttribute("id", 'text-'+item.id);
+                            //text.setAttribute("look-at", "[gps-new-camera]");
                             text.setAttribute("align", "center");
                             text.setAttribute("value", item.text);
                             text.setAttribute("name", item.text);
@@ -242,9 +254,10 @@
                             sfondo.setAttribute("height", 0.4);
                            
 
-                            document.querySelector("a-scene").appendChild(img);
-                            document.querySelector("a-scene").appendChild(text);  
-                            document.querySelector("a-scene").appendChild(sfondo);                      
+                            document.querySelector(entitaContenitore).appendChild(img);
+                            document.querySelector(entitaContenitore).appendChild(text);  
+                            document.querySelector(entitaContenitore).appendChild(sfondo);                      
+                            document.querySelector("a-scene").appendChild(entitaContenitore);
                         }
                     });
                     if(!intervallo) {
