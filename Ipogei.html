@@ -10,7 +10,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Apogei Taranto</title>
+        <title>Ipogei Taranto</title>
         <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 
         <!-- Questa è l'estensione principale di A-Frame per la realtà aumentata -->
@@ -253,7 +253,7 @@
                                 const text = document.getElementById('text-'+ item.id)                                
                                 text.setAttribute('value', returnDistance(contenitore, text )); 
                                 const sfondo = document.getElementById('sfondo-'+item.id)
-                                sfondo.setAttribute('width', ((text.getAttribute('value').length)+6)*0.06);
+                                sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
                                 
                                 //const scale = (Math.exp(distance/15)*1); // calcola la scala in base alla distanza con un maasimo di 6
                                 const scale = 0.1*distance+1;
