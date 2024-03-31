@@ -188,8 +188,10 @@
             const el = document.getElementById('camera');
 
             el.addEventListener("gps-camera-update-position", async(e) =>{
-                lon_text.setAttribute("value", "lon: " + e.detail.position.longitude);
-                lat_text.setAttribute("value", "lat: " + e.detail.position.latitude);
+                const lon = e.detail.position.longitude.toFixed(8); // massimo 8 cifre decimali
+                const lat = e.detail.position.latitude.toFixed(8);
+                lon_text.setAttribute("value", "lon: " + lon);
+                lat_text.setAttribute("value", "lat: " + lat);
             });
 
             el.addEventListener("gps-camera-update-position", async(e) => {
