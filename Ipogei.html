@@ -243,7 +243,7 @@
                                 const sfondo = document.getElementById('sfondo-'+item.id)
                                 sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
                                 const distance = contenitore.components['gps-new-entity-place'].distance;
-                                const scale = Math.max(6,0.2*distance + 1); // calcola la scala in base alla distanza con un maasimo di 6
+                                const scale = Math.max(6,0.1*distance + 1); // calcola la scala in base alla distanza con un maasimo di 6
                                 contenitore.setAttribute('scale', { x: scale, y: scale, z: scale });
                             }); //~map
                         }, 2000);                            
