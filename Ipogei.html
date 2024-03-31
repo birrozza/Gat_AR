@@ -162,10 +162,10 @@
             lon: 17.245960
         }];     
 
-        function returnDistance(location){// funzione 
+        function returnDistance(contenitore, text_component){// funzione 
             //let distance = location.getAttribute('distanceMsg');
-            let text = location.getAttribute('name') + " @ ";
-            let distance = location.components['gps-new-entity-place'].distance;
+            let text = text_component.getAttribute('name') + " @ ";
+            let distance = contenitore.components['gps-new-entity-place'].distance;
             //if (!distance) {distance = "---";} // se ancora non l'ha calcolata
             distance = distance ? Math.round(distance) + " meters" : " --- ";
             return text + distance;
@@ -265,8 +265,9 @@
                             );
                             */
                             data.map(item => {
-                                const a = document.getElementById('text-'+ item.id)
-                                a.setAttribute('value',returnDistance( a )); 
+                                const text = document.getElementById('text-'+ item.id)
+                                const contenitore = document.getElementById('entity-'+item.id)
+                                text.setAttribute('value', returnDistance(contenitore, text )); 
                             }); //~map
                         }, 2000);                            
                         intervallo = true
