@@ -249,9 +249,9 @@
                             sfondo.setAttribute("height", 0.4);
                            
 
-                            document.querySelector(entitaContenitore).appendChild(img);
-                            document.querySelector(entitaContenitore).appendChild(text);  
-                            document.querySelector(entitaContenitore).appendChild(sfondo);                      
+                            entitaContenitore.appendChild(img);
+                            entitaContenitore.appendChild(text);  
+                            entitaContenitore.appendChild(sfondo);                      
                             document.querySelector("a-scene").appendChild(entitaContenitore);
                         }
                     });
@@ -266,7 +266,7 @@
                         }, 500);                            
                         intervallo = true
                     }                
-                }
+                } //~ if dowloaded
                 downloaded=true; 
                 loader.setAttribute("style", "display: none;");                  
             });
