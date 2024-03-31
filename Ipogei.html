@@ -16,6 +16,7 @@
         <!-- Questa è l'estensione principale di A-Frame per la realtà aumentata -->
         <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
         
+        <!-- Questa è l'estensione per look-at -->
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
         
         <!-- Pure three.js code that the A-Frame components use for GPS location-based AR -->
@@ -163,10 +164,8 @@
         }];     
 
         function returnDistance(contenitore, text_component){// funzione 
-            //let distance = location.getAttribute('distanceMsg');
             let text = text_component.getAttribute('name') + " @ ";
             let distance = contenitore.components['gps-new-entity-place'].distance;
-            //if (!distance) {distance = "---";} // se ancora non l'ha calcolata
             distance = distance ? Math.round(distance) + " meters" : " --- ";
             return text + distance;
         }
@@ -175,7 +174,7 @@
             console.log('=>', unicID);
             document.getElementById('unicID-text').setAttribute('value', 'By Angelo Mirabelli');//unicID);
             const off_line = document.getElementById('text-camera');
-            const loader = document.getElementById('loader');
+            const loader   = document.getElementById('loader');
             const lon_text = document.getElementById('lon-text');
             const lat_text = document.getElementById('lat-text');
 
@@ -206,47 +205,28 @@
                                 latitude: item.lat,
                                 longitude: item.lon
                             });
-
+                                                        
+                            const img = document.createElement("a-image");
+                            img.setAttribute("src", "assets/location.png");
+                            img.setAttribute("id", 'img-'+item.id);
+                            img.object3D.scale.set(3, 2, 2);
+                            img.object3D.position.set(0, 1.5, 0);
+                            
+                            const text = document.createElement("a-text");
+                            text.setAttribute("id", 'text-'+item.id);
+                            text.setAttribute("align", "center");
+                            text.setAttribute("value", item.text);
+                            text.setAttribute("name", item.text);
+                            text.object3D.scale.set(2, 2, 2);
+                            
                             const sfondo = document.createElement("a-plane");
                             sfondo.setAttribute("id", 'sfondo-'+item.id);
                             sfondo.setAttribute('color', "#FFF");
                             sfondo.object3D.scale.set(5, 1.5, 0);
                             sfondo.setAttribute('opacity', '0.5');
-                            //sfondo.setAttribute("look-at", "[gps-new-camera]");
-                            //sfondo.setAttribute('gps-new-entity-place', {
-                            //    latitude: item.lat,
-                            //    longitude: item.lon
-                            //});
-                            sfondo.object3D.position.set(0, 0, -10);  
-                                                        
-                            const img = document.createElement("a-image");
-                            //img.setAttribute('gps-new-entity-place', {
-                            //    latitude: item.lat,
-                            //    longitude: item.lon
-                            //});
-                            img.setAttribute("src", "assets/location.png");
-                            img.setAttribute("id", 'img-'+item.id);
-                            //img.setAttribute("look-at", "[gps-new-camera]");
-                            img.object3D.scale.set(3, 2, 2);
-                            img.object3D.position.set(0, 1.5, 0);
-                            
-                            const text = document.createElement("a-text");
-                            //text.setAttribute('gps-new-entity-place', {
-                            //    latitude: item.lat,
-                            //    longitude: item.lon
-                            //});
-
-                            text.setAttribute("id", 'text-'+item.id);
-                            //text.setAttribute("look-at", "[gps-new-camera]");
-                            text.setAttribute("align", "center");
-                            text.setAttribute("value", item.text);
-                            text.setAttribute("name", item.text);
-                            text.object3D.scale.set(2, 2, 2);
-                            //text.setAttribute("font", "https://cdn.aframe.io/fonts/SourceCodePro.fnt");
-                            //text.setAttribute('height', 0.5)
-
+                            sfondo.object3D.position.set(0, 0, -10);                              
                             sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
-                            sfondo.setAttribute("height", 0.4);                           
+                            sfondo.setAttribute("height", 0.5);                           
 
                             entitaContenitore.appendChild(img);
                             entitaContenitore.appendChild(text);  
@@ -255,19 +235,13 @@
                         }
                     });
                     if(!intervallo) {
-                        const x = setInterval(() => {
-                            /*
-                            let a = document.querySelector('a-scene').getChildren()
-                            let b = a.filter(item => item.nodeName == "A-TEXT")
-                                .map(i => {                                          
-                                    i.setAttribute('value',returnDistance( i )); 
-                                }
-                            );
-                            */
+                        const x = setInterval(() => {                            
                             data.map(item => {
                                 const text = document.getElementById('text-'+ item.id)
-                                const contenitore = document.getElementById('entity-'+item.id)
+                                const contenitore = document.getElementById('entity-' + item.id)
                                 text.setAttribute('value', returnDistance(contenitore, text )); 
+                                const sfondo = document.getElementById('sfondo-'+item.id)
+                                sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
                             }); //~map
                         }, 2000);                            
                         intervallo = true
