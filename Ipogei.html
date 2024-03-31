@@ -245,7 +245,7 @@
                     });
                     if(!intervallo) {
                         const x = setInterval(() => {                            
-                            data.map(item => {
+                            data.forEach(item => {
                                 const contenitore = document.getElementById('entity-' + item.id)
                                 const distance = contenitore.components['gps-new-entity-place'].distance;
                                 if (distance >400) return;
