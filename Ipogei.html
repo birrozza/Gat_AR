@@ -161,6 +161,15 @@
             imgURL: "assets/uscita-emergenza.jpg",
             lat: 40.465524, 
             lon: 17.245960
+        },{
+            id: 1001,
+            id_text: "text-box",
+            id_img: "box",
+            type: "location",
+            text: "TEST BOX GARAGE AUTO",
+            imgURL: "assets/uscita-emergenza.jpg",
+            lat: 40.462378, 
+            lon: 17.250763
         }];     
 
         function returnDistance(contenitore, text_component){// funzione 
@@ -210,7 +219,7 @@
                             img.setAttribute("src", "assets/location.png");
                             img.setAttribute("id", 'img-'+item.id);
                             //img.object3D.scale.set(3, 2, 2);
-                            img.object3D.position.set(0, 0.5, 0);
+                            img.object3D.position.set(0, 0.7, 0);
                             
                             const text = document.createElement("a-text");
                             text.setAttribute("id", 'text-'+item.id);
