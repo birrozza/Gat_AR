@@ -249,6 +249,7 @@
                                 const contenitore = document.getElementById('entity-' + item.id)
                                 const distance = contenitore.components['gps-new-entity-place'].distance;
                                 if (distance >400) return;
+                                console.log(distance)
                                 const text = document.getElementById('text-'+ item.id)                                
                                 text.setAttribute('value', returnDistance(contenitore, text )); 
                                 const sfondo = document.getElementById('sfondo-'+item.id)
