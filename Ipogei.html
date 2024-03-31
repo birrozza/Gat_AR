@@ -246,8 +246,7 @@
                             //text.setAttribute('height', 0.5)
 
                             sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
-                            sfondo.setAttribute("height", 0.4);
-                           
+                            sfondo.setAttribute("height", 0.4);                           
 
                             entitaContenitore.appendChild(img);
                             entitaContenitore.appendChild(text);  
@@ -257,13 +256,19 @@
                     });
                     if(!intervallo) {
                         const x = setInterval(() => {
+                            /*
                             let a = document.querySelector('a-scene').getChildren()
                             let b = a.filter(item => item.nodeName == "A-TEXT")
                                 .map(i => {                                          
                                     i.setAttribute('value',returnDistance( i )); 
                                 }
                             );
-                        }, 500);                            
+                            */
+                            data.map(item => {
+                                const a = document.getElementById('text-'+ item.id)
+                                a.setAttribute('value',returnDistance( a )); 
+                            }); //~map
+                        }, 2000);                            
                         intervallo = true
                     }                
                 } //~ if dowloaded
