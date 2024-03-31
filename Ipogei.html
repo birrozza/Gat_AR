@@ -253,7 +253,7 @@
                                 const text = document.getElementById('text-'+ item.id)                                
                                 text.setAttribute('value', returnDistance(contenitore, text )); 
                                 const sfondo = document.getElementById('sfondo-'+item.id)
-                                sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
+                                sfondo.setAttribute('width', ((text.getAttribute('value').length)+6)*0.06);
                                 
                                 //const scale = (Math.exp(distance/15)*1); // calcola la scala in base alla distanza con un maasimo di 6
                                 const scale = 0.1*distance+1;
