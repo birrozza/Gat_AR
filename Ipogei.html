@@ -209,7 +209,7 @@
                             const img = document.createElement("a-image");
                             img.setAttribute("src", "assets/location.png");
                             img.setAttribute("id", 'img-'+item.id);
-                            img.object3D.scale.set(3, 2, 2);
+                            //img.object3D.scale.set(3, 2, 2);
                             img.object3D.position.set(0, 1.5, 0);
                             
                             const text = document.createElement("a-text");
@@ -217,12 +217,12 @@
                             text.setAttribute("align", "center");
                             text.setAttribute("value", item.text);
                             text.setAttribute("name", item.text);
-                            text.object3D.scale.set(2, 2, 2);
+                            //text.object3D.scale.set(2, 2, 2);
                             
                             const sfondo = document.createElement("a-plane");
                             sfondo.setAttribute("id", 'sfondo-'+item.id);
                             sfondo.setAttribute('color', "#FFF");
-                            sfondo.object3D.scale.set(5, 1.5, 0);
+                            //sfondo.object3D.scale.set(5, 1.5, 0);
                             sfondo.setAttribute('opacity', '0.5');
                             sfondo.object3D.position.set(0, 0, -10);                              
                             sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
