@@ -256,7 +256,7 @@
                                 sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
                                 
                                 const scale = (Math.exp(distance/15)*0.9); // calcola la scala in base alla distanza con un maasimo di 6
-                                if (scale > 20) scale=20;
+                                //if (scale > 20) scale=20;
                                 contenitore.setAttribute('scale', { x: scale, y: scale, z: scale });
                             }); //~map
                         }, 2000);                            
