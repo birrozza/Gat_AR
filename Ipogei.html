@@ -234,12 +234,15 @@
                             sfondo.object3D.scale.set(3, 1.5, 0);
                             sfondo.setAttribute('opacity', '0.5');
                             sfondo.object3D.position.set(0, 0, -10);                              
-                            sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
-                            sfondo.setAttribute("height", 0.5);                           
+                            //sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
+                            //sfondo.setAttribute("height", 0.5);   
+                            sfondo.setAttribute('width', 0);
+                            sfondo.setAttribute("height", 0);                        
 
                             entitaContenitore.appendChild(img);
-                            entitaContenitore.appendChild(text);  
-                            entitaContenitore.appendChild(sfondo);                      
+                            entitaContenitore.appendChild(text); 
+                            text.appendChild(sfondo);    
+                            //entitaContenitore.appendChild(sfondo);                      
                             document.querySelector("a-scene").appendChild(entitaContenitore);
                         }
                     });
@@ -249,10 +252,10 @@
                                 const contenitore = document.getElementById('entity-' + item.id)
                                 const distance = contenitore.components['gps-new-entity-place'].distance;
                                 //if (distance >800) return;
-                                console.log(distance)
+                                //console.log(distance)
                                 const text = document.getElementById('text-'+ item.id)                                
                                 text.setAttribute('value', returnDistance(contenitore, text )); 
-                                const sfondo = document.getElementById('sfondo-'+item.id)
+                                //const sfondo = document.getElementById('sfondo-'+item.id)
                                 
                                 
                                 //const scale = (Math.exp(distance/15)*1); // calcola la scala in base alla distanza con un maasimo di 6
@@ -260,7 +263,7 @@
                                 //if (scale > 20) scale=20;
                                 
                                 contenitore.setAttribute('scale', { x: scale, y: scale, z: scale });
-                                sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
+                                //sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
                             }); //~map
                         }, 2000);                            
                         intervallo = true
