@@ -260,7 +260,7 @@
                                 //if (scale > 20) scale=20;
                                 
                                 contenitore.setAttribute('scale', { x: scale, y: scale, z: scale });
-                                const widthText = AFRAME.utils.entity.getComponentProperty(text, 'text');
+                                const widthText = AFRAME.utils.entity.getComponentProperty(text, 'text').width;
                                 sfondo.setAttribute('width', widthText*1.1);
                             }); //~map
                         }, 2000);                            
