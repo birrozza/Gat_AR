@@ -299,6 +299,12 @@
                 <a-text id="lon-text" value="lon: ---" width="1" color="#00ff00" position="-0.5 -0.17 -1"></a-text> 
                 <a-text id="unicID-text" value="" width="0.5" color="magenta" position="-0.5 -0.21 -1"></a-text>               
             </a-camera>
+            <a-entity look-at="[gps-new-camera]"
+                gps-new-entity-place="latitude: 40.462378; longitude: 17.250753;"
+                geometry="primitive: plane; height: 0; width: 0"
+                material="color: blue"
+                text="width: 4; value: This text will be 4 units wide.">
+            </a-entity>
             <!--
             <a-text
                 value="Via temenide"                    
