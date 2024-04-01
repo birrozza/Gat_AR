@@ -303,15 +303,11 @@
             </a-camera>
             <a-entity look-at="[gps-new-camera]"
                 gps-new-entity-place="latitude: 40.462388; longitude: 17.250753;">
-                <a-entity
-                    geometry="primitive: plane; height: 2; width: 4"
-                    material="src: url('assets/location.png'); shader: flat">
-                </a-entity>
-                <a-entity
-                    text="value: This text will be 4 units wide."
-                    geometry="primitive: plane; height: 0; width: 0"
-                    material="color: blue">
-                </a-entity>
+                <a-image src="url(assets/location.png)" width="4" height="4"></a-image>
+                <a-entity geometry="primitive: plane" material="color: white; opacity: 0.5" position="0 -2 0">
+                    <!-- Testo con colore bianco -->
+                    <a-text color="white" value="Testo utooto ototo tiiii" wrap-count="10"></a-text>
+                  </a-entity>
             </a-entity>
             <!--
             <a-text
