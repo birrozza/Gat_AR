@@ -234,14 +234,14 @@
                             sfondo.object3D.scale.set(3, 1.5, 0);
                             sfondo.setAttribute('opacity', '0.5');
                             sfondo.object3D.position.set(0, 0, -10);                              
-                            sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
+                            //sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
                             sfondo.setAttribute("height", 0.5);   
                                               
-
+                            sfondo.appendChild(text); 
                             entitaContenitore.appendChild(img);
-                            entitaContenitore.appendChild(text); 
-                            text.appendChild(sfondo);    
-                            //entitaContenitore.appendChild(sfondo);                      
+                            entitaContenitore.appendChild(sfondo); 
+                               
+                            //entitaContenitore.appendChild(text);                      
                             document.querySelector("a-scene").appendChild(entitaContenitore);
                         }
                     });
@@ -262,7 +262,7 @@
                                 //if (scale > 20) scale=20;
                                 
                                 contenitore.setAttribute('scale', { x: scale, y: scale, z: scale });
-                                sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
+                                //sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
                             }); //~map
                         }, 2000);                            
                         intervallo = true
@@ -301,14 +301,7 @@
                 <a-text id="lon-text" value="lon: ---" width="1" color="#00ff00" position="-0.5 -0.17 -1"></a-text> 
                 <a-text id="unicID-text" value="" width="0.5" color="magenta" position="-0.5 -0.21 -1"></a-text>               
             </a-camera>
-            <a-entity look-at="[gps-new-camera]"
-                gps-new-entity-place="latitude: 40.462388; longitude: 17.250753;">
-                <a-image src="url(assets/location.png)" width="4" height="4"></a-image>
-                <a-entity geometry="primitive: plane" material="color: white; opacity: 0.5" position="0 -2 0">
-                    <!-- Testo con colore bianco -->
-                    <a-text color="white" value="Testo utooto ototo tiiii" wrap-count="10"></a-text>
-                  </a-entity>
-            </a-entity>
+            
             <!--
             <a-text
                 value="Via temenide"                    
