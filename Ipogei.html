@@ -262,7 +262,7 @@
                                 
                                 contenitore.setAttribute('scale', { x: scale, y: scale, z: scale });
                                 //const widthText = AFRAME.utils.entity.getComponentProperty(text, 'text').width;
-                                const widthText = ((text.getAttribute('value').length)+12)*0.06;
+                                const widthText = ((text.getAttribute('value').length)+12)*0.06*scala;
                                 
                                 sfondo.setAttribute('width', widthText*1); 
                             }); //~map
