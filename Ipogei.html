@@ -300,7 +300,8 @@
                 <a-plane position="-0.31 -0.17 -1" opacity="0.5" width=".4" height=".14" color="#000"></a-plane>
                 <a-text id="lat-text" value="lat: ---" width="1" color="#00ff00" position="-0.5 -0.13 -1"></a-text>
                 <a-text id="lon-text" value="lon: ---" width="1" color="#00ff00" position="-0.5 -0.17 -1"></a-text> 
-                <a-text id="unicID-text" value="" width="0.5" color="magenta" position="-0.5 -0.21 -1"></a-text>               
+                <a-text id="unicID-text" value="" width="0.5" color="magenta" position="-0.5 -0.21 -1"
+                animation="property: components.text.material.uniforms.opacity.value; to: 0; dir: alternate; loop: true"></a-text>               
             </a-camera>
             <a-entity look-at="[gps-new-camera]" gps-new-entity-place="latitude: 40.462388; longitude: 17.250753;">
                 <a-image src="url(assets/location.png)" ></a-image>
