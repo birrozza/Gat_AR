@@ -261,7 +261,7 @@
                                 
                                 contenitore.setAttribute('scale', { x: scale, y: scale, z: scale });
                                 const widthText = AFRAME.utils.entity.getComponentProperty(text, 'text').width;
-                                sfondo.setAttribute('width', widthText*1);
+                                sfondo.setAttribute('width', 'auto');//widthText*1);
                             }); //~map
                         }, 2000);                            
                         intervallo = true
@@ -305,7 +305,7 @@
 
                 <!-- Sfondo bianco trasparente -->
                 <a-entity geometry="primitive: plane" material="color: white; opacity: 0.5" position="0 -2 0" width="auto" height="auto"
-                    text = "color: white; align: center; value: Testo prova; width: 2">
+                    text = "color: white; align: center; value: Testo prova; width: 2;">
                     
                     <!-- Testo con colore bianco 
                     <a-text color="white" value="Testo prova testo" ></a-text>-->
