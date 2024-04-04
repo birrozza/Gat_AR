@@ -187,11 +187,12 @@
             const lon_text = document.getElementById('lon-text');
             const lat_text = document.getElementById('lat-text');
 
-            let blink = true;
+            /*let blink = true;
             let blinkig = setInterval(() => {
                 blink ? off_line.setAttribute("opacity", 0): off_line.setAttribute("opacity", 1);
                 blink=!blink;                        
             }, 1000);
+            **/
 
             let downloaded = false;
             let intervallo = false;
@@ -289,6 +290,7 @@
                 gps-new-camera = 'gpsMinDistance: 5'
                 rotation-reader>                
                 <a-text
+                    animation="property: components.text.material.uniforms.opacity.value; to: 0; dir: alternate; loop: true"
                     font = "https://cdn.aframe.io/fonts/Exo2Bold.fnt"
                     position="-0.2 -0.3 -1"
                     value="Beta test!"
