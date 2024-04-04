@@ -173,10 +173,11 @@
         }];     
 
         function returnDistance(contenitore, text_component){// funzione 
-            let text = text_component.getAttribute('name') + " @ ";
+            //let text = text_component.getAttribute('name') + " @ ";
             let distance = contenitore.components['gps-new-entity-place'].distance;
             distance = distance ? Math.round(distance) + " meters" : " --- ";
-            return text + distance;
+            return text_component + ' @ '+ distance
+            //return text + distance;
         }
         window.onload = () => {
             unicID = "ID-" + Date.now() + "-" + Math.round(Math.random() * 1000);
@@ -240,6 +241,7 @@
                              */                 
 
                             const entityMix = document.createElement("a-entity");
+                            entityMix.setAttribute("id", 'text-'+item.id);
                             entityMix.setAttribute('geometry','primitive: plane');
                             entityMix.setAttribute('material',"color: white; opacity: 0.5");
                             entityMix.setAttribute('width','auto');
@@ -263,9 +265,14 @@
                                 const distance = contenitore.components['gps-new-entity-place'].distance;
                                 //if (distance >800) return;
                                 //console.log(distance)
+
                                 const text = document.getElementById('text-'+ item.id)                                
-                                text.setAttribute('value', returnDistance(contenitore, text )); 
-                                const sfondo = document.getElementById('sfondo-'+item.id)
+                                
+                                const a = text.object3DMap.text.el.components.text.attrValue.value
+
+                                //text.setAttribute('value', returnDistance(contenitore, text )); 
+                                text.setAttribute('text', 'value:' + returnDistance(contenitore, text ));
+                                //const sfondo = document.getElementById('sfondo-'+item.id)
                                 
                                 
                                 //const scale = (Math.exp(distance/15)*1); // calcola la scala in base alla distanza con un maasimo di 6
@@ -276,7 +283,7 @@
                                 //const widthText = AFRAME.utils.entity.getComponentProperty(text, 'text').width;
                                 const widthText = ((text.getAttribute('value').length)+12)*0.06*scale;
                                 
-                                sfondo.setAttribute('width', widthText*1); 
+                                //sfondo.setAttribute('width', widthText*1); 
                             }); //~map
                         }, 2000);                            
                         intervallo = true
