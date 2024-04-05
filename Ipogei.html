@@ -173,17 +173,22 @@
         }];     
 
         AFRAME.registerComponent('cursor-listener', {
-            init: function () {
-                var lastIndex = -1;
-                var COLORS = ['red', 'green', 'blue'];
-                this.el.addEventListener('click', function (evt) {
-                lastIndex = (lastIndex + 1) % COLORS.length;
-                this.setAttribute('material', 'color', COLORS[lastIndex]);
-                console.log('I was clicked at: ', evt.detail.intersection.point);
-                document.getElementById('unicID-text').setAttribute('value', COLORS[lastIndex]);//unicID);
-                });
+            
+                init: function () {
+
+                    var data = this.data;
+                    var el = this.el;                  
+
+                    el.addEventListener('mouseenter', function () {
+                        document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + data);//unicID);
+                    });
+
+                    el.addEventListener('mouseleave', function () {
+                        document.getElementById('unicID-text').setAttribute('value', 'mouse leave on' + data);
+                    });
+                }
             }
-        });
+        );
 
         function returnDistance(contenitore, text_component){// funzione 
             let text = text_component.getAttribute('name') + " @ ";
@@ -222,7 +227,7 @@
                                 latitude: item.lat,
                                 longitude: item.lon
                             });
-                            entitaContenitore.setAttribute('cursor-listener','')
+                            entitaContenitore.setAttribute('cursor-listener','entity-'+item.id')
 
                             const img = document.createElement("a-image");
                             img.setAttribute("src", "assets/location.png");
