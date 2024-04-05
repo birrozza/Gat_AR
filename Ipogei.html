@@ -213,8 +213,8 @@
                                 longitude: item.lon
                             });
 
-                            entitaContenitore.setAttribute('event-set__enter',"_event: mouseenter; _target: #cylinderText; visible: true")
-                            entitaContenitore.setAttribute('event-set__leave',"_event: mouseleave; _target: #cylinderText; visible: false")                          
+                            entitaContenitore.setAttribute('event-set__enter',"_event: mouseenter; material.color: yellowgreen; scale: 3 1 1")
+                            entitaContenitore.setAttribute('event-set__leave',"_event: mouseleave; material.color: skyblue; scale: 1 1 1")                          
                             const img = document.createElement("a-image");
                             img.setAttribute("src", "assets/location.png");
                             img.setAttribute("id", 'img-'+item.id);
