@@ -326,7 +326,11 @@
             <a-camera id = "camera" 
                 gps-new-camera = 'gpsMinDistance: 5'
                 rotation-reader>   
-                <a-cursor></a-cursor>          
+                <a-entity cursor="fuse: true; fuseTimeout: 500"
+                    position="0 0 -1"
+                    geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                    material="color: black; shader: flat">
+                </a-entity>          
                 <a-text
                     animation="property: components.text.material.uniforms.opacity.value; to: 0; dir: alternate; loop: true"
                     font = "https://cdn.aframe.io/fonts/Exo2Bold.fnt"
