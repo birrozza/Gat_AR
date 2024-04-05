@@ -19,9 +19,6 @@
         <!-- Questa è l'estensione per look-at -->
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
 
-        <!-- Questa è l'estensione per gli eventi sugli oggetti -->
-        <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
-        
         <!-- Pure three.js code that the A-Frame components use for GPS location-based AR -->
         <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
         
@@ -175,6 +172,21 @@
             lon: 17.250763
         }];     
 
+        AFRAME.registerComponent('handle-events', {
+            init: function () {
+            var el = this.el;  // <a-box>
+            el.addEventListener('mouseenter', function () {
+                el.setAttribute('color', '#24CAFF');  
+            });
+            el.addEventListener('mouseleave', function () {
+                el.setAttribute('color', '#EF2D5E');  
+            });
+            el.addEventListener('click', function () {
+                el.setAttribute('scale', {x: 2, y: 1, z: 2});
+            });
+            } 
+        });
+
         function returnDistance(contenitore, text_component){// funzione 
             let text = text_component.getAttribute('name') + " @ ";
             let distance = contenitore.components['gps-new-entity-place'].distance;
@@ -213,8 +225,6 @@
                                 longitude: item.lon
                             });
 
-                            entitaContenitore.setAttribute('event-set__enter',"_event: mouseenter; material.color: yellowgreen; scale: 3 1 1")
-                            entitaContenitore.setAttribute('event-set__leave',"_event: mouseleave; material.color: skyblue; scale: 1 1 1")                          
                             const img = document.createElement("a-image");
                             img.setAttribute("src", "assets/location.png");
                             img.setAttribute("id", 'img-'+item.id);
@@ -226,7 +236,9 @@
                             text.setAttribute("align", "center");
                             text.setAttribute("value", item.text);
                             text.setAttribute("name", item.text);
-                            //text.object3D.scale.set(2, 2, 2);
+                            text.setAttribute('handle-events')
+                            //text.object3D.scale.set(
+                                2, 2, 2);
                             
                             const sfondo = document.createElement("a-plane");
                             sfondo.setAttribute("id", 'sfondo-'+item.id);
