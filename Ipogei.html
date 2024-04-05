@@ -180,6 +180,7 @@
                 lastIndex = (lastIndex + 1) % COLORS.length;
                 this.setAttribute('material', 'color', COLORS[lastIndex]);
                 console.log('I was clicked at: ', evt.detail.intersection.point);
+                document.getElementById('unicID-text').setAttribute('value', COLORS[lastIndex]);//unicID);
                 });
             }
         });
@@ -234,7 +235,7 @@
                             text.setAttribute("align", "center");
                             text.setAttribute("value", item.text);
                             text.setAttribute("name", item.text);
-                            text.setAttribute('cursor-listener','')
+                            //text.setAttribute('cursor-listener','')
                             //text.object3D.scale.set( 2, 2, 2);
                             
                             const sfondo = document.createElement("a-plane");
