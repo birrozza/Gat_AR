@@ -188,13 +188,6 @@
             const lon_text = document.getElementById('lon-text');
             const lat_text = document.getElementById('lat-text');
 
-            /*let blink = true;
-            let blinkig = setInterval(() => {
-                blink ? off_line.setAttribute("opacity", 0): off_line.setAttribute("opacity", 1);
-                blink=!blink;                        
-            }, 1000);
-            **/
-
             let downloaded = false;
             let intervallo = false;
             const el = document.getElementById('camera');
@@ -236,7 +229,8 @@
                             sfondo.object3D.scale.set(3, 1.5, 0);
                             sfondo.setAttribute('opacity', '0.5');
                             sfondo.object3D.position.set(0, 0, -10);                              
-                            sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
+                            //sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
+                            sfondo.setAttribute('width', (item.text.length+12)*0.06);
                             sfondo.setAttribute("height", 0.5);   
                                              
 
@@ -264,16 +258,12 @@
                                 const contenitore = document.getElementById('entity-' + item.id)
                                 const distance = contenitore.components['gps-new-entity-place'].distance;
                                 //if (distance >800) return;
-                                //console.log(distance)
 
                                 const text = document.getElementById('text-'+ item.id)                                
                                 
-                                //const a = text.object3DMap.text.el.components.text.attrValue.value
-
                                 text.setAttribute('value', returnDistance(contenitore, text )); 
                                 //text.setAttribute('text', 'value:' + returnDistance(contenitore, text ));
-                                const sfondo = document.getElementById('sfondo-'+item.id)
-                                
+                                const sfondo = document.getElementById('sfondo-'+item.id)                                
                                 
                                 //const scale = (Math.exp(distance/15)*1); // calcola la scala in base alla distanza con un maasimo di 6
                                 const scale = 0.1*distance+1;
@@ -322,37 +312,15 @@
                 <a-text id="lat-text" value="lat: ---" width="1" color="#00ff00" position="-0.5 -0.13 -1"></a-text>
                 <a-text id="lon-text" value="lon: ---" width="1" color="#00ff00" position="-0.5 -0.17 -1"></a-text> 
                 <a-text id="unicID-text" value="" width="0.5" color="magenta" position="-0.5 -0.21 -1"></a-text>               
-            </a-camera>
-            <a-entity look-at="[gps-new-camera]" gps-new-entity-place="latitude: 40.462388; longitude: 17.250753;">
-                <a-image src="url(assets/location.png)" ></a-image>
-
-                <!-- Sfondo bianco trasparente -->
-                <a-entity id='test' geometry="primitive: plane" material="color: white; opacity: 0.5" position="0 -2 0" width="auto" height="auto"
-                    text = "color: white; align: center; value: Testo prova; width: 2;">
-                    
-                    <!-- Testo con colore bianco 
-                    <a-text color="white" value="Testo prova testo" ></a-text>-->
-                </a-entity>
-            </a-entity>
+            </a-camera>          
             <!--
-            <a-text
-                value="Via temenide"                    
-                scale="5 5 5"
-                gps-new-entity-place="latitude: 40.462654; longitude: 17.250845;"
-                look-at="[gps-new-camera]"
-                position="0 0 0"
-                id="text-temenide"
-            ></a-text>
-            <a-image
-                src="assets/uscita-emergenza.jpg"
-                gps-new-entity-place="latitude: 40.462654; longitude: 17.250845;"
-                look-at="[gps-new-camera]"
-                scale="03 03 03"                        
-                position="0 2 0"
-                id="temenide"
-            ></a-image>
-            
-            <!-- aggiunta -->          
+             <a-entity look-at="[gps-new-camera]" gps-new-entity-place="latitude: 40.462388; longitude: 17.250753;">
+                <a-image src="url(assets/location.png)" ></a-image>
+                    <a-entity id='test' geometry="primitive: plane" material="color: white; opacity: 0.5" position="0 -2 0" width="auto" height="auto"
+                    text = "color: white; align: center; value: Testo prova; width: 2;">
+                </a-entity>
+            </a-entity>           
+             -->          
         </a-scene>
     </body>
 </html>
