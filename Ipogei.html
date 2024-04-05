@@ -190,6 +190,9 @@
                     el.addEventListener('touchstart', function () {
                         document.getElementById('unicID-text').setAttribute('value', 'touch start on' + data);//unicID);
                     });
+                    el.addEventListener('click', function () {
+                        document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
+                    });
                 }
             }
         );
