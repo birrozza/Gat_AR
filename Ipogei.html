@@ -18,6 +18,9 @@
         
         <!-- Questa è l'estensione per look-at -->
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+
+        <!-- Questa è l'estensione per gli eventi sugli oggetti -->
+        <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
         
         <!-- Pure three.js code that the A-Frame components use for GPS location-based AR -->
         <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
@@ -209,7 +212,9 @@
                                 latitude: item.lat,
                                 longitude: item.lon
                             });
-                                                        
+
+                            entitaContenitore.setAttribute('event-set__enter',"_event: mouseenter; _target: #cylinderText; visible: true")
+                            entitaContenitore.setAttribute('event-set__leave',"_event: mouseleave; _target: #cylinderText; visible: false")                          
                             const img = document.createElement("a-image");
                             img.setAttribute("src", "assets/location.png");
                             img.setAttribute("id", 'img-'+item.id);
@@ -298,7 +303,8 @@
                 
             <a-camera id = "camera" 
                 gps-new-camera = 'gpsMinDistance: 5'
-                rotation-reader>                
+                rotation-reader>   
+                <a-cursor></a-cursor>             
                 <a-text
                     animation="property: components.text.material.uniforms.opacity.value; to: 0; dir: alternate; loop: true"
                     font = "https://cdn.aframe.io/fonts/Exo2Bold.fnt"
@@ -313,7 +319,9 @@
                 <a-text id="lat-text" value="lat: ---" width="1" color="#00ff00" position="-0.5 -0.13 -1"></a-text>
                 <a-text id="lon-text" value="lon: ---" width="1" color="#00ff00" position="-0.5 -0.17 -1"></a-text> 
                 <a-text id="unicID-text" value="" width="0.5" color="magenta" position="-0.5 -0.21 -1"></a-text>               
-            </a-camera>          
+            </a-camera>  
+            <a-text id="cylinderText" value="This is a cylinder" align="center" color="#FFF" visible="false" position="0 -0.55 0.55"
+            geometry="primitive: plane; width: 1.75" material="color: #333"></a-text>        
             <!--
              <a-entity look-at="[gps-new-camera]" gps-new-entity-place="latitude: 40.462388; longitude: 17.250753;">
                 <a-image src="url(assets/location.png)" ></a-image>
