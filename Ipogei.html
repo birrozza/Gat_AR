@@ -356,14 +356,13 @@
         
                             el.addEventListener('mouseleave', function () {
                                 document.getElementById('unicID-text').setAttribute('value', 'mouse leave on' + data);
+                                document.getElementById('cylinderText').setAttribute('visible', 'false');
                             });
         
-                            el.addEventListener('touchstart', function () {
-                                document.getElementById('unicID-text').setAttribute('value', 'touch start on' + data);//unicID);
-                            });
                             el.addEventListener('click', function () {
                                 document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
                                 console.log('click')
+                                document.getElementById('cylinderText').setAttribute('visible', 'true');
                             });
                         }
                     }
