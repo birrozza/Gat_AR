@@ -324,10 +324,11 @@
             vr-mode-ui = "enabled: false"            
             loading-screen = "enabled: false;"
             arjs="sourceType: webcam; debugUIEnabled: false; "
-            ar-cursor raycaster="objects: .interactive; showLine:true; lineColor: red; ">    
+            >    
             <a-camera id = "camera" 
                 gps-new-camera = 'gpsMinDistance: 5'
-                rotation-reader>
+                rotation-reader
+                ar-cursor raycaster="objects: .interactive; showLine:true; lineColor: red; ">
                 <!--<a-entity raycaster="objects: .interactive; showLine: true; lineColor: red; lineOpacity: 0.5" cursor></a-entity>-->
                 <!--<a-entity
                     animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1; "
