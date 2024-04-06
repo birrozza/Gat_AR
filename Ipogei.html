@@ -172,31 +172,7 @@
             lon: 17.250763
         }];     
 
-        AFRAME.registerComponent('cursor-listener', {
-                        
-                init: function () {
 
-                    var data = this.data;
-                    var el = this.el;                  
-
-                    el.addEventListener('mouseenter', function () {
-                        document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + data);//unicID);
-                    });
-
-                    el.addEventListener('mouseleave', function () {
-                        document.getElementById('unicID-text').setAttribute('value', 'mouse leave on' + data);
-                    });
-
-                    el.addEventListener('touchstart', function () {
-                        document.getElementById('unicID-text').setAttribute('value', 'touch start on' + data);//unicID);
-                    });
-                    el.addEventListener('click', function () {
-                        document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
-                        console.log('click')
-                    });
-                }
-            }
-        );
 
         function returnDistance(contenitore, text_component){// funzione 
             let text = text_component.getAttribute('name') + " @ ";
@@ -365,5 +341,32 @@
             </a-entity>           
              -->          
         </a-scene>
+        <script>
+                    AFRAME.registerComponent('cursor-listener', {
+                        
+                        init: function () {
+        
+                            var data = this.data;
+                            var el = this.el;                  
+        
+                            el.addEventListener('mouseenter', function () {
+                                document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + data);//unicID);
+                            });
+        
+                            el.addEventListener('mouseleave', function () {
+                                document.getElementById('unicID-text').setAttribute('value', 'mouse leave on' + data);
+                            });
+        
+                            el.addEventListener('touchstart', function () {
+                                document.getElementById('unicID-text').setAttribute('value', 'touch start on' + data);//unicID);
+                            });
+                            el.addEventListener('click', function () {
+                                document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
+                                console.log('click')
+                            });
+                        }
+                    }
+                );
+        </script>
     </body>
 </html>
