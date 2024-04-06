@@ -235,6 +235,7 @@
                                 longitude: item.lon
                             });
                             entitaContenitore.setAttribute('cursor-listener','entity-'+item.id)
+                            entitaContenitore.setAttribute('class','interactive')
 
                             const img = document.createElement("a-image");
                             img.setAttribute("src", "assets/location.png");
@@ -325,8 +326,9 @@
                 
             <a-camera id = "camera" 
                 gps-new-camera = 'gpsMinDistance: 5'
-                rotation-reader>   
-                <a-entity
+                rotation-reader
+                raycaster="objects: .interactive">   
+                <!--<a-entity
                     animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1; "
                     animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1000; from: 1 1 1; to: 0.1 0.1 0.1; "
                     animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1; "
@@ -334,7 +336,7 @@
                     material="color: cyan; shader: flat"
                     position="0 0 -3"
                     geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.07;">
-                </a-entity>       
+                </a-entity>    -->   
                 <a-text
                     animation="property: components.text.material.uniforms.opacity.value; to: 0; dir: alternate; loop: true"
                     font = "https://cdn.aframe.io/fonts/Exo2Bold.fnt"
@@ -349,7 +351,7 @@
                 <a-text id="lat-text" value="lat: ---" width="1" color="#00ff00" position="-0.5 -0.13 -1"></a-text>
                 <a-text id="lon-text" value="lon: ---" width="1" color="#00ff00" position="-0.5 -0.17 -1"></a-text> 
                 <a-text id="unicID-text" value="" width="0.5" color="magenta" position="-0.5 -0.21 -1"></a-text> 
-                <a-text id="cylinderText" value="This is a cylinder" align="center" color="#000" visible="true" position="0 -0.55 0"
+                <a-text id="cylinderText" value="This is a cylinder" align="center" color="#000" visible="true" position="0 -0.3 0"
             geometry="primitive: plane; width: 1.75" material="color: #333"></a-text>              
             </a-camera>  
                     
