@@ -211,11 +211,8 @@
                                 latitude: item.lat,
                                 longitude: item.lon
                             });
-                            //entitaContenitore.setAttribute('cursor-listener','entity-'+item.id)
-                            entitaContenitore.addEventListener('click', function (evt) {
-                                document.getElementById('cylinderText').setAttribute('visible', 'true');
-                            });
-
+                            entitaContenitore.setAttribute('cursor-listener','entity-'+item.id)
+                           
                             const img = document.createElement("a-image");
                             img.setAttribute("src", "assets/location.png");
                             img.setAttribute("id", 'img-'+item.id);
@@ -305,9 +302,7 @@
             >    
             <a-camera id = "camera" 
                 gps-new-camera = 'gpsMinDistance: 5'
-                rotation-reader>
-                <a-cursor></a-cursor>
-                <div visible="false">
+                rotation-reader>                
                 <a-entity
                     animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 0.7 0.7 0.7; "
                     animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1000; from: 1 1 1; to: 0.3 0.3 0.3; "
@@ -333,7 +328,6 @@
                 <a-text id="lat-text" value="lat: ---" width="1" color="#00ff00" position="-0.5 -0.13 -1"></a-text>
                 <a-text id="lon-text" value="lon: ---" width="1" color="#00ff00" position="-0.5 -0.17 -1"></a-text> 
                 <a-text id="unicID-text" value="" width="0.5" color="magenta" position="-0.5 -0.21 -1"></a-text> 
-                </div>
                 <a-text id="cylinderText" value="This is a cylinder" align="center" with="0.2" color="#fff" visible="false" position="0 -0.3 -0.9"
                     geometry="primitive: plane; width: .7 height: .5; " material="color: #555"></a-text>              
             
@@ -349,31 +343,30 @@
              -->          
         </a-scene>
         <script>
-                    AFRAME.registerComponent('cursor-listener', {
-                        
-                        init: function () {
-        
-                            var data = this.data;
-                            var el = this.el;                  
-        
-                            el.addEventListener('mouseenter', function () {
-                                document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + data);//unicID);
-                            });
-        
-                            el.addEventListener('mouseleave', function () {
-                                document.getElementById('unicID-text').setAttribute('value', 'mouse leave on' + data);
-                                document.getElementById('cylinderText').setAttribute('visible', 'false');
-                            });
-        
-                            el.addEventListener('click', function () {
-                                document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
-                                console.log('click')
-                                document.getElementById('cylinderText').setAttribute('visible', 'true');
-                                document.getElementById('cylinderText').setAttribute('value', 'click on' + data);
-                            });
-                        }
-                    }
-                );
+            AFRAME.registerComponent('cursor-listener', {
+                
+                init: function () {
+
+                    var data = this.data;
+                    var el = this.el;                  
+
+                    el.addEventListener('mouseenter', function () {
+                        document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + data);//unicID);
+                    });
+
+                    el.addEventListener('mouseleave', function () {
+                        document.getElementById('unicID-text').setAttribute('value', 'mouse leave on' + data);
+                        document.getElementById('cylinderText').setAttribute('visible', 'false');
+                    });
+
+                    el.addEventListener('click', function () {
+                        document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
+                        console.log('click')
+                        document.getElementById('cylinderText').setAttribute('visible', 'true');
+                        document.getElementById('cylinderText').setAttribute('value', 'click on' + data);
+                    });
+                }
+            });
         </script>
     </body>
 </html>
