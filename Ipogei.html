@@ -211,8 +211,10 @@
                                 latitude: item.lat,
                                 longitude: item.lon
                             });
-                            entitaContenitore.setAttribute('cursor-listener','entity-'+item.id)
-                            
+                            //entitaContenitore.setAttribute('cursor-listener','entity-'+item.id)
+                            entitaContenitore.addEventListener('click', function (evt) {
+                                document.getElementById('cylinderText').setAttribute('visible', 'true');
+                            });
 
                             const img = document.createElement("a-image");
                             img.setAttribute("src", "assets/location.png");
