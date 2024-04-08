@@ -271,7 +271,9 @@
                                 
                                 //const scale = (Math.exp(distance/15)*1); // calcola la scala in base alla distanza con un maasimo di 6
                                 //const scale = 0.1*distance+1;
-                                const scale = 1 + Math.log(distance)*3;
+                                let costante = 1;
+                                if (distance > 135) costante = 5;
+                                const scale = 1 + Math.log(distance)*costante;
                                 //if (scale > 20) scale=20;
                                 
                                 //contenitore.setAttribute('scale', { x: scale, y: scale, z: scale });
