@@ -171,8 +171,8 @@
             lat: 40.462378, 
             lon: 17.250763
         }];     
-
-
+        //for (let x = 1; x < 250; x++) {console.log(x,1+Math.log(x*0.9)*1)}
+        //return
 
         function returnDistance(contenitore, text_component){// funzione 
             let text = text_component.getAttribute('name') + " @ ";
@@ -331,9 +331,15 @@
                 <a-text id="lat-text" value="lat: ---" width="1" color="#00ff00" position="-0.5 -0.13 -1"></a-text>
                 <a-text id="lon-text" value="lon: ---" width="1" color="#00ff00" position="-0.5 -0.17 -1"></a-text> 
                 <a-text id="unicID-text" value="" width="0.5" color="magenta" position="-0.5 -0.21 -1"></a-text> 
-                <a-text id="cylinderText" value="This is a cylinder" align="center" with="0.2" color="#fff" visible="false" position="0 -0.3 -0.9"
-                    geometry="primitive: plane; width: .7 height: .5; " material="color: #555; opacity: 0.8"></a-text>              
-            
+                <!--
+                <a-entity id="cylinderText" value="This is a cylinder" align="center" with="0.2" color="#fff" visible="true" position="0 -0.3 -0.9"
+                    geometry="primitive: plane; width: .7 height: .5; " material="color: #555; opacity: 0.8"></a-entity>              
+                -->
+                <a-entity
+                    id="cylinderText"
+                    geometry="primitive: plane; width: .7 height: .1; " material="color: #555; opacity: 0.8"
+                    text=" value: This text will be 4 units wide."
+                    position="0.5 -0.3 -0.9"></a-entity>
             </a-camera>  
             <!--<a-entity raycaster="objects: .interactive; showLine: true; lineColor: red; lineOpacity: 0.5" cursor></a-entity>     -->   
             <!--
@@ -356,6 +362,8 @@
                     el.addEventListener('mouseenter', function () {
                         const scala = el.getAttribute('scale').x;
                         document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + scala);//unicID);
+                        
+                        console.log(scale)
                     });
 
                     el.addEventListener('mouseleave', function () {
@@ -367,7 +375,8 @@
                         document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
                         console.log('click')
                         document.getElementById('cylinderText').setAttribute('visible', 'true');
-                        document.getElementById('cylinderText').setAttribute('value', 'click on' + data);
+
+                        document.getElementById('cylinderText').setAttribute('text', 'value: click on ' + data);
                     });
                 }
             });
