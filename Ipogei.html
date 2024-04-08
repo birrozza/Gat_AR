@@ -223,7 +223,7 @@
                             text.setAttribute("id", 'text-'+item.id);
                             text.setAttribute("align", "center");
                             text.setAttribute("value", item.text);
-                            text.setAttribute("name", item.text);
+                            text.setAttribute("name", 'Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. ');
                             //text.setAttribute('cursor-listener','')
                             //text.object3D.scale.set( 2, 2, 2);
                             
@@ -337,8 +337,8 @@
                 -->
                 <a-entity
                     id="cylinderText" visible='true'
-                    geometry="primitive: plane; width: .7; height: .5; " material="color: #666; opacity: 0.9"
-                    text=" value: This text will be 4 units wide."
+                    geometry="primitive: plane; width: .7; height: .5; " material="color: #999; opacity: 1"
+                    text="wrapCount: 5; value: This text will be 4 units wide."
                     position="0.3 -0.3 -0.9"></a-entity>
             </a-camera>  
             <!--<a-entity raycaster="objects: .interactive; showLine: true; lineColor: red; lineOpacity: 0.5" cursor></a-entity>     -->   
@@ -376,7 +376,8 @@
                         console.log('click')
                         document.getElementById('cylinderText').setAttribute('visible', 'true');
                         const dis = el.components['gps-new-entity-place'].distance;
-                        document.getElementById('cylinderText').setAttribute('text', 'value: click on '+ data +'\n' + dis);
+                        const lorem = el.getAttribute(name)
+                        document.getElementById('cylinderText').setAttribute('text', 'value: click on '+ data +'\n' + dis + '\n' + lorem);
                     });
                 }
             });
