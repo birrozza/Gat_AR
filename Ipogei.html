@@ -175,7 +175,7 @@
         //return
 
         function returnDistance(contenitore, text_component){// funzione 
-            let text = text_component.getAttribute('value') + " @ ";
+            let text = text_component.getAttribute('name') + " @ ";
             let distance = contenitore.components['gps-new-entity-place'].distance;
             distance = distance ? Math.round(distance) + " meters" : " --- ";
             //return text_component + ' @ '+ distance
@@ -223,8 +223,8 @@
                             text.setAttribute("id", 'text-'+item.id);
                             text.setAttribute("align", "center");
                             text.setAttribute("value", item.text);
-                            //text.setAttribute("name", item.text);
-                            text.setAttribute("name", 'Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. ');
+                            text.setAttribute("name", item.text);
+                            text.setAttribute("descrizione", 'Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. ');
                             //text.setAttribute('cursor-listener','')
                             //text.object3D.scale.set( 2, 2, 2);
                             
@@ -377,7 +377,7 @@
                         console.log('click')
                         document.getElementById('cylinderText').setAttribute('visible', 'true');
                         const dis = el.components['gps-new-entity-place'].distance;
-                        const lorem = el.getAttribute('name')
+                        const lorem = el.getAttribute('descrizione')
                         document.getElementById('cylinderText').setAttribute('text', 'value: click on '+ data +'\n' + dis + '\n' + lorem);
                     });
                 }
