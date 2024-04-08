@@ -354,7 +354,7 @@
                     var el = this.el;                  
 
                     el.addEventListener('mouseenter', function () {
-                        const scala = el.getAttribute('scale');
+                        const scala = el.getAttribute('scale').x;
                         document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + scala);//unicID);
                     });
 
