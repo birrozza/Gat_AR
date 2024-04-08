@@ -212,6 +212,8 @@
                                 longitude: item.lon
                             });
                             entitaContenitore.setAttribute('cursor-listener','entity-'+item.id)
+                            entitaContenitore.setAttribute("descrizione", 'Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. ');
+                            
                            
                             const img = document.createElement("a-image");
                             img.setAttribute("src", "assets/location.png");
@@ -224,7 +226,6 @@
                             text.setAttribute("align", "center");
                             text.setAttribute("value", item.text);
                             text.setAttribute("name", item.text);
-                            text.setAttribute("descrizione", 'Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. ');
                             //text.setAttribute('cursor-listener','')
                             //text.object3D.scale.set( 2, 2, 2);
                             
