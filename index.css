@@ -65,6 +65,7 @@
 }
 
 .close{
+    background-color: lightgrey;
     position: absolute;
     left: 0.5em;
     top: 0.5em;
@@ -72,7 +73,7 @@
     width: 2em;
     height: 2em;
     background-size: contain;
-    background-color: transparent;
+    /*background-color: transparent;*/
     outline: none;
 }
 
