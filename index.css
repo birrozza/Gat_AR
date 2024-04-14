@@ -65,8 +65,8 @@ button {
     position: absolute;
     left: 0.5em;
     top: 0.5em;
-    border: none;
-    border-radius: 100%;
+    border: 1px solid black;
+    
     width: 2em;
     height: 2em;
     background-size: contain;
