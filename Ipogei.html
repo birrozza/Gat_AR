@@ -59,6 +59,7 @@
             via: "Via Duomo, 234",
             text: "PALAZZO GALEOTA ",
             imgURL: "assets/location.png",
+            descrizione: "Tipico esempio di Palazzo nobiliare settecentesco ottenuto dall’accorpamento di precedenti edifici medievali fusi intorno ad un cortile centrale; l’edificio, costruito da don Vincenzo Cosa, canonico della Cattedrale di San Cataldo e solo successivamente passato alla nobile famiglia Galeota, ospita nel suo ipogeo il Museo del Principato Maria D’Enghien, un allestimento dedicato al personaggio femminile per antonomasia del medioevo tarantino, la principessa che   il 23 aprile del 1407, nel giorno dunque di San Giorgio, convolò a nozze con il re di Napoli Ladislao di Durazzo, divenendo regina. Il Principato di Taranto era nato alla fine dell’XI secolo, in seguito ai problemi di disputa sulla successione degli Altavilla, i Normanni che stavano conquistando tutta l’Italia Meridionale. L’allestimento, in più ambienti, riproduce spaccati della vita domestica, produttiva e militare del periodo del Principato. ",
             lat: 40.4745816,
             lon: 17.2318503,
         },{
@@ -220,7 +221,7 @@
         }
 
         function closePanel() {
-            console.log('close')
+            
             // if already opened, hide panel
             window.openPanel = false;
             //window.img.src = './assets/footer-button.svg';
@@ -234,7 +235,7 @@
                 window.panel.classList.add('opened');
                 window.titleElem.innerText = 'titleElem';
                 window.distanceElem.innerText = 'distanceElem';
-                window.moreDetailsLink.href = `https://www.bibliotecasalaborsa.it`;
+                window.moreDetailsLink.href = `https://https://www.tarantograndtour.it/`;
 
                 updatePanelData(el);
             } else {
@@ -366,6 +367,9 @@
         <div class="arjs-loader" id="loader">
             <div>Loading data, please wait...</div>
         </div>
+        <div class="aut">By Angelo Mirabelli</div>
+
+
         <!-- con vr-mode-ui="enabled: false" abilita la funzione VR sul display -->
         <!-- videoTexure: true non abilita la cam -->
         <a-scene 

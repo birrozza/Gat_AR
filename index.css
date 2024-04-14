@@ -8,6 +8,13 @@
     user-select: none;
 }
 
+.aut {
+    position: absolute;
+    right: 0.4em;
+    top: 0;
+    z-index: 999999;
+}
+
 .arjs-loader {
     height: 100%;
     width: 100%;
