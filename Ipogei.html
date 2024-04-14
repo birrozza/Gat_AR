@@ -185,7 +185,7 @@
             window.detailTitle.innerText = item.text;
             window.detailAddressElem.innerText = item.via;
             const dist = document.getElementById('entity-' + item.id).components['gps-new-entity-place'].distance;
-            window.detailDistanceElem.innerText = dist? Math.round(dist): '---';
+            window.detailDistanceElem.innerText = dist? Math.round(dist)+' metri': '---';
             window.descriptionElem.innerText = 'Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione.';
         }
 
@@ -411,9 +411,8 @@
             AFRAME.registerComponent('cursor-listener', {
                 
                 init: function () {
-
                     var data = this.data;
-                    var el = this.el;                  
+                    var el = this.el;                
 
                     el.addEventListener('mouseenter', function () {
                         const scala = el.getAttribute('scale').x;
@@ -422,7 +421,6 @@
 
                     el.addEventListener('mouseleave', function () {
                         document.getElementById('unicID-text').setAttribute('value', 'mouse leave on' + data);
-                        //document.getElementById('cylinderText').setAttribute('visible', 'false');
                     });
 
                     el.addEventListener('click', function () {
@@ -430,9 +428,7 @@
                         console.log('click', el)
                         apriPannello(data);
                         const dis = el.components['gps-new-entity-place'].distance;
-                        //window.detailDistanceElem = dis;
                         const lorem = el.getAttribute('descrizione')
-                        //document.getElementById('cylinderText').setAttribute('text', 'value: click on '+ data +'\n' + dis + '\n' + lorem);
                     });
                 }
             });
