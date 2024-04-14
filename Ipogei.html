@@ -422,7 +422,7 @@
 
                     el.addEventListener('mouseleave', function () {
                         document.getElementById('unicID-text').setAttribute('value', 'mouse leave on' + data);
-                        document.getElementById('cylinderText').setAttribute('visible', 'false');
+                        //document.getElementById('cylinderText').setAttribute('visible', 'false');
                     });
 
                     el.addEventListener('click', function () {
@@ -430,9 +430,9 @@
                         console.log('click', el)
                         apriPannello(data);
                         const dis = el.components['gps-new-entity-place'].distance;
-                        window.detailDistanceElem = dis;
+                        //window.detailDistanceElem = dis;
                         const lorem = el.getAttribute('descrizione')
-                        document.getElementById('cylinderText').setAttribute('text', 'value: click on '+ data +'\n' + dis + '\n' + lorem);
+                        //document.getElementById('cylinderText').setAttribute('text', 'value: click on '+ data +'\n' + dis + '\n' + lorem);
                     });
                 }
             });
