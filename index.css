@@ -3,6 +3,10 @@
     --color-blue: #01afe3;
     --color-dark-grey: #444444;
 }
+* {
+    font-family: "freight-sans-pro", sans-serif;
+    user-select: none;
+}
 button {
     border: 2px solid green;
     user-select: none;
@@ -87,7 +91,6 @@ button {
     background-size: contain;
     background-color: transparent;
     outline: none;
-
 }
 
 .detail-distance {
