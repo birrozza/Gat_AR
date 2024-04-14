@@ -166,6 +166,37 @@
             return text + distance;
         }
 
+        function updatePanelData() {
+            window.descriptionElem.innerText = 'window.closestPlace && (window.closestPlace.description || )';
+            window.detailTitle.innerText = 'window.closestPlace && (window.closestPlace.fullname || )';
+            window.detailDistanceElem.innerText = "window.closestPlace && (window.closestPlace.distanceMsg || '')";
+            window.detailAddressElem.innerText = "window.closestPlace && (window.closestPlace.address || '')";
+            
+        }
+
+        function closePanel() {
+            console.log('close')
+            // if already opened, hide panel
+            window.openPanel = false;
+            //window.img.src = './assets/footer-button.svg';
+            window.panel.classList.remove('opened');
+        }
+
+        function openPanel(){
+            if (!window.openPanel) {
+                window.openPanel = true;
+                window.panel.classList.add('opened');
+                //window.img.src = './assets/footer-button-enabled.svg';
+                window.titleElem.innerText = '';
+                window.distanceElem.innerText = '';
+                window.moreDetailsLink.href = `https://www.bibliotecasalaborsa.it`;
+
+                updatePanelData();
+            } else {
+                closePanel()
+            }
+        }
+
         window.onload = () => {
             //https://cartigli.chialab.io/index.js
             unicID = "ID-" + Date.now() + "-" + Math.round(Math.random() * 1000);
@@ -187,7 +218,7 @@
             window.detailAddressElem = document.querySelector('.detail-address');
             window.moreDetailsLink = document.querySelector('.more-details');          
 
-            button.addEventListener('click', closePanel())
+            button.addEventListener('click', () => {console.log('close');closePanel()})
 
             let downloaded = false;
             let intervallo = false;
@@ -292,36 +323,7 @@
             });
         };
         
-        function updatePanelData() {
-            window.descriptionElem.innerText = 'window.closestPlace && (window.closestPlace.description || )';
-            window.detailTitle.innerText = 'window.closestPlace && (window.closestPlace.fullname || )';
-            window.detailDistanceElem.innerText = "window.closestPlace && (window.closestPlace.distanceMsg || '')";
-            window.detailAddressElem.innerText = "window.closestPlace && (window.closestPlace.address || '')";
-            
-        }
 
-        function closePanel() {
-            console.log('close')
-            // if already opened, hide panel
-            window.openPanel = false;
-            //window.img.src = './assets/footer-button.svg';
-            window.panel.classList.remove('opened');
-        }
-
-        function openPanel(){
-            if (!window.openPanel) {
-                window.openPanel = true;
-                window.panel.classList.add('opened');
-                //window.img.src = './assets/footer-button-enabled.svg';
-                window.titleElem.innerText = '';
-                window.distanceElem.innerText = '';
-                window.moreDetailsLink.href = `https://www.bibliotecasalaborsa.it`;
-
-                updatePanelData();
-            } else {
-                closePanel()
-            }
-        }
     </script>   
     <!--<body style="margin: 0px; overflow: hidden;">-->
     <body style="margin: 0px 0px 0px -16px; overflow: hidden; height: 480px, width: 640px;"></body>
@@ -414,7 +416,7 @@
                         const scala = el.getAttribute('scale').x;
                         document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + scala);//unicID);
                         
-                        console.log(scale)
+                        
                     });
 
                     el.addEventListener('mouseleave', function () {
