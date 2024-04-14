@@ -173,6 +173,34 @@
         //for (let x = 1; x < 250; x++) {console.log(x,1+Math.log(x*0.9)*1)}
         //return
 
+        var speaker;
+
+        const read = () => {
+            if (!speaker) {
+                [...document.querySelectorAll('.detail-panel')].forEach((element) =>
+                    speaker = new Speaker.Speaker(element, new Speaker.Synthesis(), {
+                        chunk: {
+                            excludeSelector: [
+                                'a',
+                                '.speak',
+                                '.detail-distance',
+                            ].join(', '),
+                        },
+                    })
+                );
+                speaker.play();
+                return;
+            }
+
+            if (speaker.paused) {
+                speaker.play();
+            } else {
+                speaker.cancel();
+                speaker = null;
+            }
+        };
+
+
         function returnDistance(contenitore, text_component){// funzione 
             let text = text_component.getAttribute('name') + " @ ";
             let distance = contenitore.components['gps-new-entity-place'].distance;
@@ -232,8 +260,9 @@
             window.detailTitle = document.querySelector('.detail-title');
             window.detailDistanceElem = document.querySelector('.detail-distance');
             window.detailAddressElem = document.querySelector('.detail-address');
-            window.moreDetailsLink = document.querySelector('.more-details');          
-
+            window.moreDetailsLink = document.querySelector('.more-details');        
+              
+            document.querySelector('.speak').addEventListener('click', () => read());
             button.addEventListener('click', () => {console.log('close');closePanel()})
 
             let downloaded = false;
