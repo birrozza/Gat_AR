@@ -167,7 +167,7 @@
         }
 
         function updatePanelData(el) {
-            const item= data.filter( i => (i.id == el))
+            const item = data.filter( i => (i.id == el))[0]
             window.detailTitle.innerText = item.text;
             window.detailAddressElem.innerText = "Via le mani dal naso, 118";
             window.detailDistanceElem.innerText = window.detailDistanceElem;
