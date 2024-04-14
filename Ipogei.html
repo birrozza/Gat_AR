@@ -235,7 +235,7 @@
                 window.panel.classList.add('opened');
                 window.titleElem.innerText = 'titleElem';
                 window.distanceElem.innerText = 'distanceElem';
-                window.moreDetailsLink.href = `https://https://www.tarantograndtour.it/`;
+                window.moreDetailsLink.href = `https://www.tarantograndtour.it`;
 
                 updatePanelData(el);
             } else {
@@ -262,15 +262,17 @@
             window.detailTitle = document.querySelector('.detail-title');
             window.detailDistanceElem = document.querySelector('.detail-distance');
             window.detailAddressElem = document.querySelector('.detail-address');
-            window.moreDetailsLink = document.querySelector('.more-details');        
+            window.moreDetailsLink = document.querySelector('.more-details');
+            const footerButton = document.querySelector('.footer-button');        
+
 
             document.querySelector('.speak').addEventListener('click', () => read());
             button.addEventListener('click', () => {console.log('close');closePanel()})
 
             let downloaded = false;
             let intervallo = false;
-            const el = document.getElementById('camera');
-
+            const el = document.getElementById('camera'); 
+            footerButton.addEventListener('click', () =>{console.log('click');el.setAttribute('gps-new-camera', "simulateLatitude: 40.473472; simulateLongitude: 17.234467;" )} );
             /*
             
             camera.setAttribute('gps-new-camera', "simulateLatitude: 40.462388; simulateLongitude: 17.250753;" );
@@ -368,7 +370,6 @@
             <div>Loading data, please wait...</div>
         </div>
         <div class="aut">By Angelo Mirabelli</div>
-
 
         <!-- con vr-mode-ui="enabled: false" abilita la funzione VR sul display -->
         <!-- videoTexure: true non abilita la cam -->
