@@ -22,25 +22,8 @@
         <!-- Pure three.js code that the A-Frame components use for GPS location-based AR -->
         <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
         
-        <style>
-            .arjs-loader {
-              height: 100%;
-              width: 100%;
-              position: absolute;
-              top: 0;
-              left: 0;
-              z-index: 9999;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            }
-            .arjs-loader div {
-              text-align: center;
-              font-size: 1.25em;
-              color: black;
-              background-color: #999;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="./index.css">
+        
     </head>
     <script>
         let unicID;
@@ -181,7 +164,39 @@
             //return text_component + ' @ '+ distance
             return text + distance;
         }
+
+        function updatePanelData() {
+            window.descriptionElem.innerText = 'window.closestPlace && (window.closestPlace.description || )';
+            window.detailTitle.innerText = 'window.closestPlace && (window.closestPlace.fullname || )';
+            window.detailDistanceElem.innerText = "window.closestPlace && (window.closestPlace.distanceMsg || '')";
+            window.detailAddressElem.innerText = "window.closestPlace && (window.closestPlace.address || '')";
+            
+        }
+
+        function closePanel() {
+            // if already opened, hide panel
+            window.openPanel = false;
+            //window.img.src = './assets/footer-button.svg';
+            window.panel.classList.remove('opened');
+        }
+
+        function openPanel(){
+            if (!window.openPanel) {
+                window.openPanel = true;
+                window.panel.classList.add('opened');
+                //window.img.src = './assets/footer-button-enabled.svg';
+                window.titleElem.innerText = '';
+                window.distanceElem.innerText = '';
+                window.moreDetailsLink.href = `https://www.bibliotecasalaborsa.it`;
+
+                updatePanelData();
+            } else {
+                closePanel()
+            }
+        }
+
         window.onload = () => {
+            //https://cartigli.chialab.io/index.js
             unicID = "ID-" + Date.now() + "-" + Math.round(Math.random() * 1000);
             console.log('=>', unicID);
             document.getElementById('unicID-text').setAttribute('value', 'By Angelo Mirabelli');//unicID);
@@ -189,6 +204,16 @@
             const loader   = document.getElementById('loader');
             const lon_text = document.getElementById('lon-text');
             const lat_text = document.getElementById('lat-text');
+            window.panel = document.querySelector('.detail-panel');
+            window.img = document.querySelector('.footer-button img');
+
+            window.titleElem = document.querySelector('.footer-place-title');
+            window.distanceElem = document.querySelector('.footer-place-distance');
+            window.descriptionElem = document.querySelector('.detail-description');
+            window.detailTitle = document.querySelector('.detail-title');
+            window.detailDistanceElem = document.querySelector('.detail-distance');
+            window.detailAddressElem = document.querySelector('.detail-address');
+            window.moreDetailsLink = document.querySelector('.more-details');          
 
             let downloaded = false;
             let intervallo = false;
@@ -214,7 +239,6 @@
                             entitaContenitore.setAttribute('cursor-listener','entity-'+item.id)
                             entitaContenitore.setAttribute("descrizione", 'Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. ');
                             
-                           
                             const img = document.createElement("a-image");
                             img.setAttribute("src", "assets/location.png");
                             img.setAttribute("id", 'img-'+item.id);
@@ -294,7 +318,8 @@
             });
         };	        
     </script>   
-    <body style="margin: 0px; overflow: hidden;">
+    <!--<body style="margin: 0px; overflow: hidden;">-->
+    <body style="margin: 0px 0px 0px -16px; overflow: hidden; height: 480px, width: 640px;"></body>
         <div class="arjs-loader" id="loader">
             <div>Loading data, please wait...</div>
         </div>
@@ -338,10 +363,11 @@
                     geometry="primitive: plane; width: .7 height: .5; " material="color: #555; opacity: 0.8"></a-entity>              
                 -->
                 <a-entity
-                    id="cylinderText" visible='true'
+                    id="cylinderText" visible='false'
                     geometry="primitive: plane; width: .7; height: .5; " material="color: #999; opacity: 1"
                     text="xOffset: 0.01; font: mozillavr; baseline: top; value: This text will be 4 units wide."
                     position="0.1 -0.15 -0.9"></a-entity>
+                    <a-text></a-text>
             </a-camera>  
             <!--<a-entity raycaster="objects: .interactive; showLine: true; lineColor: red; lineOpacity: 0.5" cursor></a-entity>     -->   
             <!--
@@ -353,6 +379,24 @@
             </a-entity>           
              -->          
         </a-scene>
+        <div class="footer">
+            <div class="footer-container">
+                <div class="footer-place-title">Titolo del posto</div>
+                <div class="footer-place-distance">distanza</div>
+            </div>
+            <button class="footer-button">Go</button>
+        </div>
+        <div class="detail-panel">
+            <button class="speak"></button>
+            <div class="detail-title"></div>
+            <div class="detail-more">
+                <span class="detai-adress"></span>
+                <span class="detail-distance"></span>
+            </div>
+            <div class="detail-description"></div>
+            <a class="more-details"> Maggiori dettagli ...</a>
+        </div>    
+
         <script>
             AFRAME.registerComponent('cursor-listener', {
                 
@@ -376,7 +420,8 @@
                     el.addEventListener('click', function () {
                         document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
                         console.log('click')
-                        document.getElementById('cylinderText').setAttribute('visible', 'true');
+                        openPanel();
+                        //document.getElementById('cylinderText').setAttribute('visible', 'true');
                         const dis = el.components['gps-new-entity-place'].distance;
                         const lorem = el.getAttribute('descrizione')
                         document.getElementById('cylinderText').setAttribute('text', 'value: click on '+ data +'\n' + dis + '\n' + lorem);
