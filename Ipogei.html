@@ -170,8 +170,7 @@
             window.descriptionElem.innerText = 'window.closestPlace && (window.closestPlace.description || )';
             window.detailTitle.innerText = 'window.closestPlace && (window.closestPlace.fullname || )';
             window.detailDistanceElem.innerText = "window.closestPlace && (window.closestPlace.distanceMsg || '')";
-            window.detailAddressElem.innerText = "window.closestPlace && (window.closestPlace.address || '')";
-            
+            window.detailAddressElem.innerText = "window.closestPlace && (window.closestPlace.address || '')";            
         }
 
         function closePanel() {
@@ -382,7 +381,8 @@
             <button class="footer-button">Go</button>
         </div>
         <div class="detail-panel">
-            <button class="speak">X</button> 
+            <button class="close">X</button>
+            <button class="speak"></button> 
             <div class="detail-title"></div>
             <div class="detail-more">
                 <span class="detai-adress"></span>
