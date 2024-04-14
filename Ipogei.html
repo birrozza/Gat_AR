@@ -195,36 +195,6 @@
             return text + distance;
         }
 
-        function updatePanelData() {
-            window.descriptionElem.innerText = 'window.closestPlace && (window.closestPlace.description || )';
-            window.detailTitle.innerText = 'window.closestPlace && (window.closestPlace.fullname || )';
-            window.detailDistanceElem.innerText = "window.closestPlace && (window.closestPlace.distanceMsg || '')";
-            window.detailAddressElem.innerText = "window.closestPlace && (window.closestPlace.address || '')";
-            
-        }
-
-        function closePanel() {
-            // if already opened, hide panel
-            window.openPanel = false;
-            //window.img.src = './assets/footer-button.svg';
-            window.panel.classList.remove('opened');
-        }
-
-        function openPanel(){
-            if (!window.openPanel) {
-                window.openPanel = true;
-                window.panel.classList.add('opened');
-                //window.img.src = './assets/footer-button-enabled.svg';
-                window.titleElem.innerText = '';
-                window.distanceElem.innerText = '';
-                window.moreDetailsLink.href = `https://www.bibliotecasalaborsa.it`;
-
-                updatePanelData();
-            } else {
-                closePanel()
-            }
-        }
-
         window.onload = () => {
             //https://cartigli.chialab.io/index.js
             unicID = "ID-" + Date.now() + "-" + Math.round(Math.random() * 1000);
@@ -349,7 +319,37 @@
                 downloaded=true; 
                 loader.setAttribute("style", "display: none;");                  
             });
-        };	        
+        };
+        
+        function updatePanelData() {
+            window.descriptionElem.innerText = 'window.closestPlace && (window.closestPlace.description || )';
+            window.detailTitle.innerText = 'window.closestPlace && (window.closestPlace.fullname || )';
+            window.detailDistanceElem.innerText = "window.closestPlace && (window.closestPlace.distanceMsg || '')";
+            window.detailAddressElem.innerText = "window.closestPlace && (window.closestPlace.address || '')";
+            
+        }
+
+        function closePanel() {
+            // if already opened, hide panel
+            window.openPanel = false;
+            //window.img.src = './assets/footer-button.svg';
+            window.panel.classList.remove('opened');
+        }
+
+        function openPanel(){
+            if (!window.openPanel) {
+                window.openPanel = true;
+                window.panel.classList.add('opened');
+                //window.img.src = './assets/footer-button-enabled.svg';
+                window.titleElem.innerText = '';
+                window.distanceElem.innerText = '';
+                window.moreDetailsLink.href = `https://www.bibliotecasalaborsa.it`;
+
+                updatePanelData();
+            } else {
+                closePanel()
+            }
+        }
     </script>   
     <!--<body style="margin: 0px; overflow: hidden;">-->
     <body style="margin: 0px 0px 0px -16px; overflow: hidden; height: 480px, width: 640px;"></body>
