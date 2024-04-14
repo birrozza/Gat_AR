@@ -368,6 +368,8 @@
             arjs="sourceType: webcam; debugUIEnabled: false; "
             >    
             <a-camera id = "camera" 
+                look-controls-enabled='false' 
+                arjs-device-orientation-controls='smoothingFactor: 0.1'
                 gps-new-camera = 'gpsMinDistance: 5'
                 rotation-reader>                
                 <a-entity
