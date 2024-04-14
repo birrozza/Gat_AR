@@ -26,36 +26,7 @@
         
     </head>
     <script>
-        AFRAME.registerComponent('cursor-listener', {
-                
-                init: function () {
-
-                    var data = this.data;
-                    var el = this.el;                  
-
-                    el.addEventListener('mouseenter', function () {
-                        const scala = el.getAttribute('scale').x;
-                        document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + scala);//unicID);
-                        
-                        console.log(scale)
-                    });
-
-                    el.addEventListener('mouseleave', function () {
-                        document.getElementById('unicID-text').setAttribute('value', 'mouse leave on' + data);
-                        document.getElementById('cylinderText').setAttribute('visible', 'false');
-                    });
-
-                    el.addEventListener('click', function () {
-                        document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
-                        console.log('click')
-                        openPanel();
-                        //document.getElementById('cylinderText').setAttribute('visible', 'true');
-                        const dis = el.components['gps-new-entity-place'].distance;
-                        const lorem = el.getAttribute('descrizione')
-                        document.getElementById('cylinderText').setAttribute('text', 'value: click on '+ data +'\n' + dis + '\n' + lorem);
-                    });
-                }
-        });
+        
         let unicID;
         const data = [{
             id: 0,
@@ -330,6 +301,7 @@
         }
 
         function closePanel() {
+            console.log('close')
             // if already opened, hide panel
             window.openPanel = false;
             //window.img.src = './assets/footer-button.svg';
@@ -380,10 +352,10 @@
                 <a-text
                     animation="property: components.text.material.uniforms.opacity.value; to: 0; dir: alternate; loop: true"
                     font = "https://cdn.aframe.io/fonts/Exo2Bold.fnt"
-                    position="-0.2 -0.3 -1"
+                    position="0.4 0.8 -1"
                     value="Beta test!"
                     opacity=1
-                    width="2"
+                    width=".7"
                     color="red"
                     id="text-camera"
                 ></a-text>
@@ -430,7 +402,7 @@
             <a class="more-details"> Maggiori dettagli ...</a>
         </div>    
 
-        <script>/*
+        <script>
             AFRAME.registerComponent('cursor-listener', {
                 
                 init: function () {
@@ -456,11 +428,12 @@
                         openPanel();
                         //document.getElementById('cylinderText').setAttribute('visible', 'true');
                         const dis = el.components['gps-new-entity-place'].distance;
+                        window.detailDistanceElem = dis;
                         const lorem = el.getAttribute('descrizione')
                         document.getElementById('cylinderText').setAttribute('text', 'value: click on '+ data +'\n' + dis + '\n' + lorem);
                     });
                 }
-            });*/
+            });
         </script>
     </body>
 </html>
