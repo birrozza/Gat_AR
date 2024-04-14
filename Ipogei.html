@@ -166,8 +166,8 @@
             return text + distance;
         }
 
-        function updatePanelData() {
-            window.descriptionElem.innerText = 'window.closestPlace && (window.closestPlace.description || )';
+        function updatePanelData(el) {
+            window.descriptionElem.innerText = el;
             window.detailTitle.innerText = 'window.closestPlace && (window.closestPlace.fullname || )';
             //window.detailDistanceElem.innerText = window.detailDistanceElem;
             window.detailAddressElem.innerText = "window.closestPlace && (window.closestPlace.address || '')";            
