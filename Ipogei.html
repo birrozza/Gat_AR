@@ -204,6 +204,7 @@
             const loader   = document.getElementById('loader');
             const lon_text = document.getElementById('lon-text');
             const lat_text = document.getElementById('lat-text');
+            const button = document.querySelector('.footer-button');
             window.panel = document.querySelector('.detail-panel');
             window.img = document.querySelector('.footer-button img');
 
@@ -214,6 +215,8 @@
             window.detailDistanceElem = document.querySelector('.detail-distance');
             window.detailAddressElem = document.querySelector('.detail-address');
             window.moreDetailsLink = document.querySelector('.more-details');          
+
+            button.addEventListener('click', closePanel())
 
             let downloaded = false;
             let intervallo = false;
