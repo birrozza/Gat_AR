@@ -25,9 +25,9 @@ button {
     background-color: #999;
 }
 .detail-panel {
-    border: 5px solid black;
+    border: 2px solid blue;
     z-index: 10;
-    background-color: white;
+    background-color: whitesmoke;
     z-index: inherit;
     position: absolute;
     bottom: 4em;

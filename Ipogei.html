@@ -267,22 +267,9 @@
                             sfondo.object3D.position.set(0, 0, -10);                              
                             //sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
                             sfondo.setAttribute('width', (item.text.length+12)*0.06);
-                            sfondo.setAttribute("height", 0.5);   
+                            sfondo.setAttribute("height", 0.5);  
                                              
-
-                            /*const entityMix = document.createElement("a-entity");
-                            entityMix.setAttribute("id", 'text-'+item.id);
-                            entityMix.setAttribute('geometry','primitive: plane');
-                            entityMix.setAttribute('material',"color: white; opacity: 0.5");
-                            entityMix.setAttribute('width','auto');
-                            entityMix.setAttribute('height','0.5');
-                            entityMix.setAttribute('scale','3 1.5 0');
-                            entityMix.setAttribute('position','0 0 -10');
-                            entityMix.setAttribute('text','color: white; align: center; value: '+item.text);
-                            */
-
                             entitaContenitore.appendChild(img);
-                            //entitaContenitore.appendChild(entityMix);
                             entitaContenitore.appendChild(sfondo); 
                             entitaContenitore.appendChild(text);                     
                             document.querySelector("a-scene").appendChild(entitaContenitore);
@@ -355,7 +342,7 @@
                 <a-text
                     animation="property: components.text.material.uniforms.opacity.value; to: 0; dir: alternate; loop: true"
                     font = "https://cdn.aframe.io/fonts/Exo2Bold.fnt"
-                    position="0.4 0.8 -1"
+                    position="0.4 0.6 -1"
                     value="Beta test!"
                     opacity=1
                     width=".7"
@@ -369,13 +356,13 @@
                 <!--
                 <a-entity id="cylinderText" value="This is a cylinder" align="center" with="0.2" color="#fff" visible="true" position="0 -0.3 -0.9"
                     geometry="primitive: plane; width: .7 height: .5; " material="color: #555; opacity: 0.8"></a-entity>              
-                -->
+                
                 <a-entity
                     id="cylinderText" visible='false'
                     geometry="primitive: plane; width: .7; height: .5; " material="color: #999; opacity: 1"
                     text="xOffset: 0.01; font: mozillavr; baseline: top; value: This text will be 4 units wide."
                     position="0.1 -0.15 -0.9"></a-entity>
-                    <a-text></a-text>
+                    <a-text></a-text>-->
             </a-camera>  
             <!--<a-entity raycaster="objects: .interactive; showLine: true; lineColor: red; lineOpacity: 0.5" cursor></a-entity>     -->   
             <!--
@@ -427,7 +414,7 @@
 
                     el.addEventListener('click', function () {
                         document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
-                        console.log('click')
+                        console.log('click', el)
                         apriPannello();
                         //document.getElementById('cylinderText').setAttribute('visible', 'true');
                         const dis = el.components['gps-new-entity-place'].distance;
