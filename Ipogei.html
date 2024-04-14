@@ -267,6 +267,10 @@
             let intervallo = false;
             const el = document.getElementById('camera');
 
+            /*
+            
+            camera.setAttribute('gps-new-camera', "simulateLatitude: 40.462388; simulateLongitude: 17.250753;" );
+            */
             el.addEventListener("gps-camera-update-position", async(e) => {
                 const lon = e.detail.position.longitude.toFixed(8); // massimo 8 cifre decimali
                 const lat = e.detail.position.latitude.toFixed(8);
@@ -368,8 +372,7 @@
             arjs="sourceType: webcam; debugUIEnabled: false; "
             >    
             <a-camera id = "camera" 
-                look-controls-enabled='false' 
-                arjs-device-orientation-controls='smoothingFactor: 0.2'
+                
                 gps-new-camera = 'gpsMinDistance: 5'
                 rotation-reader>                
                 <a-entity
