@@ -49,6 +49,7 @@
 
 .detail-address {
     text-transform: capitalize;
+    font-size: 1.3em;
 }
 
 .detail-more {
