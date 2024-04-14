@@ -295,7 +295,7 @@
                                 longitude: item.lon
                             });
                             entitaContenitore.setAttribute('cursor-listener', item.id)
-                            entitaContenitore.setAttribute("descrizione", 'Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. ');
+                            //entitaContenitore.setAttribute("descrizione", 'Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. ');
                             
                             const img = document.createElement("a-image");
                             img.setAttribute("src", "assets/location.png");
@@ -332,7 +332,7 @@
                             data.forEach(item => {
                                 const contenitore = document.getElementById('entity-' + item.id)
                                 const distance = contenitore.components['gps-new-entity-place'].distance;
-                                //if (distance >800) return;
+                                if (distance >250) return;
                                 item.distance = distance;
                                 const text = document.getElementById('text-'+ item.id)                                
                                 
