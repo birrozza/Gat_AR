@@ -33,6 +33,7 @@
             id_text: "text-casa-santegidio",
             id_img: "casa-santegidio",
             type: "location",
+            via: "Pendio La Riccia",
             text: "CASA NATIA SANT’EGIDIO ",
             imgURL: "assets/uscita-emergenza.jpg",
             lat: 40.474332, 
@@ -42,6 +43,7 @@
             id_text: "text-santagostino",
             id_img: "santagostino",
             type: "location",
+            via: "Vicolo Sant’Agostino",
             text: "SANT’AGOSTINO ",
             imgURL: "assets/location.png",
             lat: 40.473931137786714, 
@@ -51,6 +53,7 @@
             id_text: "text-PALAZZO-GALEOTA",
             id_img: "PALAZZO-GALEOTA",
             type: "location",
+            via: "Via Duomo, 234",
             text: "PALAZZO GALEOTA ",
             imgURL: "assets/location.png",
             lat: 40.4745816,
@@ -60,6 +63,7 @@
             id_text: "text-PIAZZA-DUOMO",
             id_img: "PIAZZA-DUOMO",
             type: "location",
+            via: "Via Duomo, 131",
             text: "PIAZZA DUOMO ",
             imgURL: "assets/location.png",
             lat: 40.4759083,
@@ -69,6 +73,7 @@
             id_text: "text-PALAZZO-ULMO",
             id_img: "PALAZZO-ULMO",
             type: "location",
+            via: "Via Duomo, 53/55",
             text: "PALAZZO ULMO ",
             imgURL: "assets/location.png",
             lat: 40.4767877,
@@ -78,6 +83,7 @@
             id_text: "text-PALAZZO-SPARTERA",
             id_img: "PALAZZO-SPARTERA",
             type: "location",
+            via: "Corso Vittorio Emanuele II, 17",
             text: "PALAZZO SPARTERA ",
             imgURL: "assets/location.png",
             lat: 40.4768893,
@@ -87,6 +93,7 @@
             id_text: "text-hotel-armeni",
             id_img: "hotel-armeni",
             type: "location",
+            via: "Via G. Paisiello, 20",
             text: "HOTEL SAN ANDREA DEGLI ARMENI ",
             imgURL: "assets/location.png",
             lat: 40.4750046,
@@ -96,6 +103,7 @@
             id_text: "text-PALAZZOSTOLA",
             id_img: "PALAZZOSTOLA",
             type: "location",
+            via: "Via G. Paisiello, 44",
             text: "PALAZZO STOLA ",
             imgURL: "assets/alert.png",
             lat: 40.4741673,
@@ -105,6 +113,7 @@
             id_text: "text-PALAZZOantonlli",
             id_img: "PALAZZOantonelli",
             type: "location",
+            via: "Vicolo I Quartiere",
             text: "PALAZZO ANTONELLI ",
             imgURL: "assets/alert.png",
             lat: 40.4736595,
@@ -114,6 +123,7 @@
             id_text: "text-PALAZZOborion",
             id_img: "PALAZZOborion",
             type: "location",
+            via: "Via G. Paisiello, 56",
             text: "PALAZZO BARION SANTAMATO ",
             imgURL: "assets/alert.png",
             lat: 40.4739412,
@@ -123,6 +133,7 @@
             id_text: "text-temenide",
             id_img: "temenide",
             type: "location",
+            via: "Via temenide, 77",
             text: "TEST TEMENIDE ",
             imgURL: "assets/uscita-emergenza.jpg",
             lat: 40.462654,
@@ -132,6 +143,7 @@
             id_text: "text-piscina",
             id_img: "PISCINA",
             type: "location",
+            via: "Via Bruno, 55",
             text: "TEST PISCINA MEDITERRANEO VILLAGE",
             imgURL: "assets/uscita-emergenza.jpg",
             lat: 40.463419, 
@@ -141,6 +153,7 @@
             id_text: "text-santantonio",
             id_img: "santantoio",
             type: "location",
+            via: "Via Regina Eelena, 99",
             text: "SANT'ANTONIO ",
             imgURL: "assets/uscita-emergenza.jpg",
             lat: 40.465524, 
@@ -150,6 +163,7 @@
             id_text: "text-box",
             id_img: "box",
             type: "location",
+            via: "Via box auto xx",
             text: "TEST BOX GARAGE AUTO",
             imgURL: "assets/uscita-emergenza.jpg",
             lat: 40.462378, 
@@ -169,8 +183,8 @@
         function updatePanelData(el) {
             const item = data.filter( i => (i.id == el))[0]
             window.detailTitle.innerText = item.text;
-            window.detailAddressElem.innerText = "Via le mani dal naso, 118";
-            window.detailDistanceElem.innerText = window.detailDistanceElem;
+            window.detailAddressElem.innerText = item.via;
+            window.detailDistanceElem.innerText = window.detailDistanceElem.value;
             window.descriptionElem.innerText = 'Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione.';
         }
 
