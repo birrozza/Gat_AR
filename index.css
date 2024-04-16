@@ -16,7 +16,9 @@
 }
 
 .arjs-loader {
-    height: 100%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    height: 70%;
     width: 100%;
     position: absolute;
     top: 0;
@@ -73,10 +75,9 @@
     font-weight: bold;
 }
 
-.close{
+.close, .it, .en{
     background-color: lightgrey;
-    position: absolute;
-    left: 0.5em;
+    position: absolute;    
     top: 0.5em;
     border: 1px solid black;    
     width: 2em;
@@ -84,6 +85,16 @@
     background-size: contain;
     /*background-color: transparent;*/
     outline: none;
+}
+
+.close{
+    left: 0.5em;
+}
+.it{
+    right: 4em;
+}
+.en{
+    right: 8em;
 }
 
 .close:hover{
