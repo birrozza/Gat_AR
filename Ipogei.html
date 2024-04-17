@@ -22,7 +22,7 @@
         <!-- Pure three.js code that the A-Frame components use for GPS location-based AR -->
         <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
         
-        <script type="module" src="./speaker.js"></script>
+        <!--<script type="module" src="./speaker.js"></script>-->
         
         <link rel="stylesheet" type="text/css" href="./index.css">
         <link rel="stylesheet" type="text/css" href="./font.css">
@@ -200,16 +200,14 @@
             if(speaker.speaking){
                 parla.classList.add('attivo');
             } else {
-                parla.classList.remove('attivo');
-                
+                parla.classList.remove('attivo');                
             }
         }, 500); //~ setIntervall
 
         const read = () => {
             if (!speaker.speaking){
                 console.log('in')
-                const testo=window.detailTitle.innerHTML+'. '+window.descriptionElem.innerHTML
-                
+                const testo=window.detailTitle.innerHTML+'. '+window.descriptionElem.innerHTML;                
                 var utterance = new SpeechSynthesisUtterance(testo);
                 utterance.lang= lang;
                 speaker.speak(utterance);
@@ -318,8 +316,19 @@
             window.detailAddressElem = document.querySelector('.detail-address');
             window.moreDetailsLink = document.querySelector('.more-details');
                   
-            itButton.addEventListener('click', () => {lang='it-IT'; updatePanelData(poiAttivo)});//document.querySelector('html').setAttribute('lang', 'it-IT'));
-            enButton.addEventListener('click', () => {lang='en'; updatePanelData(poiAttivo)});//document.querySelector('html').setAttribute('lang', ''));
+            itButton.addEventListener('click', () => {
+                lang='it-IT'; 
+                document.querySelector('.it').setAttribute('disabled','')
+                document.querySelector('.en').removeAttribute('disabled')
+                updatePanelData(poiAttivo);
+                
+            });
+            enButton.addEventListener('click', () => {
+                lang='en';
+                document.querySelector('.en').setAttribute('disabled','')
+                ocument.querySelector('.it').removeAttribute('disabled') 
+                updatePanelData(poiAttivo)
+            });
 
             document.querySelector('.speak').addEventListener('click', () => read());
             button.addEventListener('click', () => {console.log('close');closePanel()})
@@ -495,8 +504,8 @@
         </div>
         <div class="detail-panel">
             <button class="close">X</button>
-            <button class="it">It</button>
-            <button class="en">En</button>
+            <button class="it" disabled></button>
+            <button class="en"></button>
             <button class="speak"></button> 
             <div class="detail-title"></div>
             <div class="detail-more">
