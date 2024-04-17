@@ -115,14 +115,14 @@
     outline: none;
 }
 
-.speak.attivo{
-    animation:brath 2s  linear infinite important!;
+.attivo{
+    animation: brath 3s  linear infinite important! ;
 }
 
 @keyframes brath{
     0%{transform: scale(1);}
-    25%{transform: scale(.8);}
-    60%{transform: scale(1.4);}
+    25%{transform: scale(1.1);}
+    60%{transform: scale(1.9);}
     100%{transform: scale(1);}
 }
 

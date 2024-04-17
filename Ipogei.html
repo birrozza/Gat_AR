@@ -30,6 +30,7 @@
     </head>
     <script>
         let lang='it-IT'
+        let poiAttivo;
 
         let unicID;
         const data = [{
@@ -41,6 +42,7 @@
             text: "CASA NATIA SANT’EGIDIO ",
             imgURL: "assets/uscita-emergenza.jpg",
             descrizione: "Sant’Egidio Maria di San Giuseppe, nacque nella piccola abitazione, oggi destinata a luogo di preghiera, il 16 novembre del 1729 da una umile famiglia tarantina. Fin da ragazzo si distinse per la sua sensibilità e l’amore verso i poveri, morto il padre intraprese la vita religiosa. Dopo i Voti Solenni giunse a Napoli e fu destinato al Convento di San Pasquale a Chiaia. Occupato in mansioni umilissime visse nel capoluogo campano per circa cinquant’anni dedicandosi ai più poveri nonostante crescesse la sua fama di taumaturgo che lo portò al capezzale di molti malati che si diceva guarisse con la preghiera ed il semplice tocco della parte malata con un reliquiario di San Pasquale Bayron. Sant’Egidio Maria di San Giuseppe, definito il “consolatore di Napoli”, morì nella città partenopea il 7 febbraio del 1812. Dopo un lunghissimo processo di beatificazione, avviato da Papa Pio IX con il decreto attestante le eroiche virtù del religioso tarantino nel 1868, è stato canonizzato nel 1996.",
+            descrizioneInglese: "Sant'Egidio Maria di San Giuseppe was born in the small house, now used as a place of prayer, on 16 November 1729 by a humble family from Taranto. Since he was a boy he stood out for his sensitivity and love towards the poor. After his father's death he took up religious life. After the Solemn Vows he arrived in Naples and was assigned to the Convent of San Pasquale a Chiaia. Occupied in very humble tasks, he lived in the Campania capital for about fifty years, dedicating himself to the poorest despite his growing fame as a miracle worker which brought him to the bedside of many sick people who were said to heal with prayer and the simple touch of the sick part with a reliquary of Saint Paschal Bayron. Sant'Egidio Maria di San Giuseppe, defined as the 'consoler of Naples', died in the Neapolitan city on 7 February 1812. After a very long beatification process, started by Pope Pius IX with the decree certifying the heroic virtues of the Taranto religious in 1868 , was canonized in 1996",
             lat: 40.474332, 
             lon: 17.2343445
         },{
@@ -52,6 +54,7 @@
             text: "SANT’AGOSTINO ",
             imgURL: "assets/location.png",
             descrizione: "Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum. ",
+            descrizioneInglese: "",
             lat: 40.473931137786714, 
             lon: 17.233784821170858,
         },{
@@ -63,6 +66,7 @@
             text: "PALAZZO GALEOTA ",
             imgURL: "assets/location.png",
             descrizione: "Tipico esempio di Palazzo nobiliare settecentesco ottenuto dall’accorpamento di precedenti edifici medievali fusi intorno ad un cortile centrale; l’edificio, costruito da don Vincenzo Cosa, canonico della Cattedrale di San Cataldo e solo successivamente passato alla nobile famiglia Galeota, ospita nel suo ipogeo il Museo del Principato Maria D’Enghien, un allestimento dedicato al personaggio femminile per antonomasia del medioevo tarantino, la principessa che   il 23 aprile del 1407, nel giorno dunque di San Giorgio, convolò a nozze con il re di Napoli Ladislao di Durazzo, divenendo regina. Il Principato di Taranto era nato alla fine dell’XI secolo, in seguito ai problemi di disputa sulla successione degli Altavilla, i Normanni che stavano conquistando tutta l’Italia Meridionale. L’allestimento, in più ambienti, riproduce spaccati della vita domestica, produttiva e militare del periodo del Principato. ",
+            descrizioneInglese: "Typical example of an eighteenth-century noble palace obtained by merging previous medieval buildings fused around a central courtyard; the building, built by Don Vincenzo Cosa, canon of the Cathedral of San Cataldo and only subsequently passed to the noble Galeota family, houses in its hypogeum the Museum of the Principality Maria D'Enghien, an exhibition dedicated to the female character par excellence of the Taranto Middle Ages, the princess who on 23 April 1407, therefore on the day of San Giorgio, got married to the king of Naples Ladislaus of Durazzo, becoming queen. The Principality of Taranto was born at the end of the 11th century, following the problems of dispute over the succession of the Altavillas, the Normans who were conquering all of Southern Italy. The exhibition, in multiple rooms, reproduces glimpses of the domestic, productive and military life of the Principate period.",
             lat: 40.4745816,
             lon: 17.2318503,
         },{
@@ -212,7 +216,7 @@
                 return;
             }
             if(speaker.pause()){
-                speaker.resumee()
+                speaker.resume()
             } else {
                 speaker.cancel();
                 //speaker = 'cancell';
@@ -262,7 +266,8 @@
             window.detailAddressElem.innerText = item.via;
             const dist = document.getElementById('entity-' + item.id).components['gps-new-entity-place'].distance;
             window.detailDistanceElem.innerText = dist? Math.round(dist)+' metri': '---';
-            window.descriptionElem.innerText = item.descrizione;
+            if (lang=="it-IT") window.descriptionElem.innerText = item.descrizione;
+            else window.descriptionElem.innerText = item.descrizioneInglese;
         }
 
         function closePanel() {
@@ -313,8 +318,8 @@
             window.detailAddressElem = document.querySelector('.detail-address');
             window.moreDetailsLink = document.querySelector('.more-details');
                   
-            itButton.addEventListener('click', () => lang='it-IT');//document.querySelector('html').setAttribute('lang', 'it-IT'));
-            enButton.addEventListener('click', () => lang='en');//document.querySelector('html').setAttribute('lang', ''));
+            itButton.addEventListener('click', () => {lang='it-IT'; updatePanelData(poiAttivo)});//document.querySelector('html').setAttribute('lang', 'it-IT'));
+            enButton.addEventListener('click', () => {lang='en'; updatePanelData(poiAttivo)});//document.querySelector('html').setAttribute('lang', ''));
 
             document.querySelector('.speak').addEventListener('click', () => read());
             button.addEventListener('click', () => {console.log('close');closePanel()})
@@ -520,6 +525,7 @@
 
                     el.addEventListener('click', function () {
                         document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
+                        poiAttivo = data;
                         apriPannello(data);
                         const dis = el.components['gps-new-entity-place'].distance;
                         const lorem = el.getAttribute('descrizione')
