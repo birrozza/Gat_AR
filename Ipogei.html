@@ -188,13 +188,24 @@
             lon: 17.250763
         }];     
         
-        var speaker;
+        speaker = window.speechSynthesis;
+
+        const a = setInterval(() =>{
+            
+            const parla = document.querySelector('.speak');
+            if(speaker.speaking){
+                parla.classList.add('attivo');
+            } else {
+                parla.classList.remove('attivo');
+                
+            }
+        }, 500); //~ setIntervall
 
         const read = () => {
-            if (!speaker){
+            if (!speaker.speaking){
                 console.log('in')
                 const testo=window.detailTitle.innerHTML+'. '+window.descriptionElem.innerHTML
-                speaker = window.speechSynthesis;
+                
                 var utterance = new SpeechSynthesisUtterance(testo);
                 utterance.lang= lang;
                 speaker.speak(utterance);
@@ -204,7 +215,7 @@
                 speaker.resumee()
             } else {
                 speaker.cancel();
-                speaker = null;
+                //speaker = 'cancell';
             }
 
         } // ~ const read
@@ -255,6 +266,7 @@
         }
 
         function closePanel() {
+            if(speaker.speaking) speaker.cancel()
             
             // if already opened, hide panel
             window.openPanel = false;
