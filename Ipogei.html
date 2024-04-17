@@ -6,7 +6,7 @@
 <!-- Questa estensione aggiunge il supporto per il tracciamento di caratteristiche naturali (NFT)
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
  -->
-<html lang='it-IT'>
+<html lang=''>
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -29,7 +29,8 @@
         
     </head>
     <script>
-        
+        let lang='it-IT'
+
         let unicID;
         const data = [{
             id: 0,
@@ -190,13 +191,33 @@
         var speaker;
 
         const read = () => {
+            if (!speaker){
+                console.log('in')
+                const testo=window.detailTitle.innerHTML+'. '+window.descriptionElem.innerHTML
+                speaker = window.speechSynthesis;
+                var utterance = new SpeechSynthesisUtterance(testo);
+                utterance.lang= lang;
+                speaker.speak(utterance);
+                return;
+            }
+            if(speaker.pause()){
+                speaker.resumee()
+            } else {
+                speaker.cancel();
+                speaker = null;
+            }
+
+        } // ~ const read
+
+        /*
+        const read = () => {
             if (!speaker) {
                 [...document.querySelectorAll('.detail-panel')].forEach((element) =>
                     speaker = new Speaker.Speaker(element, new Speaker.Synthesis(), {
                         chunk: {
                             excludeSelector: [
                                 'a', 
-                                '.close',
+                                '.close', '.it', '.en',
                                 '.detail-address',
                                 '.speak',
                                 '.detail-distance',
@@ -215,7 +236,7 @@
                 speaker = null;
             }
         };
-
+        */
         function returnDistance(contenitore, text_component){// funzione 
             let text = text_component.getAttribute('name') + " @ ";
             let distance = contenitore.components['gps-new-entity-place'].distance;
@@ -265,6 +286,10 @@
             const lon_text = document.getElementById('lon-text');
             const lat_text = document.getElementById('lat-text');
             const button = document.querySelector('.close');
+            const footerButton = document.querySelector('.footer-button');  
+            const itButton = document.querySelector('.it');
+            const enButton = document.querySelector('.en');
+
             window.panel = document.querySelector('.detail-panel');
             window.img = document.querySelector('.footer-button img');
 
@@ -275,8 +300,9 @@
             window.detailDistanceElem = document.querySelector('.detail-distance');
             window.detailAddressElem = document.querySelector('.detail-address');
             window.moreDetailsLink = document.querySelector('.more-details');
-            const footerButton = document.querySelector('.footer-button');        
-
+                  
+            itButton.addEventListener('click', () => lang='it-IT');//document.querySelector('html').setAttribute('lang', 'it-IT'));
+            enButton.addEventListener('click', () => lang='en');//document.querySelector('html').setAttribute('lang', ''));
 
             document.querySelector('.speak').addEventListener('click', () => read());
             button.addEventListener('click', () => {console.log('close');closePanel()})
