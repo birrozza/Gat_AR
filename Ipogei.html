@@ -275,7 +275,6 @@
             window.detailDistanceElem.innerText = dist? Math.round(dist)+' metri': '---';
             if (lang=="it-IT") window.descriptionElem.innerText = item.descrizione;
             else window.descriptionElem.innerText = item.descrizioneInglese;
-            window.descriptionElem.classList.add('fade-in');
             setTimeout(() => {
                 window.descriptionElem.classList.remove('fade-in');
             }, 1500)
@@ -332,13 +331,14 @@
                 lang='it-IT'; 
                 document.querySelector('.it').setAttribute('disabled','')
                 document.querySelector('.en').removeAttribute('disabled')
-                
+                window.descriptionElem.classList.add('fade-in');
                 updatePanelData(poiAttivo);                
             });
             enButton.addEventListener('click', () => {
                 lang='en';
                 document.querySelector('.en').setAttribute('disabled','')
                 document.querySelector('.it').removeAttribute('disabled') 
+                window.descriptionElem.classList.add('fade-in');
                 updatePanelData(poiAttivo)
             });
 
