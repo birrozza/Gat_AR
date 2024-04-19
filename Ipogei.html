@@ -199,8 +199,17 @@
             const parla = document.querySelector('.speak');
             if(speaker.speaking){
                 parla.classList.add('attivo');
+                document.querySelector('.it').setAttribute('disabled','')
+                document.querySelector('.en').setAttribute('disabled','')
             } else {
-                parla.classList.remove('attivo');                
+                parla.classList.remove('attivo');
+                if (lang=='it-IT')  {
+                    document.querySelector('.it').setAttribute('disabled','')
+                    document.querySelector('.en').removeAttribute('disabled')
+                } else {
+                    document.querySelector('.en').setAttribute('disabled','')
+                    document.querySelector('.it').removeAttribute('disabled')
+                }             
             }
         }, 500); //~ setIntervall
 
@@ -266,11 +275,14 @@
             window.detailDistanceElem.innerText = dist? Math.round(dist)+' metri': '---';
             if (lang=="it-IT") window.descriptionElem.innerText = item.descrizione;
             else window.descriptionElem.innerText = item.descrizioneInglese;
+            window.descriptionElem.classList.add('fade-in');
+            setTimeout(() => {
+                window.descriptionElem.classList.remove('fade-in');
+            }, 1500)
         }
 
         function closePanel() {
-            if(speaker.speaking) speaker.cancel()
-            
+            if(speaker.speaking) speaker.cancel();            
             // if already opened, hide panel
             window.openPanel = false;
             window.panel.classList.remove('opened');
@@ -320,8 +332,8 @@
                 lang='it-IT'; 
                 document.querySelector('.it').setAttribute('disabled','')
                 document.querySelector('.en').removeAttribute('disabled')
-                updatePanelData(poiAttivo);
                 
+                updatePanelData(poiAttivo);                
             });
             enButton.addEventListener('click', () => {
                 lang='en';
@@ -512,7 +524,7 @@
                 <span class="detail-address"></span>
                 <span class="detail-distance"></span>
             </div>
-            <div class="detail-description"></div>
+            <div class="detail-description "></div>
             <a class="more-details"> Maggiori dettagli ...</a>
         </div>    
 
