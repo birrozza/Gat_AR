@@ -222,3 +222,11 @@
         opacity: 100%;
     }    
 }
+
+#map{
+    margin: 10px;
+    border: 1px solid black;
+    box-shadow: 3px 3px 6px #303030;
+    height: 150px;  
+    
+}
