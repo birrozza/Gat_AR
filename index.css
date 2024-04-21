@@ -55,7 +55,7 @@
 
 
 .detail-panel.opened {
-    transform: translateY(-50%);
+    transform: translateY(-70%);
 }
 
 .detail-address {
