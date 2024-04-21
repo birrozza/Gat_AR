@@ -32,6 +32,8 @@
         
         <link rel="stylesheet" type="text/css" href="./index.css">
         <link rel="stylesheet" type="text/css" href="./font.css">
+        <script src="./leaflet-pulse-icon/L.Icon.Pulse.js" ></script>
+        <link rel="stylesheet" href="./leaflet-pulse-icon/L.Icon.Pulse.css" >
         
     </head>
     <script>
@@ -553,7 +555,8 @@
             });
 
             let positionMarker = L.marker([40.462654, 17.250845]).addTo(map);
-            positionMarker.setIcon(L.icon({iconUrl: '/assets/dot.png', iconSize: [10,10]}))
+            //positionMarker.setIcon(L.icon({iconUrl: '/assets/dot.png', iconSize: [10,10]}))
+            positionMarker.setIcon(L.icon.pulse({iconSize:[10,10],color:'blue', fillColor: 'blue', heartbeat: 2}));
 
             AFRAME.registerComponent('cursor-listener', {
                 
