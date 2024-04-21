@@ -15,6 +15,14 @@
     z-index: 999999;
 }
 
+.logo{
+    position: absolute;
+    top:0.5em;
+    width: 9em;
+    height: 9em;
+    
+}
+
 .arjs-loader {
     margin-top: 100px;
     margin-bottom: 100px;
@@ -52,7 +60,6 @@
     flex-direction: column;
     transition: transform 300ms ease-out;
 }
-
 
 .detail-panel.opened {
     transform: translateY(12%);
