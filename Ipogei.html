@@ -284,11 +284,10 @@
             // if already opened, hide panel
             window.openPanel = false;
             window.panel.classList.remove('opened');
-            document.querySelector('.close').style('background-color', 'lightgray')
+            document.querySelector('.close').style.backgroundColor='lightgray'
         }
 
-        function apriPannello(el) {
-            
+        function apriPannello(el) {           
             
             if (!window.openPanel) {
                 window.openPanel = true;
@@ -298,16 +297,7 @@
                 window.moreDetailsLink.href = `https://www.tarantograndtour.it`;
                 const item = data.filter( i => (i.id == el))[0]
                 var latlng = L.latLng(item.lat, item.lon);
-                /*
-                map= L.map('map').setView(latlng, 18);
-                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    maxZoom: 19,
-                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                }).addTo(map);
-                */
                 map.setView(latlng, 18);
-                //let marker=L.marker(latlng).addTo(map)
-
                 updatePanelData(el);
             } else {
                 closePanel()
@@ -538,9 +528,11 @@
                 <span class="detail-address"></span>
                 <span class="detail-distance"></span>
             </div>
-            <div class="detail-description "></div>
+            <div class="detail-description ">
+                <a class="more-details"> Maggiori dettagli ...</a>
+            </div>
             <div id="map"></div>
-            <a class="more-details"> Maggiori dettagli ...</a>
+            
         </div>    
 
         <script>
