@@ -283,11 +283,13 @@
             window.openPanel = false;
             window.panel.classList.remove('opened');
             document.querySelector('.close').style.backgroundColor='whitesmoke';
+            document.querySelector('.footer').style.visibility = "visible";
         }
 
         function apriPannello(el) {           
             
             if (!window.openPanel) {
+                document.querySelector('.footer').style.visibility = "hidden";
                 window.openPanel = true;
                 window.panel.classList.add('opened');
                 window.titleElem.innerText = 'titleElem';
