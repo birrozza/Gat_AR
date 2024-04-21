@@ -548,6 +548,7 @@
             data.forEach(item => {
                 var latlng = L.latLng(item.lat, item.lon);
                 let marker=L.marker(latlng).addTo(map)
+                marker.bindPopup(item.text).openPopup()
             });
 
             AFRAME.registerComponent('cursor-listener', {
