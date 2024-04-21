@@ -413,12 +413,11 @@
                             data.forEach(item => {
                                 const contenitore = document.getElementById('entity-' + item.id)
                                 const distance = contenitore.components['gps-new-entity-place'].distance;
-                                if (distance >250) return;
                                 item.distance = distance;
+                                if (distance >250) return;
                                 const text = document.getElementById('text-'+ item.id)                                
-                                
                                 text.setAttribute('value', returnDistance(contenitore, text )); 
-                                //text.setAttribute('text', 'value:' + returnDistance(contenitore, text ));
+                                
                                 const sfondo = document.getElementById('sfondo-'+item.id)                                
                                 
                                 //const scale = (Math.exp(distance/15)*1); // calcola la scala in base alla distanza con un maasimo di 6
@@ -551,13 +550,19 @@
             data.forEach(item => {
                 var latlng = L.latLng(item.lat, item.lon);
                 let marker=L.marker(latlng).addTo(map)
-                marker.bindPopup(item.text).openPopup()
+                //marker.bindPopup(item.text).openPopup()
+                var popup = L.popup().setContent(item.text);
+                marker.bindPopup(popup);
+                marker.on('popupopen', (e) => {
+                    //console.log('open', e.target.getPopup().getContent())
+                    e.target.getPopup().setContent(item.text + " @ " + Math.round(item.distance)+"m.")
+                })
             });
 
             let positionMarker = L.marker([40.462654, 17.250845]).addTo(map);
             //positionMarker.setIcon(L.icon({iconUrl: '/assets/dot.png', iconSize: [10,10]}))
             positionMarker.setIcon(L.icon.pulse({iconSize:[10,10],color:'blue', fillColor: 'blue', heartbeat: 2}));
-
+            
             AFRAME.registerComponent('cursor-listener', {
                 
                 init: function () {
