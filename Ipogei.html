@@ -358,6 +358,7 @@
             el.addEventListener("gps-camera-update-position", async(e) => {
                 const lon = e.detail.position.longitude.toFixed(8); // massimo 8 cifre decimali
                 const lat = e.detail.position.latitude.toFixed(8);
+                positionMarker.setLatLng([lat, lon]);
                 lon_text.setAttribute("value", "lon: " + lon);
                 lat_text.setAttribute("value", "lat: " + lat);
                 if(!downloaded) {
@@ -550,6 +551,9 @@
                 let marker=L.marker(latlng).addTo(map)
                 marker.bindPopup(item.text).openPopup()
             });
+
+            let positionMarker = L.marker([40.462654, 17.250845]).addTo(map);
+            positionMarker.setIcon(L.icon({iconUrl: '/assets/dot.png', iconSize: [10,10]}))
 
             AFRAME.registerComponent('cursor-listener', {
                 
