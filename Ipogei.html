@@ -567,7 +567,7 @@
             positionMarker.setIcon(L.icon.pulse({iconSize:[10,10],color:'blue', fillColor: 'blue', heartbeat: 2}));
             
             window.addEventListener('deviceorientation', (e) =>{
-                window.distanceElem.innerText = e.alpha? 'iii'+e.alpha: 'no orientamento';
+                window.distanceElem.innerText = e.alpha? Math.round(e.alpha): 'no orientamento';
                 //console.log(e.alpha? 'iii'+e.alpha: 'no orientamento')
             });
 
