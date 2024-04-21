@@ -555,7 +555,7 @@
                 marker.bindPopup(popup);
                 marker.on('popupopen', (e) => {
                     //console.log('open', e.target.getPopup().getContent())
-                    e.target.getPopup().setContent(item.text + " @ " + Math.round(item.distance)+"m.")
+                    e.target.getPopup().setContent("<b>"+item.text+"</b><br>" + " @ " + Math.round(item.distance)+" m.")
                 })
             });
 
