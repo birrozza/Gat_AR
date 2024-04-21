@@ -259,7 +259,7 @@
 
         function updatePanelData(el) {
             const item = data.filter( i => (i.id == el))[0]
-            console.log(el, item)
+            //console.log(el, item)
             let unitaMisura = ' metri';
             window.detailAddressElem.innerText = item.via;
             const dist = document.getElementById('entity-' + item.id).components['gps-new-entity-place'].distance;
@@ -294,8 +294,8 @@
                 document.querySelector('.footer').style.visibility = "hidden";
                 window.openPanel = true;
                 window.panel.classList.add('opened');
-                window.titleElem.innerText = 'titleElem';
-                window.distanceElem.innerText = 'distanceElem';
+                //window.titleElem.innerText = 'titleElem';
+                //window.distanceElem.innerText = 'distanceElem';
                 window.moreDetailsLink.href = `https://www.tarantograndtour.it`;
                 const item = data.filter( i => (i.id == el))[0]
                 var latlng = L.latLng(item.lat, item.lon);
@@ -566,6 +566,11 @@
             //positionMarker.setIcon(L.icon({iconUrl: '/assets/dot.png', iconSize: [10,10]}))
             positionMarker.setIcon(L.icon.pulse({iconSize:[10,10],color:'blue', fillColor: 'blue', heartbeat: 2}));
             
+            window.addEventListener('deviceorientation', (e) =>{
+                window.distanceElem.innerText = e.alpha? 'iii'+e.alpha: 'no orientamento';
+                //console.log(e.alpha? 'iii'+e.alpha: 'no orientamento')
+            });
+
             AFRAME.registerComponent('cursor-listener', {
                 
                 init: function () {
