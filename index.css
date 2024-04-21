@@ -132,7 +132,9 @@
 }
 
 .speak.attivo {
-    animation: brath 3s linear infinite important! ;
+    animation-name: brath;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 }
 
 @keyframes brath {
