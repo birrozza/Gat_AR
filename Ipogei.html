@@ -566,10 +566,10 @@
             //positionMarker.setIcon(L.icon({iconUrl: '/assets/dot.png', iconSize: [10,10]}))
             positionMarker.setIcon(L.icon.pulse({iconSize:[10,10],color:'blue', fillColor: 'blue', heartbeat: 2}));
             
-            window.addEventListener('deviceorientation', (e) =>{
+            /*window.addEventListener('deviceorientation', (e) =>{ // per orientamento dispositivo
                 window.distanceElem.innerText = e.alpha? Math.round(e.alpha): 'no orientamento';
                 //console.log(e.alpha? 'iii'+e.alpha: 'no orientamento')
-            });
+            });*/
 
             AFRAME.registerComponent('cursor-listener', {
                 
