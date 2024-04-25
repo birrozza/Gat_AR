@@ -210,30 +210,6 @@
             descrizioneInglese: "TEST BOX GARAGE AUTO/Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32.",
             lat: 40.462378, 
             lon: 17.250763
-        },{
-            id: 1002,
-            id_text: "text-box",
-            id_img: "box",
-            type: "location",
-            via: "Via box auto xx",
-            text: "ANGOLO SUP SX",
-            imgURL: "assets/uscita-emergenza.jpg",
-            descrizione: "TEST BOX GARAGE AUTO/Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum. ",
-            descrizioneInglese: "TEST BOX GARAGE AUTO/Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32.",
-            lat: 40.47996807733033, 
-            lon: 17.22373307651934, 
-        },{
-            id: 1003,
-            id_text: "text-box",
-            id_img: "box",
-            type: "location",
-            via: "Via box auto xx",
-            text: "ANGOLO SUP DX",
-            imgURL: "assets/uscita-emergenza.jpg",
-            descrizione: "TEST BOX GARAGE AUTO/Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum. ",
-            descrizioneInglese: "TEST BOX GARAGE AUTO/Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32.",
-            lat: 40.471544897745424,  
-            lon: 17.23617847724209
         }];     
         
         speaker = window.speechSynthesis;
@@ -582,9 +558,9 @@
                 }).addTo(map);
 
             //L.control.zoom({zoomControl: false})    
-            map.fitBounds([
-                [40.47996807733033, 17.22373307651934],
-                [40.471544897745424, 17.23617847724209]
+            map.setMaxBounds([
+                [40.481, 17.222],
+                [40.471, 17.239]
             ]);
             data.forEach(item => {
                 var latlng = L.latLng(item.lat, item.lon);
