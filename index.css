@@ -196,7 +196,7 @@
 .footer-container {
     flex: auto;
     margin: 0 1em;
-    /*padding: 0.5em 0;*/
+    padding: 0.5em;
     margin-right: 0;
     border: 2px solid red;
 }

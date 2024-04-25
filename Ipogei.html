@@ -410,7 +410,11 @@
                         }
                     });
                     if(!intervallo) { 
-                        const x = setInterval(() => {                            
+                        const x = setInterval(() => {
+                            const poiVicino = data.toSorted((a, b) => {return a.distance - b.distance})[0] // ordino data in base alla distanza                            
+                            
+                            window.titleElem.innerText = lang =='it-IT' ? poiVicino.descrizione.slice(0, poiVicino.descrizione.indexOf('/')) : poiVicino.descrizioneInglese.slice(0, poiVicino.descrizioneInglese.indexOf('/')) ;
+                            window.distanceElem.innerText = 'Dis. ' + Math.round(poiVicino.distance)+ ' m.';
                             data.forEach(item => {
                                 const contenitore = document.getElementById('entity-' + item.id)
                                 const distance = contenitore.components['gps-new-entity-place'].distance;
@@ -434,8 +438,8 @@
                                 const widthText = ((text.getAttribute('value').length)+12)*0.06//*scale;
                                 //const widthText = (text.getAttribute('value').length)/scale;
                                 sfondo.setAttribute('width', widthText*1); 
-                            }); //~map
-                        }, 2000);                            
+                            }); //~ forEach loop
+                        }, 4000);                            
                         intervallo = true
                     }                
                 } //~ if dowloaded
@@ -523,7 +527,7 @@
         <div class="footer">
             <div class="footer-container">
                 <div class="footer-place-title">Titolo del posto</div>
-                <div class="footer-place-distance">arjs-look-controls</div>
+                <div class="footer-place-distance">distanza</div>
             </div>
             <button class="footer-button">Go</button>
         </div>
