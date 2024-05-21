@@ -243,3 +243,11 @@
     box-shadow: 3px 3px 6px #303030;
     height: 180px;      
 }
+.slider-container {
+    display: flex;
+    align-items: center;
+}
+
+#slider {
+    margin: 0 10px;
+}

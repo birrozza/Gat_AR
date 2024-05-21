@@ -533,6 +533,10 @@
             </a-entity>           
              -->          
         </a-scene>
+        <div class="slider-container">
+            <input type="range" id="slider" min="0" max="100" value="50" oninput="updateValue(this.value)">
+            <span id="slider-value">50</span>
+        </div>
         <div class="footer">
             <div class="footer-container">
                 <div class="footer-place-title">Titolo del posto</div>
