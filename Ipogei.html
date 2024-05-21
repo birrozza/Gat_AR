@@ -378,6 +378,8 @@
                                 longitude: item.lon
                             });
                             entitaContenitore.setAttribute('cursor-listener', item.id)
+                            //entitaContenitore.setAttribute('obb-collider', '')
+                            //entitaContenitore.addEventListener('obbcollisionstarted', console.log('obb-collider'))
                             //entitaContenitore.setAttribute("descrizione", 'Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. ');
                             
                             const img = document.createElement("a-image");
@@ -434,7 +436,7 @@
                                 //if (scale > 20) scale=20;
                                 
                                 //contenitore.setAttribute('scale', { x: scale, y: scale, z: scale });
-                                contenitore.object3D.scale.set(scale, scale, scale)
+                                //contenitore.object3D.scale.set(scale, scale, scale)
                                 //const widthText = AFRAME.utils.entity.getComponentProperty(text, 'text').width;
                                 const widthText = ((text.getAttribute('value').length)+12)*0.06//*scale;
                                 //const widthText = (text.getAttribute('value').length)/scale;
@@ -467,6 +469,7 @@
             loading-screen = "enabled: false;"
             arjs="sourceType: webcam; debugUIEnabled: false; "
             xr-mode-ui="enabled: false;"
+            
             >    
             <a-camera id = "camera"
                 look-controls-enabled='false' 
@@ -475,6 +478,7 @@
                 gps-new-camera = 'gpsMinDistance: 5;'
                 rotation-reader>                
                 <a-entity
+                    id="cursore"
                     
                     animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1000; from: 1 1 1; to: 0.3 0.3 0.3; "
                     animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1; "
@@ -534,7 +538,7 @@
                 <div class="footer-place-title">Titolo del posto</div>
                 <div class="footer-place-distance">distanza</div>
             </div>
-            <button class="footer-button">Go</button>
+            <button class="footer-button">No</button>
         </div>
         <div class="detail-panel">
             <button class="close">X</button>
@@ -596,10 +600,12 @@
                     el.addEventListener('mouseenter', function () {
                         const scala = el.getAttribute('scale').x;
                         document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + scala);//unicID);
+                        console.log('mouse enter')
                     });
 
                     el.addEventListener('mouseleave', function () {
                         document.getElementById('unicID-text').setAttribute('value', 'mouse leave on' + data);
+                        console.log('mouse leave')
                     });
 
                     el.addEventListener('click', function () {
