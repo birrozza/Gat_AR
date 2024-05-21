@@ -41,6 +41,12 @@
     <script>
         let lang='it-IT'
         let poiAttivo;
+        let costante = 1; // costante per scale
+
+        const updateValue = (value) => {
+            console.log(value)
+            costante = value;
+        }
         
         let unicID;
         const data = [{
@@ -430,7 +436,7 @@
                                 
                                 //const scale = (Math.exp(distance/15)*1); // calcola la scala in base alla distanza con un maasimo di 6
                                 //const scale = 0.1*distance+1;
-                                let costante = 1;
+                                //costante = 1;
                                 if (distance > 200) costante = 5;
                                 const scale = 1 + Math.log(distance)*costante;
                                 //if (scale > 20) scale=20;
@@ -441,6 +447,7 @@
                                 const widthText = ((text.getAttribute('value').length)+12)*0.06//*scale;
                                 //const widthText = (text.getAttribute('value').length)/scale;
                                 sfondo.setAttribute('width', widthText*1); 
+                                console.log('costante=', costante)
                             }); //~ forEach loop
                         }, 4000);                            
                         intervallo = true
@@ -534,8 +541,8 @@
              -->          
         </a-scene>
         <div class="slider-container">
-            <input type="range" id="slider" min="0" max="100" value="50" oninput="updateValue(this.value)">
-            <span id="slider-value">50</span>
+            <input type="range" id="slider" min="1" max="5" value="1" step="0.5" oriennt="vertical" oninput="updateValue(this.value)">
+            
         </div>
         <div class="footer">
             <div class="footer-container">
