@@ -436,7 +436,7 @@
                                 //if (scale > 20) scale=20;
                                 
                                 //contenitore.setAttribute('scale', { x: scale, y: scale, z: scale });
-                                //contenitore.object3D.scale.set(scale, scale, scale)
+                                contenitore.object3D.scale.set(scale, scale, scale)
                                 //const widthText = AFRAME.utils.entity.getComponentProperty(text, 'text').width;
                                 const widthText = ((text.getAttribute('value').length)+12)*0.06//*scale;
                                 //const widthText = (text.getAttribute('value').length)/scale;
@@ -538,7 +538,7 @@
                 <div class="footer-place-title">Titolo del posto</div>
                 <div class="footer-place-distance">distanza</div>
             </div>
-            <button class="footer-button">No</button>
+            <button class="footer-button">Go</button>
         </div>
         <div class="detail-panel">
             <button class="close">X</button>
