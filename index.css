@@ -261,7 +261,7 @@
     position: absolute;
     top: 30px;
     right: 0px;
-    z-index: inherit;
+    z-index: 9;
     writing-mode: lr-tb; /* Orienta lo slider verticalmente */
     -webkit-appearance: slider-vertical; /* Per browser webkit (Safari, Chrome) */
     height: 300px;
