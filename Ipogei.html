@@ -422,7 +422,7 @@
                                 const contenitore = document.getElementById('entity-' + item.id)
                                 const distance = contenitore.components['gps-new-entity-place'].distance;
                                 item.distance = distance;
-                                if (distance >250) return;
+                                if (distance >150) return;
                                 const text = document.getElementById('text-'+ item.id)                                
                                 text.setAttribute('value', returnDistance(contenitore, text )); 
                                 
