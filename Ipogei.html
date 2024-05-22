@@ -46,6 +46,7 @@
         const updateValue = (value) => {
             console.log(value)
             costante = value;
+            setScale();
         }
         
         let unicID;
@@ -314,6 +315,34 @@
             }
         }
 
+        function setScale(){
+            data.forEach(item => {
+                const contenitore = document.getElementById('entity-' + item.id)
+                const distance = contenitore.components['gps-new-entity-place'].distance;
+                item.distance = distance;
+                if (distance >150) return;
+                const text = document.getElementById('text-'+ item.id)                                
+                text.setAttribute('value', returnDistance(contenitore, text )); 
+                
+                const sfondo = document.getElementById('sfondo-'+item.id)                                
+                
+                //const scale = (Math.exp(distance/15)*1); // calcola la scala in base alla distanza con un maasimo di 6
+                //const scale = 0.1*distance+1;
+                //costante = 1;
+                if (distance > 200) costante = 5;
+                const scale = 1 + Math.log(distance)*costante;
+                //if (scale > 20) scale=20;
+                
+                //contenitore.setAttribute('scale', { x: scale, y: scale, z: scale });
+                contenitore.object3D.scale.set(scale, scale, scale)
+                //const widthText = AFRAME.utils.entity.getComponentProperty(text, 'text').width;
+                const widthText = ((text.getAttribute('value').length)+12)*0.07//*scale;
+                //const widthText = (text.getAttribute('value').length)/scale;
+                sfondo.setAttribute('width', widthText*1); 
+                console.log('costante=', costante)
+            }); //~ forEach loop
+        }
+
         window.onload = () => {
             //https://cartigli.chialab.io/index.js
             unicID = "ID-" + Date.now() + "-" + Math.round(Math.random() * 1000);
@@ -424,31 +453,7 @@
                             
                             window.titleElem.innerText = lang =='it-IT' ? poiVicino.descrizione.slice(0, poiVicino.descrizione.indexOf('/')) : poiVicino.descrizioneInglese.slice(0, poiVicino.descrizioneInglese.indexOf('/')) ;
                             window.distanceElem.innerText = 'Dis. ' + Math.round(poiVicino.distance)+ ' m.';
-                            data.forEach(item => {
-                                const contenitore = document.getElementById('entity-' + item.id)
-                                const distance = contenitore.components['gps-new-entity-place'].distance;
-                                item.distance = distance;
-                                if (distance >150) return;
-                                const text = document.getElementById('text-'+ item.id)                                
-                                text.setAttribute('value', returnDistance(contenitore, text )); 
-                                
-                                const sfondo = document.getElementById('sfondo-'+item.id)                                
-                                
-                                //const scale = (Math.exp(distance/15)*1); // calcola la scala in base alla distanza con un maasimo di 6
-                                //const scale = 0.1*distance+1;
-                                //costante = 1;
-                                if (distance > 200) costante = 5;
-                                const scale = 1 + Math.log(distance)*costante;
-                                //if (scale > 20) scale=20;
-                                
-                                //contenitore.setAttribute('scale', { x: scale, y: scale, z: scale });
-                                contenitore.object3D.scale.set(scale, scale, scale)
-                                //const widthText = AFRAME.utils.entity.getComponentProperty(text, 'text').width;
-                                const widthText = ((text.getAttribute('value').length)+12)*0.06//*scale;
-                                //const widthText = (text.getAttribute('value').length)/scale;
-                                sfondo.setAttribute('width', widthText*1); 
-                                console.log('costante=', costante)
-                            }); //~ forEach loop
+                            setScale();
                         }, 4000);                            
                         intervallo = true
                     }                
