@@ -295,11 +295,13 @@
             window.panel.classList.remove('opened');
             document.querySelector('.close').style.backgroundColor='whitesmoke';
             document.querySelector('.footer').style.visibility = "visible";
+            document.getElementById('slider').style.visibility = "visible";
         }
 
         function apriPannello(el) {           
             
             if (!window.openPanel) {
+                document.getElementById('slider').style.visibility = "hidden";
                 document.querySelector('.footer').style.visibility = "hidden";
                 window.openPanel = true;
                 window.panel.classList.add('opened');
