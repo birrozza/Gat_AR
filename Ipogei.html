@@ -324,7 +324,7 @@
                 const contenitore = document.getElementById('entity-' + item.id)
                 const distance = contenitore.components['gps-new-entity-place'].distance;
                 item.distance = distance;
-                if (distance >150) return;
+                if (distance <50) return;
                 const text = document.getElementById('text-'+ item.id)                                
                 text.setAttribute('value', returnDistance(contenitore, text )); 
                 
@@ -608,7 +608,7 @@
             let positionMarker = L.marker([40.462654, 17.250845]).addTo(map);
             //positionMarker.setIcon(L.icon({iconUrl: '/assets/dot.png', iconSize: [10,10]}))
             positionMarker.setIcon(L.icon.pulse({iconSize:[10,10],color:'blue', fillColor: 'blue', heartbeat: 2}));
-            
+            positionMarker.bindPopup(L.popup().setContent('Tu sei qui'));
             /*window.addEventListener('deviceorientation', (e) =>{ // per orientamento dispositivo
                 window.distanceElem.innerText = e.alpha? Math.round(e.alpha): 'no orientamento';
                 //console.log(e.alpha? 'iii'+e.alpha: 'no orientamento')
@@ -638,7 +638,7 @@
                         markersGroup.eachLayer(function(layer) { 
                             markers.push(layer);
                         });
-                        console.log('markers',markers,el)
+                        //console.log('markers',markers,el)
                         markers[data].togglePopup()
                         apriPannello(data);
                         const dis = el.components['gps-new-entity-place'].distance;
