@@ -312,7 +312,7 @@
                 const item = data.filter( i => (i.id == el))[0]
                 var latlng = L.latLng(item.lat, item.lon);
                 
-                map.setView(latlng, 18);
+                map.setView(latlng, 16);
                 updatePanelData(el);
             } else {
                 closePanel()
