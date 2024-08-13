@@ -257,6 +257,7 @@
 }
 
 #slider {
+    
     margin: 30px -30px;
     position: absolute;
     top: 30px;
@@ -278,6 +279,10 @@
     margin: 30px -30px;
     position: absolute;
     top: 350px;
-    right: 70px;
+    right: 58px;
     z-index: 9;    
+}
+
+.nascondi{
+    display: none;
 }

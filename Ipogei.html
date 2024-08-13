@@ -297,12 +297,14 @@
             document.querySelector('.close').style.backgroundColor='whitesmoke';
             document.querySelector('.footer').style.visibility = "visible";
             document.getElementById('slider').style.visibility = "visible";
+            document.getElementById('checkbox').style.visibility = "visible";
         }
 
         function apriPannello(el) {           
             
             if (!window.openPanel) {
                 document.getElementById('slider').style.visibility = "hidden";
+                document.getElementById('checkbox').style.visibility = "hidden";
                 document.querySelector('.footer').style.visibility = "hidden";
                 window.openPanel = true;
                 window.panel.classList.add('opened');
@@ -371,6 +373,8 @@
             window.detailDistanceElem = document.querySelector('.detail-distance');
             window.detailAddressElem = document.querySelector('.detail-address');
             window.moreDetailsLink = document.querySelector('.more-details');
+            window.slider = document.getElementById('slider');
+            window.checkbox = document.getElementById('checkbox');
                   
             itButton.addEventListener('click', () => {
                 lang='it-IT'; 
@@ -463,7 +467,12 @@
                     }                
                 } //~ if dowloaded
                 downloaded=true; 
-                loader.setAttribute("style", "display: none;");                  
+                loader.setAttribute("style", "display: none;"); 
+                
+                window.checkbox.classList.remove('nascondi');
+                window.slider.classList.remove('nascondi');
+                console.log(window.checkbox)
+                //document.getElementById('checkbox').style.visibility = "visible";                 
             });
         };        
 
@@ -550,10 +559,10 @@
              -->          
         </a-scene>
         <div class="slider-container">
-            <input type="range" id="slider" min="1" max="5" value="1" step="0.5" oriennt="vertical" oninput="updateValue(this.value)" />
+            <input class="nascondi" type="range" id="slider" min="1" max="5" value="1" step="0.5" oriennt="vertical" oninput="updateValue(this.value)"  />
         </div>
-        <div class="checkbox-container">
-            <input type="checkbox" id="checkbox" checked />
+        <div class="checkbox-container" >
+            <input class="nascondi" type="checkbox" id="checkbox" checked  />
         </div>
         <div class="footer">
             <div class="footer-container">
@@ -579,6 +588,7 @@
         </div>    
 
         <script>
+            console.log('2 script')
             let map = L.map('map').setView([40.474332, 17.2343445], 18);
             //map.zoomControl=false;
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
