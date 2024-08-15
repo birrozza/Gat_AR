@@ -267,6 +267,8 @@
             return text + distance;
         }
 
+        
+
         function updatePanelData(el) {
             const item = data.filter( i => (i.id == el))[0]
             //console.log(el, item)
@@ -375,6 +377,22 @@
             window.moreDetailsLink = document.querySelector('.more-details');
             window.slider = document.getElementById('slider');
             window.checkbox = document.getElementById('checkbox');
+
+            window.checkbox.addEventListener('change', (e) => { // attiva/disattiva testo e sfondo dei poi
+                const scene = document.querySelector('a-scene')
+                let el = scene.querySelectorAll('.nascondibile')
+                if (window.checkbox.checked) {
+                    //console.log('checked ok')
+                    for ( let i = 0; i < el.length; i++) {
+                        el[i].setAttribute('visible', 'true')
+                    }
+                } else {
+                    //console.log('checked off')
+                    for ( let i = 0; i < el.length; i++) {
+                        el[i].setAttribute('visible', 'false')
+                    }
+                }
+            }); // add event listener
                   
             itButton.addEventListener('click', () => {
                 lang='it-IT'; 
@@ -436,6 +454,7 @@
                             text.setAttribute("align", "center");
                             text.setAttribute("value", item.text);
                             text.setAttribute("name", item.text);
+                            
                             //text.setAttribute('cursor-listener','')
                             //text.object3D.scale.set( 2, 2, 2);
                             
@@ -447,11 +466,18 @@
                             sfondo.object3D.position.set(0, 0, -10);                              
                             //sfondo.setAttribute('width', ((text.getAttribute('value').length)+12)*0.06);
                             sfondo.setAttribute('width', (item.text.length+12)*0.06);
-                            sfondo.setAttribute("height", 0.5);  
-                                             
+                            sfondo.setAttribute("height", 0.5);                             
+                            
+                            const entitaSubContenitore =  document.createElement("a-entity");
+                            entitaSubContenitore.classList.add('nascondibile')
+                            
+                            entitaSubContenitore.appendChild(sfondo);
+                            entitaSubContenitore.appendChild(text);
+
                             entitaContenitore.appendChild(img);
-                            entitaContenitore.appendChild(sfondo); 
-                            entitaContenitore.appendChild(text);                     
+                            entitaContenitore.appendChild(entitaSubContenitore);
+                            //entitaContenitore.appendChild(sfondo); 
+                            //entitaContenitore.appendChild(text);                     
                             document.querySelector("a-scene").appendChild(entitaContenitore);
                         }
                     });
@@ -471,7 +497,7 @@
                 
                 window.checkbox.classList.remove('nascondi');
                 window.slider.classList.remove('nascondi');
-                console.log(window.checkbox)
+                //console.log(window.checkbox)
                 //document.getElementById('checkbox').style.visibility = "visible";                 
             });
         };        

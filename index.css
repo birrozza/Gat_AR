@@ -265,6 +265,8 @@
     z-index: 9;
     writing-mode: lr-tb; /* Orienta lo slider verticalmente */
     -webkit-appearance: slider-vertical; /* Per browser webkit (Safari, Chrome) */
+    /*writing-mode: vertical-lr; 
+    direction: rtl;*/
     height: 300px;
 }
 
@@ -283,6 +285,10 @@
     z-index: 9;    
 }
 
-.nascondi{
+.nascondi { /* usata per nascondere slider e checkbox*/
     display: none;
+}
+
+.hide { /* usata per nascondere testo e sfondo dei poi */
+   visibility: hidden;
 }
