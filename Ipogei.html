@@ -661,6 +661,7 @@
                     var el = this.el;  // l'elemento in formato html              
 
                     el.addEventListener('mouseenter', function () {
+                        navigator.vibrate([200,200])
                         const scala = el.getAttribute('scale').x;
                         document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + scala);//unicID);
                         console.log('mouse enter')
@@ -671,7 +672,8 @@
                         console.log('mouse leave')
                     });
 
-                    el.addEventListener('click', function () {  
+                    el.addEventListener('click', function () {
+                        navigator.vibrate(300)  
                         document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
                         poiAttivo = data;
                         var markers = []; // crea array per contenere la lista dei markers
