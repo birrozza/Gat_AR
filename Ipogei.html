@@ -442,7 +442,7 @@
                                 latitude: item.lat,
                                 longitude: item.lon
                             });
-                            //entitaContenitore.setAttribute('cursor-listener', item.id)
+                            entitaContenitore.setAttribute('cursor-listener', item.id)
                             //entitaContenitore.setAttribute('obb-collider', '')
                             //entitaContenitore.addEventListener('obbcollisionstarted', console.log('obb-collider'))
                             //entitaContenitore.setAttribute("descrizione", 'Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. ');
@@ -531,14 +531,14 @@
                 rotation-reader>                
                 <a-entity
                     id="cursore"
-                    collider-check
+                    
                     animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1000; from: 1 1 1; to: 0.3 0.3 0.3; "
                     animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1; "
                     animation__colorfusing="property: components.material.material.color; type: color; from: cyan; to: red; startEvents: fusing; dur: 500"
                     animation__colormouseleave="property: components.material.material.color; type: color; from: yellow; to: cyan; startEvents: mouseleave; loop: true; dir: alternate;"
                     animation__color="property: components.material.material.color; type: color; from: cyan; to: yellow; loop: true; dir: alternate;"
+                    cursor="rayOrigin: mouse; fuse: true;"
                     
-                    raycaster="objects: .nascondibile; showLine: true; lineColor: red;"
                     material="color: cyan; shader: flat"
                     position="0 0 -3"
                     geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.07;">
@@ -655,16 +655,6 @@ cursor="rayOrigin: mouse; fuse: true;"
                 window.distanceElem.innerText = e.alpha? Math.round(e.alpha): 'no orientamento';
                 //console.log(e.alpha? 'iii'+e.alpha: 'no orientamento')
             });*/
-
-            AFRAME.registerComponent('collider-check', {
-  dependencies: ['raycaster'],
-
-  init: function () {
-    this.el.addEventListener('raycaster-intersection', function () {
-      console.log('Player hit something!');
-    });
-  }
-});
 
             AFRAME.registerComponent('cursor-listener', {
                 dependencies: ['raycaster'],
