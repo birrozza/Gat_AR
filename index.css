@@ -63,11 +63,13 @@
     transform: translateY(100%);
     display: flex;
     flex-direction: column;
-    transition: transform 300ms ease-out;
+    transition: transform 300ms ease-out, opacity 0.3s;
+    opacity: 0
 }
 
 .detail-panel.opened {
     transform: translateY(12%);
+    opacity: 1;
 }
 
 .detail-address {
@@ -269,6 +271,7 @@
     /*writing-mode: vertical-lr; 
     direction: rtl;*/
     height: 300px;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .checkbox-container {
@@ -283,9 +286,10 @@
     position: absolute;
     top: 350px;
     right: 58px;
-    z-index: 9;    
+    z-index: 9;   
+    animation: fadeIn 1s ease-in-out;
 }
 
 .nascondi { /* usata per nascondere slider e checkbox*/
-    display: none;
+    display: none;    
 }

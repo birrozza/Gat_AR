@@ -557,13 +557,14 @@
                     color="red"
                     id="text-camera"
                 ></a-text>
-                -->
+                -->                
                 <div hidden>
                     <a-plane position="-0.31 -0.17 -1" opacity="0.5" width=".4" height=".14" color="#000"></a-plane>
                     <a-text id="lat-text" value="lat: ---" width="1" color="#00ff00" position="-0.5 -0.13 -1"></a-text>
                     <a-text id="lon-text" value="lon: ---" width="1" color="#00ff00" position="-0.5 -0.17 -1"></a-text> 
                     <a-text id="unicID-text" value="" width="0.5" color="magenta" position="-0.5 -0.21 -1"></a-text> 
                 </div>
+                
                     <!--
                 <a-entity id="cylinderText" value="This is a cylinder" align="center" with="0.2" color="#fff" visible="true" position="0 -0.3 -0.9"
                     geometry="primitive: plane; width: .7 height: .5; " material="color: #555; opacity: 0.8"></a-entity>              
@@ -678,7 +679,7 @@
                             markers.push(layer);
                         });
                         //console.log('markers',markers,el)
-                        markers[data].togglePopup()
+                        markers[data].openPopup()
                         apriPannello(data);
                         const dis = el.components['gps-new-entity-place'].distance;
                         const lorem = el.getAttribute('descrizione')
