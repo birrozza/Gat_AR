@@ -40,11 +40,12 @@
     align-items: center;
 }
 .text-loader {
-    padding: 5px;
+    padding: 15px;
     text-align: center;
     font-size: 1.25em;
     color: black;
     background-color: #999;
+    border-radius: 10px;
 }
 .detail-panel {
     border-radius: 5px;
@@ -287,8 +288,4 @@
 
 .nascondi { /* usata per nascondere slider e checkbox*/
     display: none;
-}
-
-.hide { /* usata per nascondere testo e sfondo dei poi */
-   visibility: hidden;
 }

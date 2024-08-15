@@ -265,9 +265,7 @@
             distance = distance ? Math.round(distance) + " meters" : " --- ";
             //return text_component + ' @ '+ distance
             return text + distance;
-        }
-
-        
+        }        
 
         function updatePanelData(el) {
             const item = data.filter( i => (i.id == el))[0]
@@ -350,6 +348,14 @@
                 console.log('costante=', costante)
             }); //~ forEach loop
         }
+/*
+        function exIntervallo(){
+            const poiVicino = data.toSorted((a, b) => {return a.distance - b.distance})[0] // ordino data in base alla distanza                            
+            console.log('ex itervallo', data)                
+            window.titleElem.innerText = lang =='it-IT' ? poiVicino.descrizione.slice(0, poiVicino.descrizione.indexOf('/')) : poiVicino.descrizioneInglese.slice(0, poiVicino.descrizioneInglese.indexOf('/')) ;
+            window.distanceElem.innerText = 'Dis. ' + Math.round(poiVicino.distance)+ ' m.';
+            setScale();
+        }*/
 
         window.onload = () => {
             //https://cartigli.chialab.io/index.js
@@ -379,17 +385,17 @@
             window.checkbox = document.getElementById('checkbox');
 
             window.checkbox.addEventListener('change', (e) => { // attiva/disattiva testo e sfondo dei poi
-                const scene = document.querySelector('a-scene')
-                let el = scene.querySelectorAll('.nascondibile')
-                if (window.checkbox.checked) {
+                const scene = document.querySelector('a-scene'); // prendo l'elemento genitore
+                let el = scene.querySelectorAll('.nascondibile'); // selez tutti gli elmenti figlio che hanno classe nascondibile
+                if (window.checkbox.checked) { // se la checkbox è selezionata
                     //console.log('checked ok')
-                    for ( let i = 0; i < el.length; i++) {
-                        el[i].setAttribute('visible', 'true')
+                    for ( let i = 0; i < el.length; i++) { // scorro la lista degli elementi
+                        el[i].setAttribute('visible', 'true'); // e li rendo visibili singolarmente
                     }
-                } else {
+                } else { // altrimenti
                     //console.log('checked off')
-                    for ( let i = 0; i < el.length; i++) {
-                        el[i].setAttribute('visible', 'false')
+                    for ( let i = 0; i < el.length; i++) { // scorro la lista degli elementi
+                        el[i].setAttribute('visible', 'false') // e li rendo invisibili singolarmente
                     }
                 }
             }); // add event listener
@@ -416,11 +422,9 @@
             let intervallo = false;
             const el = document.getElementById('camera'); 
             footerButton.addEventListener('click', () =>{console.log('click');el.setAttribute('gps-new-camera', "simulateLatitude: 40.473640; simulateLongitude: 17.233953;" )} ); 
-            /*
             
-            camera.setAttribute('gps-new-camera', "simulateLatitude: 40.462388; simulateLongitude: 17.250753;" );
-            */
             el.addEventListener("gps-camera-update-position", async(e) => {
+                console.log('Posizione gps modificata')
                 const lon = e.detail.position.longitude.toFixed(8); // massimo 8 cifre decimali
                 const lat = e.detail.position.latitude.toFixed(8);
                 positionMarker.setLatLng([lat, lon]);
@@ -478,7 +482,7 @@
                             entitaContenitore.appendChild(entitaSubContenitore);
                             //entitaContenitore.appendChild(sfondo); 
                             //entitaContenitore.appendChild(text);                     
-                            document.querySelector("a-scene").appendChild(entitaContenitore);
+                            document.querySelector("a-scene").appendChild(entitaContenitore);                            
                         }
                     });
                     if(!intervallo) { 
@@ -490,26 +494,23 @@
                             setScale();
                         }, 4000);                            
                         intervallo = true
-                    }                
-                } //~ if dowloaded
-                downloaded=true; 
-                loader.setAttribute("style", "display: none;"); 
-                
-                window.checkbox.classList.remove('nascondi');
-                window.slider.classList.remove('nascondi');
-                //console.log(window.checkbox)
-                //document.getElementById('checkbox').style.visibility = "visible";                 
-            });
-        };        
+                    }
+                    downloaded=true;
+                    loader.setAttribute("style", "display: none;");
+                    window.checkbox.classList.remove('nascondi');
+                    window.slider.classList.remove('nascondi');
+                } //~ if dowloaded               
+            }); // ~ gps-camera-update-position
+        }; // ~ window.onLoad     
 
     </script>   
     <!--<body style="margin: 0px; overflow: hidden;">-->
-    <body style="margin: 0px 0px 0px -16px; overflow: hidden; height: 480px; width: 640px;"></body>
+    <body style="margin: 0px 0px 0px -16px; overflow: hidden; height: 480px; width: 640px;">
         <div class="arjs-loader" id="loader">
             <div class="logo">
                 <a style="position: relative; top: 45%; left: 40%;">LOGO</a>
             </div>
-            <div class="text-loader">Loading data, please wait...</div>
+            <div class="text-loader">Loading GPS data, please wait...</div>
         </div>
         <div class="aut">By Angelo Mirabelli</div>
 
@@ -614,7 +615,7 @@
         </div>    
 
         <script>
-            console.log('2 script')
+            //console.log('2 script')
             let map = L.map('map').setView([40.474332, 17.2343445], 18);
             //map.zoomControl=false;
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
