@@ -528,7 +528,8 @@
                 arjs-look-controls='smoothingFactor: 0.1'
 
                 gps-new-camera = 'gpsMinDistance: 5;'
-                rotation-reader>                
+                rotation-reader> 
+                
                 <a-entity
                     id="cursore"
                     
@@ -543,6 +544,7 @@
                     position="0 0 -3"
                     geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.07;">
                 </a-entity>
+               
                 <!--     
                 <a-text   cursor="fuse: true;"
 
@@ -662,18 +664,24 @@ cursor="rayOrigin: mouse; fuse: true;"
                     var data = this.data; // l'id dell'elemento
                     var el = this.el;  // l'elemento in formato html              
 
-                    el.addEventListener('mouseenter', function () {                        
+                    el.addEventListener('mouseenter', function () {  
+                        navigator.vibrate(200);  // per far vibrare quando vubra un marker                       
                         const scala = el.getAttribute('scale').x;
                         document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + scala);//unicID);
-                        console.log('mouse enter')
+                        console.log('mouse enter',el)
                     });
 
                     el.addEventListener('mouseleave', function () {
                         document.getElementById('unicID-text').setAttribute('value', 'mouse leave on' + data);
                         console.log('mouse leave')
                     });
-
-                    el.addEventListener('click', function () {
+                    /*
+                    el.addEventListener('touchstart', function (evt) {
+                        // Gestione specifica per dispositivi touch
+                        console.log('Marker toccato su mobile!', el);
+                    });
+                    */
+                    el.addEventListener('click', function () {                        
                         //navigator.vibrate(200);  // per far vibrare al touch del poi 
                         document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
                         poiAttivo = data;
