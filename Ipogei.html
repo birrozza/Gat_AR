@@ -665,7 +665,7 @@ cursor="rayOrigin: mouse; fuse: true;"
                     var el = this.el;  // l'elemento in formato html              
 
                     el.addEventListener('mouseenter', function () {  
-                        navigator.vibrate(200);  // per far vibrare quando vubra un marker                       
+                                            
                         const scala = el.getAttribute('scale').x;
                         document.getElementById('unicID-text').setAttribute('value', 'mouse enter on' + scala);//unicID);
                         console.log('mouse enter',el)
@@ -675,12 +675,13 @@ cursor="rayOrigin: mouse; fuse: true;"
                         document.getElementById('unicID-text').setAttribute('value', 'mouse leave on' + data);
                         console.log('mouse leave')
                     });
-                    /*
+                    
                     el.addEventListener('touchstart', function (evt) {
                         // Gestione specifica per dispositivi touch
+                        navigator.vibrate(200);  // per far vibrare quando vubra un marker   
                         console.log('Marker toccato su mobile!', el);
                     });
-                    */
+                   
                     el.addEventListener('click', function () {                        
                         //navigator.vibrate(200);  // per far vibrare al touch del poi 
                         document.getElementById('unicID-text').setAttribute('value', 'click on' + data);//unicID);
