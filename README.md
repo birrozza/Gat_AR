@@ -1,5 +1,5 @@
 # Gat_AR
 
-Test di realtà aumentata per il campo volo del Gruppo Aeromodellistico Tarantino
+Test di realtà aumentata per gli Ipogei presenti nella città vecchia di Taranto
 
-www.tarantogat.it
+![](/assets/QRCode.png)
