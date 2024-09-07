@@ -13,7 +13,7 @@
 
 ![](/assets/foto1.jpeg)
 
-### Sotto la descrizione vi è anche una mappa in cui è evidenziata la posizione attuale dello smartphone e ed indicati la posizione dei vari ipogei con nome e distanza dall'utente.
+### Sotto la descrizione vi è anche una mappa in cui è evidenziata la posizione attuale dello smartphone ed anche indicati la posizione dei vari ipogei con nome e distanza dall'utente.
 
 
 ![](/assets/QRCode.png)
